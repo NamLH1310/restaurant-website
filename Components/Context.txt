@@ -1,0 +1,9 @@
+data:{
+  Products:[],
+  Employees:[],
+  Orders:[],
+  Focus:Any,
+  Types:[],
+  openModal:Number,
+  [function]
+}
