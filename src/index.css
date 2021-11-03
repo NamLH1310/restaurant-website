@@ -1,3 +1,13 @@
+:root{
+  --primary1: #FF6633;
+  --primary2: #83C75D;
+  --primary4: #363636;
+  --button-cart: #FF4A4A;
+  --text: #000000;
+  --background-primary:#ffffff;
+  --background-secondary: #ECECEC;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
