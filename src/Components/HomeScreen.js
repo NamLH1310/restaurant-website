@@ -1,9 +1,4 @@
-import ComChien from "./Img/ComChien.jpg";
-import ComSuon from "./Img/ComSuon.jpg";
-import Hamburger from "./Img/Hamburger.jpg";
-import IceCream from "./Img/IceCream.jpg";
-import OrangeJuice from "./Img/OrangeJuice.jpg";
-import My_Y from "./Img/My_Y.jpg";
+import ComChien from "../Assets/ComChien.jpg";
 import Carousel from "react-elastic-carousel";
 import React, { Component, useState } from "react";
 import "tailwindcss/tailwind.css";
@@ -13,7 +8,7 @@ import "tailwindcss/tailwind.css";
   crossorigin="anonymous"
 ></script>;
 
-const stylebutton = "uppercase ml-1 w-5/6 h-full";
+const stylebutton = "uppercase w-full h-full py-2 text-left";
 const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
 const listfood = [];
 const listfoodtop = [];
@@ -59,7 +54,7 @@ const breakPoints = [{ width: 300, itemsToShow: 5 }];
 
 function HomeScreen(props) {
   const [foodswitch, setFoodswitch] = useState(1);
-  const handleClick = () => {
+  const handleClick = (category) => {
     if (foodswitch === 0) setFoodswitch(1);
     else setFoodswitch(0);
     console.log("A");
@@ -67,7 +62,7 @@ function HomeScreen(props) {
   return (
     <div>
       <div
-        className="flex mt-20 mb-2"
+        className="flex mb-2"
         style={{ background: "var(--background-secondary)" }}
       >
         <div className="flex-inital w-1/6 divide-y divide-teal-400 font-semibold catagory">
@@ -90,7 +85,6 @@ function HomeScreen(props) {
             }}
           >
             <li className={stylecategory}>
-              <i className="fas fa-concierge-bell"></i>
               <button className={stylebutton} onClick={handleClick}>
                 <i className="fas fa-concierge-bell"></i>
                 Cơm
@@ -98,32 +92,39 @@ function HomeScreen(props) {
             </li>
 
             <li className={stylecategory}>
-              <i className="fas fa-bacon"></i>
-              <button className={stylebutton}>Bún & Mì</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-bacon"></i>Bún & Mì
+              </button>
             </li>
             <li className={stylecategory}>
-              <i className="fas fa-cookie"></i>
-              <button className={stylebutton}>Ăn vặt</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-cookie"></i>Ăn vặt
+              </button>
             </li>
             <li className={stylecategory}>
-              <i className="fas fa-hotdog"></i>
-              <button className={stylebutton}>Món nướng</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-hotdog"></i>Món nướng
+              </button>
             </li>
             <li className={stylecategory}>
-              <i className="fas fa-cocktail"></i>
-              <button className={stylebutton}>Thức uống</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-cocktail"></i>Thức uống
+              </button>
             </li>
             <li className={stylecategory}>
-              <i className="fas fa-apple-alt"></i>
-              <button className={stylebutton}>Trái cây</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-apple-alt"></i>Trái cây
+              </button>
             </li>
             <li className={stylecategory}>
-              <i className="fas fa-birthday-cake mr-1"></i>
-              <button className={stylebutton}>Bánh</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-birthday-cake"></i>Bánh
+              </button>
             </li>
             <li className={stylecategory}>
-              <i className="fas fa-gifts"></i>
-              <button className={stylebutton}>Combo</button>
+              <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-gifts"></i>Combo
+              </button>
             </li>
           </ul>
         </div>
