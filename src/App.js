@@ -1,14 +1,19 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import HomeScreen from './components/HomeScreen';
+import React from "react";
+import {BrowserRouter, Route} from 'react-router-dom';
+import HomeScreen from './Screen/HomeScreen';
 
 function App() {
   return (
-    <Router>
-      <Router path="/">
-        <HomeScreen />
-      </Router>
-    </Router>
+    <BrowserRouter>
+    <div className="App">
+      {/* <header className="App-header">
+      </header> */}
+      <div className = "Page">
+            <Route path="/" exact={true} component ={HomeScreen}/>
+      </div>
+    </div>
+    </BrowserRouter>
   );
 }
 
