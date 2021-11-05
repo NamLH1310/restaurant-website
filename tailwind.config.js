@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        topsale: "120px"
+        topsale: "120px",
+        promotion: "270px"
       }
     },
   },

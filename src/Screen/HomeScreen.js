@@ -13,8 +13,8 @@ import "tailwindcss/tailwind.css";
   crossorigin="anonymous"
 ></script>;
 
-const stylebutton = "uppercase ml-1";
-const stylecategory = "py-2 hover:bg-yellow-500 hover:opacity-80";
+const stylebutton = "uppercase ml-1 w-5/6 h-full";
+const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
 const listfood = [];
 const listfoodtop = [];
 for (let i = 0; i < 10; i++) {
@@ -58,7 +58,7 @@ for (let i = 0; i < 10; i++) {
 const breakPoints = [{ width: 300, itemsToShow: 5 }];
 
 function HomeScreen(props) {
-  const [foodswitch, setFoodswitch] = useState(0);
+  const [foodswitch, setFoodswitch] = useState(1);
   const handleClick = () => {
     if (foodswitch === 0) setFoodswitch(1);
     else setFoodswitch(0);
@@ -92,6 +92,7 @@ function HomeScreen(props) {
             <li className={stylecategory}>
               <i className="fas fa-concierge-bell"></i>
               <button className={stylebutton} onClick={handleClick}>
+                <i className="fas fa-concierge-bell"></i>
                 Cơm
               </button>
             </li>
@@ -129,10 +130,10 @@ function HomeScreen(props) {
         {(foodswitch && (
           <div className="flex-1 grid grid-cols-2 gap-5 mr-5 ml-5 list-promotion">
             <div>
-              <img src={ComChien} className="h-full w-full" />
+              <img src={ComChien} className="h-promotion w-full my-2" />
             </div>
             <div>
-              <img src={ComChien} className="h-full w-full" />
+              <img src={ComChien} className="h-promotion w-full my-2" />
             </div>
           </div>
         )) || (
