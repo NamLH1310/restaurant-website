@@ -16,7 +16,7 @@ function Order(emp) {
 				<div className="col-span-2">TOO: { emp.value.time}</div>
 				<div className="col-span-2">Dien Thoai: {emp.value.pNumber}</div>
 				<div className="row-span-3 "><button
-					className='min-h-full min-w-full h-10  text-red-100 transition-colors duration-150 bg-red-500 bg-yellow-400  focus:shadow-outline hover:bg-red-800'
+					className='min-h-full min-w-full h-10  text-red-100 transition-colors duration-150 bg-red-500  focus:shadow-outline hover:bg-red-800'
 					onClick={() => { return List.openModal(3, emp.value.id) }}>Edit</button></div>
 			</div>
 

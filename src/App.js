@@ -1,15 +1,28 @@
-import {Route, Switch} from 'react-router-dom'
-import './App.css';
+import './App.css'
+import LoginForm from './Components/LoginForm';
+import NavigationBar from './Components/NavBar';
 import Employer from './Components/Employer'
+import { useState } from 'react';
+import {Route, Switch} from 'react-router-dom'
 import CheckOrder from './Components/CheckOrder';
 
 function App() {
+  const [searchTerm,setSearchTerm] = useState("");
+  const searchHandler = (searchTerm) => {
+     setSearchTerm(searchTerm);
+  }
   return (
+    <div className="h-screen w-screen bg-gray-200">
+    <NavigationBar term ={searchTerm} searchKeyWord={searchHandler}/>
     <Switch>
-      <Route exact path="/" component={Employer} />
-      <Route exact path="/check" component={ CheckOrder}/>
+      <Route exact path="/employer" 
+      render={(props)=> <Employer{...props} searchTerm={searchTerm.length < 1 ? "" : searchTerm}/>} />
+      <Route exact path="/check"  
+      render={(props)=> <CheckOrder{...props} searchTerm={searchTerm.length < 1 ? "" : searchTerm}/>}/>
+      <Route exact path="/sign-in" 
+      component ={LoginForm}/>
     </Switch>
-  );
+    </div>
+  )
 }
-
 export default App;

@@ -27,6 +27,11 @@ class ContextProvider extends Component {
 					{ id: 5465485, time: '24/05/1989', name: 'jack', cost: 10000, pNumber: '02315654' },
 					{ id: 5468465, time: '24/05/1989', name: 'jack', cost: 10000, pNumber: '02315654' },
 					{ id: 4465465, time: '24/05/1989', name: 'jack', cost: 10000, pNumber: '02315654' }
+				],
+				Cart: [
+					{ name: 'Mi xao hai san', price: 30000},
+					{ name: 'Com chien duong chau' , price: 40000},
+					{ name: 'My y sot bo', price: 50000}
 				]
 				
 			}
