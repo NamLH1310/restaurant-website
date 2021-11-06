@@ -1,6 +1,6 @@
 import ComChien from "../Assets/ComChien.jpg";
 import Carousel from "react-elastic-carousel";
-import React, { Component, useState } from "react";
+import React, {  useState } from "react";
 import "tailwindcss/tailwind.css";
 
 <script
@@ -20,7 +20,7 @@ for (let i = 0; i < 10; i++) {
         <h5 className="-mt-1 text-red-600">50.000d</h5>
       </div>
       <div>
-        <img src={ComChien} className="h-20 w-2/3 mx-auto food-img" />
+        <img src={ComChien} className="h-20 w-2/3 mx-auto food-img" alt="Com chien"/>
       </div>
       <i
         className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
@@ -39,7 +39,7 @@ for (let i = 0; i < 10; i++) {
           <h5 className="-mt-1 text-red-600">50.000d</h5>
         </div>
         <div>
-          <img src={ComChien} className="h-16 w-3/4 mx-auto food-img" />
+          <img src={ComChien} className="h-16 w-3/4 mx-auto food-img" alt="Com chien"/>
         </div>
         <i
           className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
@@ -131,10 +131,10 @@ function HomeScreen(props) {
         {(foodswitch && (
           <div className="flex-1 grid grid-cols-2 gap-5 mr-5 ml-5 list-promotion">
             <div>
-              <img src={ComChien} className="h-promotion w-full my-2" />
+              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
             </div>
             <div>
-              <img src={ComChien} className="h-promotion w-full my-2" />
+              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
             </div>
           </div>
         )) || (

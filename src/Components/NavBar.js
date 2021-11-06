@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {ContextList} from '../Context'
 export default function NavigationBar(props) {
   const Cart = useContext(ContextList).Cart;
+  const User = useContext(ContextList).User;
   const inputEl = useRef("");
   const getSearchTerm = () =>{
     props.searchKeyWord(inputEl.current.value);
@@ -13,7 +14,7 @@ export default function NavigationBar(props) {
     <div className="w-full flex flex-col h-34">
       <div className="w-full h-6 bg-gray-800">
         <ul className="text-xs text-gray-200">
-          <li className=" float-right font-extralight pr-9 pt-2"><Link to="./sign-in">Nhân viên</Link></li>
+          <li className=" float-right font-extralight pb-2 pr-9 pt-2"><Link to="./sign-in">Nhân viên</Link></li>
         </ul>
       </div>
       <div className="w-full h-28 bg-gray-200 text-black flex flex-row md:flex-row">
@@ -32,7 +33,7 @@ export default function NavigationBar(props) {
           </div>
         </div>
         <div className="flex-shrink h-28 pr-8 pt-16">
-          <button className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
+          <button style={{display: (User==="")? "block":"none"}} className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
           {Cart.length} món - {Cart.reduce( (total,food) =>{return total + food.price},0)} VNĐ
           </button>
         </div>

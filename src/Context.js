@@ -6,11 +6,33 @@ class ContextProvider extends Component {
 	state = {
 		oList:[],
 		eList: [],
-		Focus: Object,
+		Focus: {},
 		Cart: [],
 		ModalVisible: -1,
-		User: String,
-		
+		User: '',
+	
+	}
+	
+	SetUser = (Name, Pass) => {
+		switch (Name) {
+			case "Employee":
+				if (Pass === "123456") this.setState(() => {
+					return {User:"Employee"}
+				})
+				return true;
+				//break;
+			case "Employer":
+				if (Pass === "654321") this.setState(() => {
+					return this.setState(() => {
+						return { User: "Employer" }
+					})
+				})
+				return true;
+				//break;
+			default:
+				return false;
+		}
+
 	}
 	//Lay du lieu trong set 
 	setProduct = () => {
@@ -32,7 +54,7 @@ class ContextProvider extends Component {
 					{ name: 'Mi xao hai san', price: 30000},
 					{ name: 'Com chien duong chau' , price: 40000},
 					{ name: 'My y sot bo', price: 50000}
-				]
+				],
 				
 			}
 		})
@@ -62,7 +84,8 @@ class ContextProvider extends Component {
 			<ContextList.Provider
 				value={{
 					...this.state,
-					openModal:this.openModal,
+					openModal: this.openModal,
+					SetUser:this.SetUser,
 				}}>
 				{this.props.children}
 			</ContextList.Provider>
