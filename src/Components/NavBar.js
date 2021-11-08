@@ -13,7 +13,7 @@ export default function NavigationBar(props) {
   }
     return(
     <div className="w-full flex flex-col h-34">
-      <div className="w-full h-6 bg-gray-800">
+      <div className="w-full h-6 bg-gray-900">
         <ul className="text-xs text-gray-200">
           <li className=" float-right font-extralight pb-2 pr-9 pt-2"><Link to="./sign-in">Nhân viên</Link></li>
         </ul>
