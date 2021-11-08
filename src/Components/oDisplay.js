@@ -9,18 +9,18 @@ function Order(emp) {
 			<div className="grid grid-cols-12 gap-4  mx-auto border-4 border-solid bg-gray-200">
 				<div className="grid col-span-9 border-4 rounded-lg border-green-100 grid-rows-3 gap-2 bg-white pt-4">
 					<div className="row-span-1 grid grid-cols-12 ">
-						<div className="h-12 mr-12 pl-20 col-span-6"><span className="font-sans font-bold font-black mx-3" >Order Code: </span>{emp.value.id}
+						<div className="h-12 mr-12 pl-20 col-span-6"><span className="font-sans font-bold font-black mx-3" >Order Code: &nbsp;</span>{emp.value.id}
 						</div>
 					
-						<div className="ol-span-6 content-center h-12 mx-auto"><span className="font-sans font-bold font-black mx-3" > TOO:</span>
+						<div className="col-span-6 h-12"><span className="font-sans font-bold font-black mx-3" > TOO:</span>
 							{emp.value.time}
 						</div>
 					</div>
-					<div className="row-span-1 grid grid-cols-12 gap-2 pl-20">
+					<div className="row-span-1 grid grid-cols-12  ">
 
-						<div className=" col-span-6 h-12"><span className="font-sans font-bold font-black mx-3" >  Customer name: &nbsp;</span>{emp.value.name}
+						<div className="col-span-6 h-12 mr-12 pl-20"><span className="font-sans font-bold font-black mx-3" > Customer name: &nbsp;</span>{emp.value.name}
 						</div>
-						<div className="col-span-6 h-12 mx-auto"><span className="font-sans font-bold font-black mx-3" > Tel:</span>
+						<div className="col-span-6 h-12"><span className="font-sans font-bold font-black mx-3" > Tel:</span>
 							{emp.value.pNumber}
 						</div>
 
