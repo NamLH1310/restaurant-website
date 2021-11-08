@@ -6,6 +6,7 @@ import {ContextList} from '../Context'
 export default function NavigationBar(props) {
   const Cart = useContext(ContextList).Cart;
   const User = useContext(ContextList).User;
+  const Logout = useContext(ContextList);
   const inputEl = useRef("");
   const getSearchTerm = () =>{
     props.searchKeyWord(inputEl.current.value);
@@ -21,7 +22,7 @@ export default function NavigationBar(props) {
         <img className="object-contain h-28" alt="asdsad" src={logo} />
         <div className="flex flex-grow flex-col h-28 pt-4 space-y-4 items-center">
           <div className="text-sm font-bold text-gray-700 space-x-16">
-              <Link to="/" className="border-b-2 hover:border-black duration-1000">TRANG CHỦ</Link>
+              <Link to="/" className="border-b-2 hover:border-black duration-1000 mx-auto" onClick={() => { return Logout.logOut() }}>{(User === "Employer" | User === "Employee") ? "ĐĂNG XUẤT":"TRANG CHỦ"}</Link>
               {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link>
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">TIN TỨC</Link>
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">GIỚI THIỆU</Link> */}
@@ -33,7 +34,7 @@ export default function NavigationBar(props) {
           </div>
         </div>
         <div className="flex-shrink h-28 pr-8 pt-16">
-          <button style={{display: (User==="")? "block":"none"}} className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
+            <button style={{ visibility: (User === "") ? "visible" :"hidden"}} className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
           {Cart.length} món - {Cart.reduce( (total,food) =>{return total + food.price},0)} VNĐ
           </button>
         </div>

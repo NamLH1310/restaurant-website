@@ -4,6 +4,8 @@ import chef from './../Assets/chef.png'
 import React,{useContext,useState} from 'react';
 import { Link } from 'react-router-dom'
 import { ContextList } from '../Context';
+import { useEffect } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 
 export default function LoginForm() {
@@ -11,12 +13,61 @@ export default function LoginForm() {
     const [Name, SetName] = useState("Name")
     const [Pass, SetPass] = useState("Pass")
     const [Valid, SetValid] = useState(false);
+    const [rr, setRr] = useState('/')
     
-    function handleInput(e) {
-        console.log(e)
+    function handleInput() {
         console.log(Name)
         console.log(Pass)
     }
+    
+    function HandleInput() {
+
+        console.log(Name)
+        console.log(Pass)
+        SetValid(List.SetUser(Name, Pass))
+        console.log(List.User)
+
+            if (Valid) {
+                switch (List.User) {
+                    case "Employee":
+                        setRr("/check")
+                        break;
+                    case "Employer":
+                        setRr("/Employer")
+                        break;
+                    default:
+                        setRr("/sign-in")
+                        break;
+                }
+                console.log(rr)
+            }
+            else {
+                console.log("why")
+                setRr('/sign-in')
+            }
+            return <Redirect to={rr}></Redirect>
+        
+        /*if (Valid) {
+            switch (List.User) {
+                case "Employee":
+                    setRr("/check")
+                    break;
+                case "Employer":
+                    setRr("/Employer")
+                    break;
+                default:
+                    setRr("/sign-in")
+                    break;
+            }
+            console.log(List.User)
+        } else {
+            console.log("No")
+            setRr('/sign-in')
+            
+        }*/
+        
+    }
+    
     
     return (
 
@@ -31,34 +82,43 @@ export default function LoginForm() {
                         Tên đăng nhập
                     </h3>
                     <i className="fa fa-user absolute text-gray-400 text-base" />
-                    <input name="Username" type="text" placeholder="Username" onChange={e=>{SetName(e.target.value)}} className="pl-6 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-base" />
+                    <input name="Username" type="text" placeholder="Username" onChange={e => { SetName(e.target.value);}} className="pl-6 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-base" />
                 </div>
                 <div className="relative">
                     <h3 className="mt-5 mb-2 font-display font-bold text-base text-gray-700 text-left" >
                         Mật khẩu
                     </h3>
                     <i className="fa fa-lock absolute text-gray-400 text-base" />
-                    <input type="password" name="password" placeholder="Password" onChange={e=>{SetPass(e.target.value)}} className="pl-6 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-base" />
+                    <input type="password" name="password" placeholder="Password" onChange={e => { SetPass(e.target.value); }} className="pl-6 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 text-base" />
                 </div>
-                <div id="button" style={{cursor:"pointer"}} onClick={() => { ; handleInput(); SetValid(List.SetUser(Name, Pass)) }} className=" py-2 px-16 bg-primarycolor rounded-full text-white font-bold uppercase text-sm md:text-base mt-4 transform hover:translate-y-1 transition-all duration-500">Validate</div>
-                <Link style={{ display: (Valid) ? "block": "none"}} to={() => {
-                    console.log(List.User)
-                    switch (List.User) {
-                        case "Employee":
-                            return "/check"
+                <div id="button" style={{ cursor: "pointer",  }} onClick={() => { ; handleInput(); SetValid(List.SetUser(Name, Pass)) }}
+                    className=" py-2 px-16 bg-primarycolor rounded-full text-white font-bold uppercase text-sm md:text-base mt-4 transform hover:translate-y-1 transition-all duration-500">
+                    Validate</div>
+                <Link onClick={() => { ; handleInput(); SetValid(List.SetUser(Name, Pass)) }}
+                    style={{ display: (Valid) ? "block" : "none"}} to={() => {
+                        console.log(List.User)
+                        switch (List.User) {
+                            case "Employee":
+                                return "/check"
                             //break;
-                        case "Employer":
-                            return "/Employer"
+                            case "Employer":
+                                return "/Employer"
                             //break;
-                        default:
-                            return "/"
+                            default:
+                                return "/"
                             //break;
-                    }
+                        }
+
+                    }} className="py-2 px-16 bg-primarycolor rounded-full text-white font-bold uppercase text-sm md:text-base mt-4 transform hover:translate-y-1 transition-all duration-500">Đăng nhập</Link>
                 
-                }} className="py-2 px-16 bg-primarycolor rounded-full text-white font-bold uppercase text-sm md:text-base mt-4 transform hover:translate-y-1 transition-all duration-500">Đăng nhập</Link>
             </form>
             <img src={chef} alt="chef" className="hidden xl:block w-2/3 hover:scale-105 transition-all duration-500 transform" />
         </div>
 
     )
 }
+/*
+   <div onClick={() => { ; HandleInput();   }}
+                    style={{}} 
+                    className="py-2 px-16 bg-primarycolor rounded-full text-white font-bold uppercase text-sm md:text-base mt-4 transform hover:translate-y-1 transition-all duration-500">Đăng nhập</div>
+*/

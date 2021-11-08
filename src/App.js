@@ -7,6 +7,7 @@ import Employer from './Components/Employer'
 import { useState } from 'react';
 import {Route, Switch} from 'react-router-dom'
 import CheckOrder from './Components/CheckOrder';
+import Default from './Components/Default';
 
 function App() {
   const [searchTerm,setSearchTerm] = useState("");
@@ -23,7 +24,8 @@ function App() {
       <Route exact path="/check"  
       render={(props)=> <CheckOrder{...props} searchTerm={searchTerm.length < 1 ? "" : searchTerm}/>}/>
       <Route exact path="/sign-in" 
-      component ={LoginForm}/>
+          component={LoginForm} />
+      <Route path='/' component={Default}></Route>
     </Switch>
     </div>
   )

@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react'
 
 const ContextList=React.createContext()
@@ -23,9 +24,7 @@ class ContextProvider extends Component {
 				//break;
 			case "Employer":
 				if (Pass === "654321") this.setState(() => {
-					return this.setState(() => {
-						return { User: "Employer" }
-					})
+					return { User: "Employer" }
 				})
 				return true;
 				//break;
@@ -78,6 +77,10 @@ class ContextProvider extends Component {
 	closeModal = ()=>{
 		this.setState(()=>{return {ModalVisible:-1}})
 	}
+	logOut = () => {
+		this.setState(() => { return { User: '' } })
+		console.log(this.User)
+	}
 	
 	render() {
 		return (
@@ -85,7 +88,9 @@ class ContextProvider extends Component {
 				value={{
 					...this.state,
 					openModal: this.openModal,
-					SetUser:this.SetUser,
+					SetUser: this.SetUser,
+					logOut: this.logOut,
+					
 				}}>
 				{this.props.children}
 			</ContextList.Provider>
