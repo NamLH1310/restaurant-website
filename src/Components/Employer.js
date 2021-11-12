@@ -10,6 +10,7 @@ function Employer(props) {
 		})
 		employeeList = newEmployeesList;
 	   }
+
 	return (
 		<React.Fragment>
 			<div className="container mx-auto py-5" >
@@ -20,6 +21,7 @@ function Employer(props) {
 								)
 							})
 						}
+						
 				</div>
 
 			</div>

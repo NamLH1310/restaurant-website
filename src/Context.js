@@ -11,6 +11,7 @@ class ContextProvider extends Component {
 		ModalVisible: -1,
 		User: String,
 		
+		
 	}
 	//Lay du lieu trong set 
 	setProduct = () => {
