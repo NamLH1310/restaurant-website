@@ -6,11 +6,34 @@ class ContextProvider extends Component {
 	state = {
 		oList:[],
 		eList: [],
-		Focus: Object,
+		Focus: {},
 		Cart: [],
+		Food: [],
 		ModalVisible: -1,
-		User: String,
-		
+		User: '',
+	
+	}
+	
+	SetUser = (Name, Pass) => {
+		switch (Name) {
+			case "Employee":
+				if (Pass === "123456") this.setState(() => {
+					return {User:"Employee"}
+				})
+				return true;
+				//break;
+			case "Employer":
+				if (Pass === "654321") this.setState(() => {
+					return this.setState(() => {
+						return { User: "Employer" }
+					})
+				})
+				return true;
+				//break;
+			default:
+				return false;
+		}
+
 	}
 	//Lay du lieu trong set 
 	setProduct = () => {
@@ -29,11 +52,16 @@ class ContextProvider extends Component {
 					{ id: 4465465, time: '24/05/1989', name: 'jack', cost: 10000, pNumber: '02315654' }
 				],
 				Cart: [
-					{ name: 'Mi xao hai san', price: 30000},
-					{ name: 'Com chien duong chau' , price: 40000},
-					{ name: 'My y sot bo', price: 50000}
+					{ name: 'Mi xao hai san', price: 30000, quantity: 2},
+					{ name: 'Com chien duong chau' , price: 40000, quantity: 1},
+					{ name: 'Mi y sot bo', price: 50000, quantity: 2}
+				],
+				foods: [
+					{ id: 1, name: 'Cơm chiên dương châu', price: 40000, img:"./../Assets/ComChien"},
+					{ id: 2, name: 'Cơm sườn', price: 30000, img:"./../Assets/ComSuon"},
+					{ id: 3, name: 'Mì ý sốt bò', price: 50000, img:"./../Assets/My_Y"},
+					{ id: 4, name: 'com chien hai san',price: 50000}
 				]
-				
 			}
 		})
 	}
@@ -62,7 +90,8 @@ class ContextProvider extends Component {
 			<ContextList.Provider
 				value={{
 					...this.state,
-					openModal:this.openModal,
+					openModal: this.openModal,
+					SetUser:this.SetUser,
 				}}>
 				{this.props.children}
 			</ContextList.Provider>
