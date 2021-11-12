@@ -147,7 +147,7 @@ function HomeScreen(props) {
       <div className="Heading">
         <h2 class="TopSale"> &#9734; BÁN CHẠY NHẤT</h2>
       </div>
-      <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={2500}>
+      <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={2000}>
         {listfoodtop}
       </Carousel>
     </div>
