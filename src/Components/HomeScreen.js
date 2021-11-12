@@ -2,6 +2,7 @@ import ComChien from "../Assets/ComChien.jpg";
 import Carousel from "react-elastic-carousel";
 import React, {  useState } from "react";
 import "tailwindcss/tailwind.css";
+import FoodMenu from "./FoodMenu";
 
 <script
   src="https://kit.fontawesome.com/a076d05399.js"
@@ -10,25 +11,8 @@ import "tailwindcss/tailwind.css";
 
 const stylebutton = "uppercase w-full h-full py-2 text-left";
 const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
-const listfood = [];
 const listfoodtop = [];
-for (let i = 0; i < 10; i++) {
-  listfood.push(
-    <div className="relative bg-gray-50 h-auto my-1 ring-1 ring-yellow-400 hover:opacity-90 food">
-      <div className="ml-2 font-semibold food-text">
-        <h4>Cơm chiên hải sản</h4>
-        <h5 className="-mt-1 text-red-600">50.000d</h5>
-      </div>
-      <div>
-        <img src={ComChien} className="h-20 w-2/3 mx-auto food-img" alt="Com chien"/>
-      </div>
-      <i
-        className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
-        style={{ color: "var(--button-cart" }}
-      ></i>
-    </div>
-  );
-}
+
 
 for (let i = 0; i < 10; i++) {
   listfoodtop.push(
@@ -137,15 +121,13 @@ function HomeScreen(props) {
               <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
             </div>
           </div>
-        )) || (
-          <div className="flex-1 grid grid-cols-5 gap-2 mr-5 ml-5 list-food">
-            {listfood}
-          </div>
-        )}
+        )) || 
+        <FoodMenu/>
+        }
       </div>
       {/* Ban chay nhat */}
       <div className="Heading">
-        <h2 class="TopSale"> &#9734; BÁN CHẠY NHẤT</h2>
+        <h2 className="TopSale"> &#9734; BÁN CHẠY NHẤT</h2>
       </div>
       <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={2500}>
         {listfoodtop}

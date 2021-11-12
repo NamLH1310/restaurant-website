@@ -8,6 +8,7 @@ class ContextProvider extends Component {
 		eList: [],
 		Focus: {},
 		Cart: [],
+		Food: [],
 		ModalVisible: -1,
 		User: '',
 	
@@ -51,11 +52,16 @@ class ContextProvider extends Component {
 					{ id: 4465465, time: '24/05/1989', name: 'jack', cost: 10000, pNumber: '02315654' }
 				],
 				Cart: [
-					{ name: 'Mi xao hai san', price: 30000},
-					{ name: 'Com chien duong chau' , price: 40000},
-					{ name: 'My y sot bo', price: 50000}
+					{ name: 'Mi xao hai san', price: 30000, quantity: 2},
+					{ name: 'Com chien duong chau' , price: 40000, quantity: 1},
+					{ name: 'Mi y sot bo', price: 50000, quantity: 2}
 				],
-				
+				foods: [
+					{ id: 1, name: 'Cơm chiên dương châu', price: 40000, img:"./../Assets/ComChien"},
+					{ id: 2, name: 'Cơm sườn', price: 30000, img:"./../Assets/ComSuon"},
+					{ id: 3, name: 'Mì ý sốt bò', price: 50000, img:"./../Assets/My_Y"},
+					{ id: 4, name: 'com chien hai san',price: 50000}
+				]
 			}
 		})
 	}
