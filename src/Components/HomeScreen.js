@@ -40,16 +40,24 @@ const breakPoints = [{ width: 300, itemsToShow: 5 }];
 function HomeScreen(props) {
   const categories = useContext(ContextList).categories;
   const [foodswitch, setFoodswitch] = useState(1);
+  const [currentCategory, setCurrentCategory] = useState("");
   const handleClick = (category) => {
-    if (foodswitch === 0) setFoodswitch(1);
-    else setFoodswitch(0);
+    if (foodswitch === 0 && category === currentCategory){
+       setFoodswitch(1);
+       setCurrentCategory("");
+    }
+    else 
+    {
+      setFoodswitch(0);
+      setCurrentCategory(category);
+    }
   };
   let categoriesToRender =[];
   if (categories){
     categoriesToRender= categories.map((category) => {
       return (
         <li className={stylecategory} key={category.id}>
-          <button className={stylebutton} onClick={handleClick}>
+          <button className={stylebutton} onClick={() => handleClick(category.name)}>
             <i className={category.icon}></i>
             {category.name}
           </button>
@@ -96,7 +104,7 @@ function HomeScreen(props) {
             </div>
           </div>
         )) ||
-          <FoodMenu searchTerm = {props.searchTerm} />
+          <FoodMenu searchTerm = {props.searchTerm} category ={currentCategory} />
         }
       </div>
       {/* Ban chay nhat */}

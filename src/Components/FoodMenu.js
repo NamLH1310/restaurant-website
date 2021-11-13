@@ -4,13 +4,16 @@ import Food from './FoodDisplay'
 
 function FoodMenu(props) {
     let foodList = useContext(ContextList).foods;
+    
 	if (props.searchTerm !== ""){
 		const newFoodList = foodList.filter((food) => {
-            console.log(food.name);
 		  return food.name.toLowerCase().includes(props.searchTerm.toLowerCase());
 		})
 		foodList = newFoodList;
 	   }
+    foodList = foodList.filter((food) =>{
+        return food.category === props.category;
+    })
     return (
         <div>
             {(
