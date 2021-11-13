@@ -1,8 +1,9 @@
 import ComChien from "../Assets/ComChien.jpg";
 import Carousel from "react-elastic-carousel";
-import React, {  useState } from "react";
+import React, { useContext, useState } from "react";
 import "tailwindcss/tailwind.css";
 import FoodMenu from "./FoodMenu";
+import { ContextList } from "../Context";
 
 <script
   src="https://kit.fontawesome.com/a076d05399.js"
@@ -23,7 +24,7 @@ for (let i = 0; i < 10; i++) {
           <h5 className="-mt-1 text-red-600">50.000d</h5>
         </div>
         <div>
-          <img src={ComChien} className="h-16 w-3/4 mx-auto food-img" alt="Com chien"/>
+          <img src={ComChien} className="h-16 w-3/4 mx-auto food-img" alt="Com chien" />
         </div>
         <i
           className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
@@ -37,12 +38,26 @@ for (let i = 0; i < 10; i++) {
 const breakPoints = [{ width: 300, itemsToShow: 5 }];
 
 function HomeScreen(props) {
+  const categories = useContext(ContextList).categories;
   const [foodswitch, setFoodswitch] = useState(1);
   const handleClick = (category) => {
     if (foodswitch === 0) setFoodswitch(1);
     else setFoodswitch(0);
-    console.log("A");
   };
+  let categoriesToRender =[];
+  if (categories){
+    categoriesToRender= categories.map((category) => {
+      return (
+        <li className={stylecategory} key={category.id}>
+          <button className={stylebutton} onClick={handleClick}>
+            <i className={category.icon}></i>
+            {category.name}
+          </button>
+        </li>
+      )
+    }
+    )
+  }
   return (
     <div>
       <div
@@ -68,61 +83,20 @@ function HomeScreen(props) {
               textTransform: "uppercase",
             }}
           >
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-concierge-bell"></i>
-                Cơm
-              </button>
-            </li>
-
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-bacon"></i>Bún & Mì
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-cookie"></i>Ăn vặt
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-hotdog"></i>Món nướng
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-cocktail"></i>Thức uống
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-apple-alt"></i>Trái cây
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-birthday-cake"></i>Bánh
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-gifts"></i>Combo
-              </button>
-            </li>
+            {categoriesToRender}
           </ul>
         </div>
         {(foodswitch && (
           <div className="flex-1 grid grid-cols-2 gap-5 mr-5 ml-5 list-promotion">
             <div>
-              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
+              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien" />
             </div>
             <div>
-              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
+              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien" />
             </div>
           </div>
-        )) || 
-        <FoodMenu/>
+        )) ||
+          <FoodMenu searchTerm = {props.searchTerm} />
         }
       </div>
       {/* Ban chay nhat */}

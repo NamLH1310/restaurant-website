@@ -3,7 +3,14 @@ import React, { useContext } from "react"
 import Food from './FoodDisplay'
 
 function FoodMenu(props) {
-    const foodList = useContext(ContextList).foods;
+    let foodList = useContext(ContextList).foods;
+	if (props.searchTerm !== ""){
+		const newFoodList = foodList.filter((food) => {
+            console.log(food.name);
+		  return food.name.toLowerCase().includes(props.searchTerm.toLowerCase());
+		})
+		foodList = newFoodList;
+	   }
     return (
         <div>
             {(

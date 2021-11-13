@@ -60,7 +60,16 @@ class ContextProvider extends Component {
 					{ id: 1, name: 'Cơm chiên dương châu', price: 40000, img:"./../Assets/ComChien"},
 					{ id: 2, name: 'Cơm sườn', price: 30000, img:"./../Assets/ComSuon"},
 					{ id: 3, name: 'Mì ý sốt bò', price: 50000, img:"./../Assets/My_Y"},
-					{ id: 4, name: 'com chien hai san',price: 50000}
+					{ id: 4, name: 'Cơm chiên hải sản',price: 50000,img:""}
+				],
+				categories: [
+					{ id: 1, name: 'Bún & Mì', icon:"fas fa-bacon"},
+					{ id: 2, name: 'Ăn vặt', icon:"fas fa-cookie"},
+					{ id: 3, name: 'Món nướng', icon:"fas fa-hotdog"},
+					{ id: 4, name: 'Thức uống', icon:"fas fa-cocktail"},
+					{ id: 5, name: 'Trái cây', icon:"fas fa-apple-alt"},
+					{ id: 6, name: 'Bánh', icon:"fas fa-birthday-cake"},
+					{ id: 7, name: 'Combo', icon:"fas fa-gifts"}
 				]
 			}
 		})
