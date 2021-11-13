@@ -4,6 +4,7 @@ import Employee from './eDisplay'
 
 function Employer(props) {
 	let employeeList = useContext(ContextList).eList;
+	console.log(2,employeeList);
 	if (props.searchTerm !== ""){
 		const newEmployeesList = employeeList.filter((order) => {
 		  return Object.values(order).join(" ").toLowerCase().includes(props.searchTerm.toLowerCase());

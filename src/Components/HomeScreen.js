@@ -1,64 +1,44 @@
 import ComChien from "../Assets/ComChien.jpg";
-import Carousel from "react-elastic-carousel";
-import React, {  useState } from "react";
-import "tailwindcss/tailwind.css";
+import React, { Component, useState, useContext, useEffect } from "react";
 import FoodMenu from "./FoodMenu";
+import TopFoods from "./TopFood";
+import PromotionFood from "./PromotionFood";
+import { ContextList } from "../Context";
+
+import "tailwindcss/tailwind.css";
 
 <script
   src="https://kit.fontawesome.com/a076d05399.js"
   crossorigin="anonymous"
 ></script>;
 
-const stylebutton = "uppercase w-full h-full py-2 text-left";
+const stylebutton = "uppercase w-full h-full py-3 text-left";
 const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
-const listfoodtop = [];
-
-
-for (let i = 0; i < 10; i++) {
-  listfoodtop.push(
-    <div className="SlideContainer h-topsale my-1">
-      <div className="relative bg-gray-50 mx-1 w-full h-full ring-1 ring-yellow-400 hover:opacity-90 food">
-        <div className="ml-2 font-semibold food-text">
-          <h4>Cơm chiên hải sản</h4>
-          <h5 className="-mt-1 text-red-600">50.000d</h5>
-        </div>
-        <div>
-          <img src={ComChien} className="h-16 w-3/4 mx-auto food-img" alt="Com chien"/>
-        </div>
-        <i
-          className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
-          style={{ color: "var(--button-cart" }}
-        ></i>
-      </div>
-    </div>
-  );
-}
-
-const breakPoints = [{ width: 300, itemsToShow: 5 }];
 
 function HomeScreen(props) {
   const [foodswitch, setFoodswitch] = useState(1);
-  const handleClick = (category) => {
+  const handleClick = () => {
     if (foodswitch === 0) setFoodswitch(1);
     else setFoodswitch(0);
-    console.log("A");
   };
+
   return (
     <div>
       <div
-        className="flex mb-2"
+        className="flex mb-2 mt-2 h-full"
         style={{ background: "var(--background-secondary)" }}
       >
-        <div className="flex-inital w-1/6 divide-y divide-teal-400 font-semibold catagory">
+        <div className="flex-intial w-1/6 divide-y divide-teal-400 font-semibold catagory">
           <h4
             style={{
               background: "var(--primary1)",
               color: "#ffffff",
               textTransform: "uppercase",
             }}
+            className="py-2"
           >
             {" "}
-            <i className="fas fa-align-justify"></i> Danh mục
+            <i className="mx-1 fas fa-align-justify"></i> Danh mục
           </h4>
           <ul
             className="divide-y font-normal text-xs"
@@ -70,68 +50,55 @@ function HomeScreen(props) {
           >
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-concierge-bell"></i>
+                <i className="mx-1 fas fa-concierge-bell"></i>
                 Cơm
               </button>
             </li>
 
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-bacon"></i>Bún & Mì
+                <i className="mx-1 fas fa-bacon"></i>Bún & Mì
               </button>
             </li>
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-cookie"></i>Ăn vặt
+                <i className="mx-1 fas fa-cookie"></i>Ăn vặt
               </button>
             </li>
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-hotdog"></i>Món nướng
+                <i className="mx-1 fas fa-hotdog"></i>Món nướng
               </button>
             </li>
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-cocktail"></i>Thức uống
+                <i className="mx-1 fas fa-cocktail"></i>Thức uống
               </button>
             </li>
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-apple-alt"></i>Trái cây
+                <i className="mx-1 fas fa-apple-alt"></i>Trái cây
               </button>
             </li>
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-birthday-cake"></i>Bánh
+                <i className="mx-1 fas fa-birthday-cake"></i>Bánh
               </button>
             </li>
             <li className={stylecategory}>
               <button className={stylebutton} onClick={handleClick}>
-                <i className="fas fa-gifts"></i>Combo
+                <i className="mx-1 fas fa-gifts"></i>Combo
               </button>
             </li>
           </ul>
         </div>
-        {(foodswitch && (
-          <div className="flex-1 grid grid-cols-2 gap-5 mr-5 ml-5 list-promotion">
-            <div>
-              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
-            </div>
-            <div>
-              <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
-            </div>
-          </div>
-        )) || 
-        <FoodMenu/>
-        }
+        {(foodswitch && <PromotionFood /> ) || <FoodMenu />}
       </div>
       {/* Ban chay nhat */}
       <div className="Heading">
-        <h2 className="TopSale"> &#9734; BÁN CHẠY NHẤT</h2>
+        <h2 className="TopSale py-2"> &#9734; BÁN CHẠY NHẤT</h2>
       </div>
-      <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={2000}>
-        {listfoodtop}
-      </Carousel>
+      <TopFoods />
     </div>
   );
 }

@@ -1,9 +1,8 @@
-function FoodDisplay(food) {
+import React from "react";
+
+function TopFoodDisplay(food) {
   return (
-    <div
-      className="relative bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food"
-      key={food.value.id}
-    >
+    <div className="relative bg-gray-50 h-44 w-full mt-1 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food">
       <div className="ml-4 mt-1 font-semibold food-text">
         <h4>{food.value.name}</h4>
         <h5 className="-mt-1 text-red-600">{food.value.price}</h5>
@@ -12,7 +11,7 @@ function FoodDisplay(food) {
         <img
           src={food.value.img}
           alt="com chien"
-          className="h-4/5 w-3/4 mt-2 mx-auto food-img"
+          className="h-28 w-3/4 mt-2 mx-auto food-img"
         />
       </div>
       <i
@@ -22,4 +21,4 @@ function FoodDisplay(food) {
     </div>
   );
 }
-export default FoodDisplay;
+export default TopFoodDisplay;
