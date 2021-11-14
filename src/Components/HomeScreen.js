@@ -16,12 +16,25 @@ const stylebutton = "uppercase w-full h-full py-3 text-left";
 const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
 
 function HomeScreen(props) {
+  const categories = useContext(ContextList).categories;
   const [foodswitch, setFoodswitch] = useState(1);
   const handleClick = () => {
     if (foodswitch === 0) setFoodswitch(1);
     else setFoodswitch(0);
   };
-
+  let categoriesToRender = [];
+  if (categories) {
+    categoriesToRender = categories.map((category) => {
+      return (
+        <li className={stylecategory} key={category.id}>
+          <button className={stylebutton} onClick={handleClick}>
+            <i className={category.icon}></i>
+            {category.name}
+          </button>
+        </li>
+      );
+    });
+  }
   return (
     <div>
       <div
@@ -48,51 +61,12 @@ function HomeScreen(props) {
               textTransform: "uppercase",
             }}
           >
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-concierge-bell"></i>
-                Cơm
-              </button>
-            </li>
-
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-bacon"></i>Bún & Mì
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-cookie"></i>Ăn vặt
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-hotdog"></i>Món nướng
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-cocktail"></i>Thức uống
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-apple-alt"></i>Trái cây
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-birthday-cake"></i>Bánh
-              </button>
-            </li>
-            <li className={stylecategory}>
-              <button className={stylebutton} onClick={handleClick}>
-                <i className="mx-1 fas fa-gifts"></i>Combo
-              </button>
-            </li>
+            {categoriesToRender}
           </ul>
         </div>
-        {(foodswitch && <PromotionFood /> ) || <FoodMenu />}
+        {(foodswitch && <PromotionFood />) || (
+          <FoodMenu searchTerm={props.searchTerm} />
+        )}
       </div>
       {/* Ban chay nhat */}
       <div className="Heading">

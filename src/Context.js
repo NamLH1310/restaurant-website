@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ComChien from "./Assets/ComChien.jpg";
-import promo from "./Assets/pro2.png"
+import promo from "./Assets/pro2.png";
 const ContextList = React.createContext();
 
 class ContextProvider extends Component {
@@ -120,11 +120,22 @@ class ContextProvider extends Component {
         ],
         promotionfoods: [
           { id: 1, img: promo },
-        //   { id: 2, img: promo },
+          //   { id: 2, img: promo },
+        ],
+        categories: [
+          { id: 1, name: "Bún & Mì", icon: "mx-1 fas fa-bacon" },
+          { id: 2, name: "Ăn vặt", icon: "mx-1 fas fa-cookie" },
+          { id: 3, name: "Món nướng", icon: "mx-1 fas fa-hotdog" },
+          { id: 4, name: "Thức uống", icon: "mx-1 fas fa-cocktail" },
+          { id: 5, name: "Trái cây", icon: "mx-1 fas fa-apple-alt" },
+          { id: 6, name: "Bánh", icon: "mx-1 fas fa-birthday-cake" },
+          { id: 7, name: "Món Chay", icon: "mx-1 fas fa-gifts" },
+          { id: 8, name: "Combo", icon: "mx-1 fas fa-gifts" },
         ],
       };
     });
   };
+
   componentDidMount = () => {
     this.setProduct();
   };

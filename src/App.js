@@ -17,7 +17,8 @@ function App() {
     <div className="h-full w-full bg-gray-200">
     <NavigationBar term ={searchTerm} searchKeyWord={searchHandler}/>
     <Switch>
-      <Route exact path="/" component={HomeScreen}/>
+      <Route exact path="/"
+       render={(props)=> <HomeScreen{...props} searchTerm={searchTerm.length < 1 ? "" : searchTerm}/>} />
       <Route exact path="/employer" 
       render={(props)=> <Employer{...props} searchTerm={searchTerm.length < 1 ? "" : searchTerm}/>} />
       <Route exact path="/check"  
