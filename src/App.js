@@ -9,6 +9,8 @@ import {Route, Switch} from 'react-router-dom'
 import CheckOrder from './Components/CheckOrder';
 
 function App() {
+  const [currentCategory,setCurrentCategory] = useState("");
+  const [foodSwitch,setFoodSwitch] = useState(1);
   const [searchTerm,setSearchTerm] = useState("");
   const searchHandler = (searchTerm) => {
      setSearchTerm(searchTerm);
@@ -17,7 +19,11 @@ function App() {
     <div className="h-full w-full bg-gray-200">
     <NavigationBar term ={searchTerm} searchKeyWord={searchHandler}/>
     <Switch>
-      <Route exact path="/" component={HomeScreen}/>
+      <Route exact path="/"
+       render={(props)=> <HomeScreen{...props} 
+       searchTerm={searchTerm.length < 1 ? "" : searchTerm} 
+       currentCategory={currentCategory}
+       foodSwitch ={foodSwitch}/>} />
       <Route exact path="/employer" 
       render={(props)=> <Employer{...props} searchTerm={searchTerm.length < 1 ? "" : searchTerm}/>} />
       <Route exact path="/check"  
