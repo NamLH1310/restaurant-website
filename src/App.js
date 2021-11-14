@@ -15,7 +15,7 @@ function App() {
      setSearchTerm(searchTerm);
   }
   return (
-    <div className="h-screen w-screen bg-gray-200">
+    <div className="h-full w-full bg-gray-200">
     <NavigationBar term ={searchTerm} searchKeyWord={searchHandler}/>
     <Switch>
       <Route exact path="/" component={HomeScreen}/>
