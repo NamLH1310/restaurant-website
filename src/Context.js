@@ -10,7 +10,7 @@ class ContextProvider extends Component {
     eList: [],
     Focus: {},
     Cart: [],
-    Food: [],
+    foods: [],
     ModalVisible: -1,
     User: "",
   };
@@ -78,21 +78,21 @@ class ContextProvider extends Component {
           },
         ],
         Cart: [
-          { name: "Mi xao hai san", price: 30000, quantity: 2 },
-          { name: "Com chien duong chau", price: 40000, quantity: 1 },
-          { name: "Mi y sot bo", price: 50000, quantity: 2 },
+         // { name: "Mi xao hai san", price: 30000, quantity: 2 },
+          //{ name: "Com chien duong chau", price: 40000, quantity: 1 },
+          //{ name: "Mi y sot bo", price: 50000, quantity: 2 },
         ],
         foods: [
-					{ id: 1, name: 'Cơm chiên dương châu', price: 40000, category: 'Cơm', img: ComChien },
-					{ id: 2, name: 'Cơm sườn', price: 30000, category: 'Cơm', img: ComChien },
-					{ id: 3, name: 'Mì ý sốt bò', price: 50000, category: 'Bún & Mì', img: MiY },
-					{ id: 4, name: 'Cơm chiên hải sản', price: 50000, category: 'Cơm', img: ComChien},
-					{ id: 5, name: 'Bánh su kem', price: 20000, category:'Bánh', img: ComChien},
-					{ id: 6, name: 'Bánh trà xanh', price: 25000, category:'Bánh', img: ComChien},
-					{ id: 7, name: 'Sườn nướng sa tế', price: 60000, category:'Món nướng', img: ComChien},
-					{ id: 8, name: 'Cam vắt', price: 30000, category:'Thức uống', img: ComChien},
-					{ id: 9, name: 'Dâu tây', price: 35000, category:'Trái cây', img: ComChien},
-					{ id: 10, name: 'Bánh tráng nướng',price: 10000, category:'Ăn vặt', img: ComChien}
+			{ id: 1, name: 'Cơm chiên dương châu', price: 40000, category: 'Cơm', img: ComChien,quantity:0 },
+			{ id: 2, name: 'Cơm sườn', price: 30000, category: 'Cơm', img: ComChien, quantity: 0 },
+			{ id: 3, name: 'Mì ý sốt bò', price: 50000, category: 'Bún & Mì', img: MiY,quantity: 0 },
+			{ id: 4, name: 'Cơm chiên hải sản', price: 50000, category: 'Cơm', img: ComChien, quantity: 0},
+			{ id: 5, name: 'Bánh su kem', price: 20000, category: 'Bánh', img: ComChien, quantity: 0},
+			{ id: 6, name: 'Bánh trà xanh', price: 25000, category: 'Bánh', img: ComChien, quantity: 0},
+			{ id: 7, name: 'Sườn nướng sa tế', price: 60000, category: 'Món nướng', img: ComChien, quantity: 0},
+			{ id: 8, name: 'Cam vắt', price: 30000, category: 'Thức uống', img: ComChien, quantity: 0},
+			{ id: 9, name: 'Dâu tây', price: 35000, category: 'Trái cây', img: ComChien, quantity: 0},
+			{ id: 10, name: 'Bánh tráng nướng', price: 10000, category: 'Ăn vặt', img: ComChien, quantity: 0}
 				],
         topfoods: [
           {
@@ -101,15 +101,15 @@ class ContextProvider extends Component {
             price: 40000,
             img: ComChien,
           },
-          { id: 2, name: "Cơm sườn", price: 30000, img: ComChien },
-          { id: 3, name: "Mì ý sốt bò", price: 50000, img: ComChien },
-          { id: 4, name: "com chien hai san", price: 50000, img: ComChien },
-          { id: 5, name: "com chien hai san", price: 50000, img: ComChien },
-          { id: 6, name: "Cơm chiên dương châu", price: 40000, img: ComChien },
-          { id: 7, name: "Cơm sườn", price: 30000, img: ComChien },
-          { id: 8, name: "Mì ý sốt bò", price: 50000, img: ComChien },
-          { id: 9, name: "com chien hai san", price: 50000, img: ComChien },
-          { id: 10, name: "com chien hai san", price: 50000, img: ComChien },
+			{ id: 2, name: "Cơm sườn", price: 30000, img: ComChien, quantity: 0  },
+			{ id: 3, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0  },
+			{ id: 4, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0  },
+			{ id: 5, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0  },
+			{ id: 6, name: "Cơm chiên dương châu", price: 40000, img: ComChien, quantity: 0  },
+			{ id: 7, name: "Cơm sườn", price: 30000, img: ComChien, quantity: 0 },
+			{ id: 8, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0  },
+			{ id: 9, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
+			{ id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
         ],
         promotionfoods: [
           { id: 1, img: promo },
@@ -153,14 +153,40 @@ class ContextProvider extends Component {
       return { ModalVisible: -1 };
     });
   };
-
+	addCart = (id) => {
+		let tmp = [...this.state.foods]
+		console.log(id)
+		const index = tmp.findIndex(e => e.id === id)
+		console.log(index);
+		const food = tmp[index];
+		//console.log(food)
+		food.quantity = 1
+		const y= this.state.Cart.findIndex(e=>e.id===id)
+		if (y===-1)
+			this.setState(() => {
+				
+				return { Cart: [...this.state.Cart, food] }
+		})
+		console.log(this.state.Cart)
+	}
+	totalPrice = () => {
+		let total = 0
+		this.state.Cart.map(e => {
+			return total+=e.price*e.quantity
+		})
+		console.log(total)
+		return total
+	}
+	
   render() {
     return (
       <ContextList.Provider
         value={{
-          ...this.state,
-          openModal: this.openModal,
-          SetUser: this.SetUser,
+          	...this.state,
+         	openModal: this.openModal,
+			SetUser: this.SetUser,
+			addCart: this.addCart,
+			totalPrice:this.totalPrice,	
         }}
       >
         {this.props.children}

@@ -17,7 +17,7 @@ function App() {
   }
   return (
     <div className="h-full w-full bg-gray-200">
-    <NavigationBar term ={searchTerm} searchKeyWord={searchHandler}/>
+      <NavigationBar term={searchTerm} searchKeyWord={searchHandler} setFoodSwitch={setFoodSwitch} onChangeCategory={ setCurrentCategory}/>
     <Switch>
       <Route exact path="/"
        render={(props)=> <HomeScreen{...props} 
