@@ -1,6 +1,10 @@
 import React from "react";
+import { useContext } from 'react'
+import { ContextList } from '../Context';
+
 
 function TopFoodDisplay(food) {
+  const add = useContext(ContextList).addCart
   return (
     <div className="relative bg-gray-50 h-44 w-full mt-1 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food">
       <div className="ml-4 mt-1 font-semibold food-text">
@@ -17,6 +21,7 @@ function TopFoodDisplay(food) {
       <i
         className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
         style={{ color: "var(--button-cart" }}
+        onClick={()=>{add(food.value.id)}}
       ></i>
     </div>
   );
