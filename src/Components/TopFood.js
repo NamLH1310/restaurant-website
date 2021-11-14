@@ -8,13 +8,15 @@ const breakPoints = [{ width: 300, itemsToShow: 4 }];
 function TopFoods(food) {
   let topfoodList = useContext(ContextList).topfoods;
   if (topfoodList === undefined) topfoodList = [];
-  console.log(1, topfoodList);
   return (
-    <>
+    <footer className="fixed bottom-0 w-full">
+      <div className="Heading">
+        <h2 className="TopSale py-2"> &#9734; BÁN CHẠY NHẤT</h2>
+      </div>
       <Carousel
         breakPoints={breakPoints}
         enableAutoPlay
-        itemPadding={[0,2]}
+        itemPadding={[0, 2]}
         focusOnSelect={true}
         disableArrowsOnEnd={false}
         autoPlaySpeed={2500}
@@ -22,12 +24,12 @@ function TopFoods(food) {
         {topfoodList.map((food) => {
           return (
             <div className="SlideContainer h-48" key={food.id}>
-                <TopFoodDisplay value={food} />
+              <TopFoodDisplay value={food} />
             </div>
           );
         })}
       </Carousel>
-    </>
+    </footer>
   );
 }
 export default TopFoods;

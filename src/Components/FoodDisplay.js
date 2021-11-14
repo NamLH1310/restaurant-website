@@ -12,7 +12,7 @@ function FoodDisplay(food) {
         <img
           src={food.value.img}
           alt="com chien"
-          className="h-2/5 w-2/4 mt-2 mx-auto food-img"
+          className="h-2/5 w-2/4 mx-auto food-img"
         />
       </div>
       <i
