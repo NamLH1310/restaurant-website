@@ -18,17 +18,22 @@ class ContextProvider extends Component {
 		switch (Name) {
 			case "Employee":
 				if (Pass === "123456") this.setState(() => {
-					return {User:"Employee"}
+					return { User: "Employee" }
 				})
+				else return false;
+				console.log(Name)
 				return true;
 				//break;
 			case "Employer":
 				if (Pass === "654321") this.setState(() => {
 					return { User: "Employer" }
 				})
+				else return false
+				console.log( Pass)
 				return true;
 				//break;
 			default:
+				console.log(Name,Pass)
 				return false;
 		}
 
@@ -50,10 +55,11 @@ class ContextProvider extends Component {
 					{ id: 4465465, time: '24/05/1989', name: 'jack', cost: 10000, pNumber: '02315654' }
 				],
 				Cart: [
-					{ name: 'Mi xao hai san', price: 30000},
-					{ name: 'Com chien duong chau' , price: 40000},
-					{ name: 'My y sot bo', price: 50000}
+					{ name: 'Mi xao hai san', price: 30000 },
+					{ name: 'Com chien duong chau', price: 40000 },
+					{ name: 'My y sot bo', price: 50000 }
 				],
+				Items: [],
 				
 			}
 		})

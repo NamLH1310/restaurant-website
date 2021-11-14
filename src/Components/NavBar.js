@@ -35,7 +35,7 @@ export default function NavigationBar(props) {
         </div>
         <div className="flex-shrink h-28 pr-8 pt-16">
             <button style={{ visibility: (User === "") ? "visible" :"hidden"}} className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
-          {Cart.length} món - {Cart.reduce( (total,food) =>{return total + food.price},0)} VNĐ
+          {Cart.length} Tổng - {Cart.reduce( (total,food) =>{return total + food.price},0)} VNĐ
           </button>
         </div>
       </div>
