@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 import {ContextList} from '../Context'
 import DropDown from './Dropdown'
 export default function NavigationBar(props) {
-  const total= useContext(ContextList).totalPrice
   const Cart = useContext(ContextList).Cart;
   const User = useContext(ContextList).User;
   const inputEl = useRef("");
@@ -37,9 +36,7 @@ export default function NavigationBar(props) {
         <div className="flex-shrink h-28 pr-8 pt-10">
           <button style={{display: (User==="")? "block":"none"}} className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
           <i className="fas fa-shopping-cart text-xs"/> 
-              <div className="hidden sm:inline"> {Cart.length} món -
-                {
-                  Cart.reduce((total, food) => { return total + food.price * food.quantity }, 0)} VNĐ</div>
+          <div className="hidden sm:inline"> {Cart.length} món - {Cart.reduce( (total,food) =>{return total + food.price*food.quantity},0)} VNĐ</div>
           </button>
           <DropDown className="z-10 relative"
            foodSwitch={props.foodSwitch} 

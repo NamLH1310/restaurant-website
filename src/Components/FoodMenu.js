@@ -2,7 +2,6 @@ import { ContextList } from "../Context";
 import { useContext } from "react";
 import FoodDisplay from "./FoodDisplay";
 function FoodMenu(props) {
-  const add=useContext(ContextList).addCart
   let foodList = useContext(ContextList).foods;
   if (foodList === undefined) foodList = []
   if (props.searchTerm !== "") {
@@ -20,8 +19,7 @@ function FoodMenu(props) {
   return (
     <div className="flex-1 grid grid-cols-4 gap-2 mr-6 ml-2 list-food">
       {foodList.map((food) => {
-        console.log(food.id)
-        return <FoodDisplay value={food} key={food.id} onClick={() => { return add(food.id) }} />;
+        return <FoodDisplay value={food} key={food.id} />;
       })}
     </div>
   );

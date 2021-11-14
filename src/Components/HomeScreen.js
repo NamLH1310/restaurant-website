@@ -66,7 +66,6 @@ function HomeScreen(props) {
         {(props.foodSwitch && <PromotionFood />) || (
           <FoodMenu searchTerm={props.searchTerm}  category ={props.currentCategory}/>
         )}
-        
       </div>
       {/* Ban chay nhat */}
       <div className="Heading">
