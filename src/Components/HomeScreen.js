@@ -2,20 +2,20 @@ import ComChien from "../Assets/ComChien.jpg";
 import Carousel from "react-elastic-carousel";
 import React, {  useState } from "react";
 import "tailwindcss/tailwind.css";
-
+import Category from "./Category";
 <script
   src="https://kit.fontawesome.com/a076d05399.js"
   crossorigin="anonymous"
 ></script>;
 
-const stylebutton = "uppercase w-full h-full py-2 text-left";
+const stylebutton = "uppercase w-full h-full py-3 text-left";
 const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
 const listfood = [];
 const listfoodtop = [];
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 8; i++) {
   listfood.push(
-    <div className="relative bg-gray-50 h-auto my-1 ring-1 ring-yellow-400 hover:opacity-90 food">
-      <div className="ml-2 font-semibold food-text">
+    <div className="relative bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food">
+      <div className="ml-4 mt-1 font-semibold food-text">
         <h4>Cơm chiên hải sản</h4>
         <h5 className="-mt-1 text-red-600">50.000d</h5>
       </div>
@@ -32,8 +32,11 @@ for (let i = 0; i < 10; i++) {
 
 for (let i = 0; i < 10; i++) {
   listfoodtop.push(
-    <div className="SlideContainer h-topsale my-1">
-      <div className="relative bg-gray-50 mx-1 w-full h-full ring-1 ring-yellow-400 hover:opacity-90 food">
+    <div className="SlideContainer h-36 my-1 ">
+      <div
+        className="relative bg-gray-50 mx-1 w-full h-full ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food"
+        key={i}
+      >
         <div className="ml-2 font-semibold food-text">
           <h4>Cơm chiên hải sản</h4>
           <h5 className="-mt-1 text-red-600">50.000d</h5>
@@ -54,24 +57,24 @@ const breakPoints = [{ width: 300, itemsToShow: 5 }];
 
 function HomeScreen(props) {
   const [foodswitch, setFoodswitch] = useState(1);
-  const handleClick = (category) => {
+  const handleClick = () => {
     if (foodswitch === 0) setFoodswitch(1);
     else setFoodswitch(0);
-    console.log("A");
   };
   return (
     <div>
       <div
-        className="flex mb-2"
+        className="flex mb-2 mt-2 h-full"
         style={{ background: "var(--background-secondary)" }}
       >
-        <div className="flex-inital w-1/6 divide-y divide-teal-400 font-semibold catagory">
+        <div className="flex-intial w-1/6 divide-y divide-teal-400 font-semibold catagory">
           <h4
             style={{
               background: "var(--primary1)",
               color: "#ffffff",
               textTransform: "uppercase",
             }}
+            className="py-2"
           >
             {" "}
             <i className="fas fa-align-justify"></i> Danh mục
@@ -129,7 +132,7 @@ function HomeScreen(props) {
           </ul>
         </div>
         {(foodswitch && (
-          <div className="flex-1 grid grid-cols-2 gap-5 mr-5 ml-5 list-promotion">
+          <div className="flex-1 grid grid-cols-2 gap-1 mr-1 ml-1 list-promotion">
             <div>
               <img src={ComChien} className="h-promotion w-full my-2" alt="Com chien"/>
             </div>
@@ -138,16 +141,24 @@ function HomeScreen(props) {
             </div>
           </div>
         )) || (
-          <div className="flex-1 grid grid-cols-5 gap-2 mr-5 ml-5 list-food">
+          <div className="flex-1 grid grid-cols-4 gap-2 mr-2 ml-2 list-food">
             {listfood}
           </div>
         )}
       </div>
       {/* Ban chay nhat */}
       <div className="Heading">
-        <h2 class="TopSale"> &#9734; BÁN CHẠY NHẤT</h2>
+        <h2 className="TopSale py-2"> &#9734; BÁN CHẠY NHẤT</h2>
       </div>
-      <Carousel breakPoints={breakPoints} enableAutoPlay autoPlaySpeed={2500}>
+      <Carousel
+        breakPoints={breakPoints}
+        enableAutoPlay
+        itemPadding={[2, 0]}
+        focusOnSelect={true}
+        disableArrowsOnEnd={false}
+        autoPlaySpeed={2500}
+  
+      >
         {listfoodtop}
       </Carousel>
     </div>
