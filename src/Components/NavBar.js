@@ -3,6 +3,7 @@ import React,{useContext,useRef} from 'react';
 import logo from './../Assets/logo.png'
 import {Link} from 'react-router-dom'
 import {ContextList} from '../Context'
+import DropDown from './Dropdown'
 export default function NavigationBar(props) {
   const Cart = useContext(ContextList).Cart;
   const User = useContext(ContextList).User;
@@ -37,6 +38,12 @@ export default function NavigationBar(props) {
           <i className="fas fa-shopping-cart text-xs"/> 
           <div className="hidden sm:inline"> {Cart.length} món - {Cart.reduce( (total,food) =>{return total + food.price*food.quantity},0)} VNĐ</div>
           </button>
+          <DropDown className="z-10 relative"
+           foodSwitch={props.foodSwitch} 
+           setFoodSwitch={props.setFoodSwitch}
+           currentCategory={props.currentCategory} 
+           onChangeCategory={(cat)=>{props.onChangeCategory(cat)}}>
+           </DropDown>
         </div>
       </div>
       <div className="w-full h-1 bg-gray-600"></div>

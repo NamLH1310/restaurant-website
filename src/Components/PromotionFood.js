@@ -1,6 +1,5 @@
 import { ContextList } from "../Context";
 import React, { useContext } from "react";
-import FoodDisplay from "./FoodDisplay";
 
 function PromotionFood() {
   let foodList = useContext(ContextList).promotionfoods;
