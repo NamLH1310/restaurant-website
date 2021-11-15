@@ -43,7 +43,7 @@ function FoodMenu(props) {
           );
         })}
       </div>
-      <div className="w-full">
+      <div className="w-full mt-4">
         <PaginationFood
           postsPerPage={foodsPerPage}
           totalPosts={foodList.length}
