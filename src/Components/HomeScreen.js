@@ -13,16 +13,19 @@ import "tailwindcss/tailwind.css";
 function HomeScreen(props) {
 
   return (
-    <div>
+    <div >
       <div
-        className="flex mb-2 mt-2 h-full"
+        className="flex mb-2 h-96 bottom-0 w-full pt-4"
         style={{ background: "var(--background-secondary)" }}
       >
         {(props.foodSwitch && <PromotionFood />) || (
-          <FoodMenu searchTerm={props.searchTerm}  category ={props.currentCategory}/>
+          <FoodMenu
+            searchTerm={props.searchTerm}
+            category={props.currentCategory}
+          />
         )}
       </div>
-      <TopFoods/>
+      <TopFoods />
     </div>
   );
 }
