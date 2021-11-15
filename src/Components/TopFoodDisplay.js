@@ -6,7 +6,7 @@ import { ContextList } from '../Context';
 function TopFoodDisplay(food) {
   const add = useContext(ContextList).addCart
   return (
-    <div className="relative bg-gray-50 h-44 w-full mt-1 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food">
+    <div className="relative bg-gray-50 h-44 w-full mt-1 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food ">
       <div className="ml-4 mt-1 font-semibold food-text">
         <h4>{food.value.name}</h4>
         <h5 className="-mt-1 text-red-600">{food.value.price}</h5>
@@ -15,7 +15,7 @@ function TopFoodDisplay(food) {
         <img
           src={food.value.img}
           alt="com chien"
-          className="h-28 w-3/4 mt-2 mx-auto food-img"
+          className="h-28 w-3/4 mt-2 mx-auto food-img transform hover:scale-105 transition-all duration-500"
         />
       </div>
       <i

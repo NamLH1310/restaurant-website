@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 import { ContextList } from '../Context';
 
 
-export default function LoginForm() {
+export default function LoginForm(props) {
+    props.showSearchBar(false)
+    props.showDropDown(false)
     const List = useContext(ContextList)
     const [Name, SetName] = useState("Name")
     const [Pass, SetPass] = useState("Pass")

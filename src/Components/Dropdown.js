@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { ContextList } from '../Context';
 const stylebutton = "uppercase w-full h-full py-2 text-left";
-const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
+const stylecategory = "z-10 relative hover:bg-yellow-500 hover:opacity-80 transform hover:translate-y-1 transition-all duration-500";
 function DropDown(props) {
   const categories = useContext(ContextList).categories;
   const [dropDown, setDropDown] = useState(false);
@@ -9,7 +9,7 @@ function DropDown(props) {
   if (categories) {
     categoriesToRender = categories.map((category) => {
       return (
-        <li className={stylecategory + "z-10 relative"} key={category.id}>
+        <li className={stylecategory} key={category.id} >
           <button className={stylebutton}
             onClick={() => handleClick(category.name)}
           >
@@ -66,11 +66,11 @@ function DropDown(props) {
         <button
           onMouseEnter={() => setDropDown(true)}
           onMouseLeave={() => setDropDown(false)}>
-          <i className="fas fa-align-justify text-lg"
+          <i className="fas fa-align-justify text-lg border-2 "
             style={{
               color: "var(--primary1)"
             }}>
-          </i> {dropDown ? "Danh mục" : null}
+          </i>
         </button>
       }
     </div>

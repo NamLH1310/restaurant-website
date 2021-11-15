@@ -10,7 +10,9 @@ import "tailwindcss/tailwind.css";
 
 
 function HomeScreen(props) {
-
+  props.showSearchBar(true)
+  props.showDropDown(true)
+  console.log(window.innerWidth)
   return (
     <div >
       <div
