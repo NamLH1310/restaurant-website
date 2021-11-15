@@ -3,6 +3,8 @@ import React, { useContext } from "react"
 import Order from './oDisplay'
 
 function CheckOrder(props) {
+	props.showSearchBar(true)
+	props.showDropDown(false)
 	let List = useContext(ContextList).oList;
 	if (props.searchTerm !== ""){
 		const newOrdersList = List.filter((order) => {

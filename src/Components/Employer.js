@@ -3,6 +3,8 @@ import React, { useContext } from "react"
 import Employee from './eDisplay'
 
 function Employer(props) {
+	props.showSearchBar(true)
+	props.showDropDown(false)
 	let employeeList = useContext(ContextList).eList;
 	console.log(2,employeeList);
 	if (props.searchTerm !== ""){
