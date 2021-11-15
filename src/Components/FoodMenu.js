@@ -1,11 +1,14 @@
 import { ContextList } from "../Context";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import FoodDisplay from "./FoodDisplay";
-
+import PaginationFood from "./PaginationFood";
 
 function FoodMenu(props) {
   const add = useContext(ContextList).addCart;
   let foodList = useContext(ContextList).foods;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [foodsPerPage] = useState(8);
+
   if (foodList === undefined) foodList = [];
   if (props.searchTerm !== "") {
     let newFoodList = foodList.filter((food) => {
@@ -18,11 +21,17 @@ function FoodMenu(props) {
       return food.category === props.category;
     });
   }
-  console.log(foodList);
-  return (
-    <div className="flex-1 grid grid-cols-4 gap-2 mr-6 ml-2 list-food">
 
-        {foodList.map((food) => {
+  const indexOfLastPost = currentPage * foodsPerPage;
+  const indexOfFirstPost = indexOfLastPost - foodsPerPage;
+  const currentFoods = foodList.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  console.log(currentPage, "page");
+  return (
+    <div className="flex-col ">
+      <div className="flex-1 grid grid-cols-4 gap-2 mr-4 ml-4 list-food">
+        {currentFoods.map((food) => {
           return (
             <FoodDisplay
               value={food}
@@ -33,6 +42,14 @@ function FoodMenu(props) {
             />
           );
         })}
+      </div>
+      <div className="w-full">
+        <PaginationFood
+          postsPerPage={foodsPerPage}
+          totalPosts={foodList.length}
+          paginate={paginate}
+        />
+      </div>
     </div>
   );
 }

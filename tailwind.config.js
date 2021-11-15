@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       height: {
         topsale: "120px",
-        promotion: "363px"
+        promotion: "360px"
       },
       colors:{
         primarycolor: "#83C75D",
