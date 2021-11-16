@@ -24,10 +24,12 @@ function FoodMenu(props) {
 
   const indexOfLastPost = currentPage * foodsPerPage;
   const indexOfFirstPost = indexOfLastPost - foodsPerPage;
-  const currentFoods = foodList.slice(indexOfFirstPost, indexOfLastPost);
-
+  let currentFoods = foodList
+  if(foodList.length > foodsPerPage)
+    currentFoods = foodList.slice(indexOfFirstPost, indexOfLastPost);
+  
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(currentPage, "page");
+  console.log(currentPage)
   return (
     <div className="flex-col ">
       <div className="flex-1 grid grid-cols-4 gap-2 mr-4 ml-4 list-food">
