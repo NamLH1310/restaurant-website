@@ -1,5 +1,11 @@
 module.exports = {
- purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  mode: 'jit',
+  purge: [
+    './src/pages/**/*.{html,js}',
+    './src/Components/**/*.{html,js}',
+    './src/layouts/**/*.{html,js}',
+    './src/index.html',
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
@@ -7,14 +13,14 @@ module.exports = {
         topsale: "120px",
         promotion: "360px"
       },
-      colors:{
+      colors: {
         primarycolor: "#83C75D",
-        primarybold:"#6ca34d",
+        primarybold: "#6ca34d",
       }
     },
   },
-  fontFamily:{
-    display:["Nunito","san-serif"],
+  fontFamily: {
+    display: ["Nunito", "san-serif"],
   },
   variants: {
     extend: {},

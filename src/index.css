@@ -1,49 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root{
-  --primary1: #FF6633;
-  --primary2: #83C75D;
+
+:root {
+  --primary1: #ff6633;
+  --primary2: #83c75d;
   --primary4: #363636;
-  --button-cart: #FF4A4A;
+  --button-cart: #ff4a4a;
   --text: #000000;
-  --background-primary:#ffffff;
-  --background-secondary: #ECECEC;
+  --background-primary: #ffffff;
+  --background-secondary: #ececec;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-/* Home Screen */
-.TopSale {
-  background-color: #83c75d;
-  text-align: center;
-  color: white;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.SlideContainer{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@layer components {
+  .TopSale {
+    @apply bg-primarycolor text-center text-white;
+  }
+
+  .category .btn i {
+    @apply mr-[20px];
+  }
+
+  .SlideContainer {
+    @apply w-full h-full flex items-center justify-center;
+  }
+  .modal-product {
+    @apply absolute top-[25%] left-[30%] right-[30%] bottom-[40%] bg-white;
+  }
+
+  .modal-cart {
+    @apply absolute top-[20%] left-[30%] right-[30%] bottom-[20%] bg-white;
+  }
+
+  .overlay {
+    @apply fixed inset-0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .btn {
+    @apply rounded-lg px-4 py-2 mr-4 text-white;
+  }
+
+  .scroll-component {
+    @apply w-full h-full overflow-y-auto;
+  }
+  .cart-btn {
+    @apply relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded;
+  }
 }
-
-.category .btn i{
-  margin-right: 20px;
-}
-
-
-
-

@@ -4,10 +4,10 @@ import logo from './../Assets/logo.png'
 import { Link } from 'react-router-dom'
 import { ContextList } from '../Context'
 import DropDown from './Dropdown'
+
 export default function NavigationBar(props) {
-  const total = useContext(ContextList).totalPrice
-  const Cart = useContext(ContextList).Cart;
-  const User = useContext(ContextList).User;
+  // const total = useContext(ContextList).totalPrice
+  const { cartItems, User, totalPrice, setCartModalOpen } = useContext(ContextList);
   const inputEl = useRef("");
   const getSearchTerm = () => {
     props.searchKeyWord(inputEl.current.value);
@@ -37,11 +37,14 @@ export default function NavigationBar(props) {
             : null}
         </div>
         <div className="flex-shrink h-28 pr-8 pt-10">
-          <button style={{ display: (User === "") ? "block" : "none" }} className="relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded">
-            <i className="fas fa-shopping-cart text-xs" />
-            <div className="hidden sm:inline"> {Cart.length} món -
-              {
-                Cart.reduce((total, food) => { return total + food.price * food.quantity }, 0)} VNĐ</div>
+          <button
+            className={`${User === '' ? 'block' : 'none'} cart-btn`}
+            onClick={() => setCartModalOpen(true)}
+          >
+            <i className="fas fa-shopping-cart text-xs px-2" />
+            <div className="hidden sm:inline">
+              {cartItems.length} món: <span className="px-2">{ totalPrice } VNĐ</span>
+            </div>
           </button>
           {props.showDropDown ?
             <DropDown className="z-10 relative"
