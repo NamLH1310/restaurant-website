@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import { ContextList } from '../Context';
 const stylebutton = "uppercase w-full h-full py-2 text-left";
-const stylecategory = "hover:bg-yellow-500 hover:opacity-80";
+const stylecategory = "z-10 relative hover:bg-yellow-500 hover:opacity-80 transform hover:translate-y-1 transition-all duration-500";
 function DropDown(props) {
   const categories = useContext(ContextList).categories;
   const [dropDown, setDropDown] = useState(false);
@@ -9,7 +9,7 @@ function DropDown(props) {
   if (categories) {
     categoriesToRender = categories.map((category) => {
       return (
-        <li className={stylecategory + "z-10 relative"} key={category.id}>
+        <li className={stylecategory} key={category.id} >
           <button className={stylebutton}
             onClick={() => handleClick(category.name)}
           >
@@ -33,47 +33,48 @@ function DropDown(props) {
   };
 
   return (
-
     <div>
-      {dropDown ? <div className="flex-inital w-full divide-y divide-teal-400 font-semibold category relative z-10">
-        <h4
-          style={{
-            background: "var(--primary1)",
-            color: "#ffffff",
-            textTransform: "uppercase",
-          }}
-        >
-          {" "}
-          <button
-            onMouseEnter={() => setDropDown(true)}
-            onMouseLeave={() => setDropDown(false)}>
-            <i className="fas fa-align-justify"></i> Danh mục
-          </button>
-        </h4>
-        <ul
-          onMouseEnter={() => setDropDown(true)}
-          onMouseLeave={() => setDropDown(false)}
-          className="divide-y font-normal text-xs"
-          style={{
-            background: "var(--primary4)",
-            color: "#ffffff",
-            textTransform: "uppercase",
-          }}
-        >
-          {categoriesToRender}
-        </ul>
-      </div> :
+      {dropDown ? (
+        <div className="w-36 mt-8  font-semibold category relative z-10">
+          <h4
+            style={{
+              background: "var(--primary1)",
+              color: "#ffffff",
+              textTransform: "uppercase",
+            }}
+          >
+            {" "}
+          </h4>
+          <ul
+            onMouseEnter={() => {
+              setDropDown(true)
+              props.setCurrentPage(1)
+            }}
+            onMouseLeave={() => setDropDown(false)}
+            className="font-normal text-xs"
+            style={{
+              background: "white",
+              color: "#000",
+              textTransform: "uppercase",
+            }}
+          >
+            {categoriesToRender}
+          </ul>
+        </div>
+      ) : (
         <button
           onMouseEnter={() => setDropDown(true)}
-          onMouseLeave={() => setDropDown(false)}>
-          <i className="fas fa-align-justify text-lg"
+          onMouseLeave={() => setDropDown(false)}
+        >
+          <i
+            className="fas fa-sort-down text-lg border-2 "
             style={{
-              color: "var(--primary1)"
-            }}>
-          </i> {dropDown ? "Danh mục" : null}
+              color: "#000",
+            }}
+          ></i>
         </button>
-      }
+      )}
     </div>
-  )
+  );
 }
 export default DropDown
