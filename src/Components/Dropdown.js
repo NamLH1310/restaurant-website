@@ -22,14 +22,17 @@ function DropDown(props) {
     )
   }
   const handleClick = (category) => {
-    if (props.foodSwitch === 0 && category === props.currentCategory) {
-      props.setFoodSwitch(1);
-      props.onChangeCategory("");
-    }
-    else {
+    // if (props.foodSwitch === 0 && category === props.currentCategory) {
+    //   props.setFoodSwitch(1);
+    //   props.onChangeCategory("");
+    // }
+    // else {
+    //   props.setFoodSwitch(0);
+    //   props.onChangeCategory(category);
+    // }
+    if (props.currentCategory === "")
       props.setFoodSwitch(0);
       props.onChangeCategory(category);
-    }
   };
 
   return (
@@ -47,7 +50,7 @@ function DropDown(props) {
           <button
             onMouseEnter={() => setDropDown(true)}
             onMouseLeave={() => setDropDown(false)}>
-            <i className="fas fa-align-justify"></i> Danh mục
+            <i className="fas fa-align-justify"></i> <span className="md:inline-block hidden">Danh mục</span>
           </button>
         </h4>
         <ul
@@ -66,10 +69,12 @@ function DropDown(props) {
         <button
           onMouseEnter={() => setDropDown(true)}
           onMouseLeave={() => setDropDown(false)}>
-          <i className="fas fa-align-justify text-lg border-2 "
+          <i className="fas fa-align-justify text-lg"
             style={{
-              color: "var(--primary1)"
+              color: "#333",
+              background: ""
             }}>
+            <span className="lg:inline-block hidden">Danh mục</span>
           </i>
         </button>
       }

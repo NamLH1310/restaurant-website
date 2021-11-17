@@ -5,7 +5,7 @@ function FoodDisplay(food) {
   const add = useContext(ContextList).addCart
   return (
     <div
-      className="relative bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food  transform hover:scale-105 transition-all duration-500 "
+      className="relative bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food transform hover:scale-105 transition-all duration-500 "
       key={food.value.id}
     >
       <div className="ml-4 mt-1 font-semibold food-text">

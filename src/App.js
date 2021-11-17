@@ -34,6 +34,7 @@ function App() {
             searchTerm={searchTerm.length < 1 ? "" : searchTerm}
             currentCategory={currentCategory}
             foodSwitch={foodSwitch}
+            setFoodSwitch={setFoodSwitch}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
             showDropDown={(isShow) => { setDropDown(isShow) }}
           />} />
