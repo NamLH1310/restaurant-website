@@ -36,6 +36,7 @@ function FoodMenu(props) {
               value={food}
               key={food.id}
               onClick={() => {
+                console.log('debug');
                 return add(food.id);
               }}
             />

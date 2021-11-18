@@ -38,7 +38,7 @@ function DropDown(props) {
   return (
     <div>
       {dropDown ? (
-        <div className="flex-inital w-48 bg-foodmenu divide-y divide-teal-400 font-semibold mt-10 category relative z-10">
+        <div className="flex-inital w-48 bg-white divide-y divide-teal-400 font-semibold mt-10 category relative z-10">
           <ul
             onMouseEnter={() => setDropDown(true)}
             onMouseLeave={() => setDropDown(false)}
