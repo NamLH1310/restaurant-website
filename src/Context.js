@@ -116,14 +116,14 @@ class ContextProvider extends Component {
           //   { id: 2, img: promo },
         ],
         categories: [
-          { id: 1, name: "Cơm", icon: "mx-1 fas fa-concierge-bell" },
-          { id: 2, name: "Bún & Mì", icon: "mx-1 fas fa-bacon" },
-          { id: 3, name: "Ăn vặt", icon: "mx-1 fas fa-cookie" },
-          { id: 4, name: "Món nướng", icon: "mx-1 fas fa-hotdog" },
-          { id: 5, name: "Thức uống", icon: "mx-1 fas fa-cocktail" },
-          { id: 6, name: "Trái cây", icon: "mx-1 fas fa-apple-alt" },
-          { id: 7, name: "Bánh", icon: "mx-1 fas fa-birthday-cake" },
-          { id: 8, name: "Tất cả", icon: "mx-1 fas fa-utensils" },
+          { id: 1, name: "Cơm", icon: "mx-2 fas fa-concierge-bell" },
+          { id: 2, name: "Bún & Mì", icon: "mx-2 fas fa-bacon" },
+          { id: 3, name: "Ăn vặt", icon: "mx-2 fas fa-cookie" },
+          { id: 4, name: "Món nướng", icon: "mx-2 fas fa-hotdog" },
+          { id: 5, name: "Thức uống", icon: "mx-2 fas fa-cocktail" },
+          { id: 6, name: "Trái cây", icon: "mx-2 fas fa-apple-alt" },
+          { id: 7, name: "Bánh", icon: "mx-2 fas fa-birthday-cake" },
+          { id: 8, name: "Tất cả", icon: "mx-2 fas fa-utensils" },
         ],
       };
     });

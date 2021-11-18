@@ -9,7 +9,7 @@ function TopFoods(food) {
   let topfoodList = useContext(ContextList).topfoods;
   if (topfoodList === undefined) topfoodList = [];
   return (
-    <div className="w-full mt-10">
+    <div className="w-full">
       <div className="Heading">
         <h2 className="TopSale py-2"> &#9734; BÁN CHẠY NHẤT</h2>
       </div>

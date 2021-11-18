@@ -11,11 +11,9 @@ import "tailwindcss/tailwind.css";
 function HomeScreen(props) {
   props.showSearchBar(true);
   props.showDropDown(true);
-  console.log(window.innerWidth);
-  console.log(props.setCurrentPage, "F");
   return (
-    <div>
-      <div className="h-96 bottom-0 w-full bg-gray-100" >
+    <div className="bg-gray-50">
+      <div className="h-96 bottom-0 w-full ">
         {(props.foodSwitch && <PromotionFood />) || (
           <FoodMenu
             searchTerm={props.searchTerm}
@@ -25,8 +23,9 @@ function HomeScreen(props) {
           />
         )}
       </div>
-
-      <TopFoods />
+      <div className="bg-gray-100 mt-20">
+        <TopFoods />
+      </div>
     </div>
   );
 }

@@ -29,7 +29,7 @@ function FoodMenu(props) {
   console.log(currentFoods, "page");
   return (
     <div className="flex-col py-4">
-      <div className="flex-1 grid grid-cols-4 gap-2 sm:gap-4 mr-4 ml-4 list-food h-96">
+      <div className="flex-1 grid grid-cols-4 gap-2 sm:gap-4 mr-4 ml-4 mb-3 list-food h-96">
         {currentFoods.map((food) => {
           return (
             <FoodDisplay
