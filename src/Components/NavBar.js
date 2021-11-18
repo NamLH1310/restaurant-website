@@ -7,7 +7,7 @@ import DropDown from './Dropdown'
 
 export default function NavigationBar(props) {
   // const total = useContext(ContextList).totalPrice
-  const { cartItems, User, totalPrice, setCartModalOpen } = useContext(ContextList);
+  const { cartItems, User, totalPrice, setCartModalOpen,logOut } = useContext(ContextList);
   const inputEl = useRef("");
   const getSearchTerm = () => {
     props.searchKeyWord(inputEl.current.value);
@@ -23,7 +23,7 @@ export default function NavigationBar(props) {
         <img className="object-contain h-28" alt="asdsad" src={logo} />
         <div className="flex flex-grow flex-col h-28 pt-4 space-y-4 items-center">
           <div className="text-sm font-bold text-gray-700 space-x-16">
-            <Link to="/" className="border-b-2 hover:border-black duration-1000">TRANG CHỦ</Link>
+            <Link to="/" className="border-b-2 hover:border-black duration-1000" onClick={() => { logOut();}}> {(User==='')? 'TRANG CHỦ':'ĐĂNG XUẤT'}</Link>
             {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link>
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">TIN TỨC</Link>
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">GIỚI THIỆU</Link> */}

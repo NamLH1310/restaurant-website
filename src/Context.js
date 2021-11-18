@@ -45,6 +45,13 @@ class ContextProvider extends Component {
         return false;
     }
   };
+  
+  logOut = () => {
+    this.setState(() => {
+      return {User:''}
+    })
+  }
+  
   //Lay du lieu trong set
   setProduct = () => {
     this.setState(() => {
@@ -215,6 +222,7 @@ class ContextProvider extends Component {
             setCartItems: this.setCartItems,
             setCheckedItems: this.setCheckedItems,
             setQuantity: this.setQuantity,
+            logOut:this.logOut,
           }}
         >
           {this.props.children}
