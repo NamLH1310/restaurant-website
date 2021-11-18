@@ -1,6 +1,6 @@
 import { ContextList } from "../Context";
 import React, { useContext } from "react";
-import { Player } from "video-react";
+
 function PromotionFood() {
   let foodList = useContext(ContextList).promotionfoods;
   if (foodList === undefined)

@@ -32,37 +32,52 @@ function DropDown(props) {
     // }
     if (props.currentCategory === "")
       props.setFoodSwitch(0);
-      props.onChangeCategory(category);
+    props.onChangeCategory(category);
   };
 
   return (
     <div>
-      {dropDown ? (
-        <div className="flex-inital w-48 bg-white divide-y divide-teal-400 font-semibold mt-10 category relative z-10">
-          <ul
-            onMouseEnter={() => setDropDown(true)}
-            onMouseLeave={() => setDropDown(false)}
-          >
-            {categoriesToRender}
-          </ul>
-        </div>
-      ) : (
-        <div>
+      {dropDown ? <div className="flex-inital md:w-36 divide-y divide-teal-400 font-semibold category relative z-10 pl-7">
+        <h4
+          style={{
+            background: "var(--primary1)",
+            color: "#ffffff",
+            textTransform: "uppercase",
+          }}
+        >
+          {" "}
           <button
             onMouseEnter={() => setDropDown(true)}
-            onMouseLeave={() => setDropDown(false)}
-          >
-            <i
-              className="fas fa-angle-down text-lg"
-              style={{
-                color: "#333",
-                background: "",
-              }}
-            ></i>
-            <span className="lg:inline-block hidden">Danh mục</span>
+            onMouseLeave={() => setDropDown(false)}>
+            <span className="md:inline-block hidden pt-1">Danh mục</span>
+            <i className="fas fa-angle-down ml-1"></i> 
           </button>
-        </div>
-      )}
+        </h4>
+        <ul
+          onMouseEnter={() => setDropDown(true)}
+          onMouseLeave={() => setDropDown(false)}
+          className="divide-y font-normal text-xs"
+          style={{
+            background: "var(--primary4)",
+            color: "#ffffff",
+            textTransform: "uppercase",
+          }}
+        >
+          {categoriesToRender}
+        </ul>
+      </div> :
+        <button className="md:w-36"
+          onMouseEnter={() => setDropDown(true)}
+          onMouseLeave={() => setDropDown(false)}>
+            <span className="md:inline-block hidden pt-1">Danh mục</span>
+          <i className="fas fa-angle-down text-lg ml-1"
+            style={{
+              color: "#333",
+              background: ""
+            }}>
+          </i>
+        </button>
+      }
     </div>
   );
 }
