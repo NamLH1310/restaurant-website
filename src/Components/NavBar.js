@@ -25,6 +25,25 @@ export default function NavigationBar(props) {
                     <div className="text-sm font-bold text-gray-700 space-x-16">
                         <Link to="/" className="border-b-2 hover:border-black duration-1000" onClick={() => { props.setFoodSwitch(1); props.onChangeCategory("") }}>TRANG CHỦ</Link>
                         {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link>
+  // const total = useContext(ContextList).totalPrice
+  const { cartItems, User, totalPrice, setCartModalOpen,logOut } = useContext(ContextList);
+  const inputEl = useRef("");
+  const getSearchTerm = () => {
+    props.searchKeyWord(inputEl.current.value);
+  }
+  return (
+    <div className="w-full flex flex-col h-34">
+      <div className="w-full h-6 bg-gray-800">
+        <ul className="text-xs text-gray-200">
+          <li className=" float-right font-extralight pb-2 pr-9 pt-2"><Link to="./sign-in">Nhân viên</Link></li>
+        </ul>
+      </div>
+      <div className="w-full h-28 bg-gray-200 text-black flex flex-row md:flex-row">
+        <img className="object-contain h-28" alt="asdsad" src={logo} />
+        <div className="flex flex-grow flex-col h-28 pt-4 space-y-4 items-center">
+          <div className="text-sm font-bold text-gray-700 space-x-16">
+            <Link to="/" className="border-b-2 hover:border-black duration-1000" onClick={() => { logOut();}}> {(User==='')? 'TRANG CHỦ':'ĐĂNG XUẤT'}</Link>
+            {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link>
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">TIN TỨC</Link>
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">GIỚI THIỆU</Link> */}
                     </div>

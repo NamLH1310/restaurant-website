@@ -2,7 +2,7 @@ import './../App.css';
 import avatar from './../Assets/avatar.png'
 import chef from './../Assets/chef.png'
 import React,{useContext,useState} from 'react';
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
 import { ContextList } from '../Context';
 
 
@@ -13,12 +13,31 @@ export default function LoginForm(props) {
     const [Name, SetName] = useState("Name")
     const [Pass, SetPass] = useState("Pass")
     const [Valid, SetValid] = useState(false);
+    const [route, SetRoute] = useState('/');
     
     function handleInput(e) {
         console.log(e)
         console.log(Name)
         console.log(Pass)
+        let x = List.SetUser(Name, Pass)
+        if (x)
+            switch (Name) {
+                case 'Employee':
+                    SetRoute('/check')
+                    break;
+                case 'Employer':
+                    SetRoute('/Employer')
+                    break;
+                default:
+                    break;
+            }            
+    
     }
+    if (Valid) {
+        return (<Redirect to={route}></Redirect>)
+    }
+    
+    
     
     return (
 

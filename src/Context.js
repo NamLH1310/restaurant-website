@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ComChien from "./Assets/ComChien.jpg";
-import promo from "./Assets/pro2.png";
+import poster from "./Assets/pro2.png";
 import MiY from "./Assets/My_Y.jpg"
 import ModalProduct from "./Components/ModalProduct";
 const ContextList = React.createContext();
@@ -45,6 +45,13 @@ class ContextProvider extends Component {
         return false;
     }
   };
+  
+  logOut = () => {
+    this.setState(() => {
+      return {User:''}
+    })
+  }
+  
   //Lay du lieu trong set
   setProduct = () => {
     this.setState(() => {
@@ -120,7 +127,7 @@ class ContextProvider extends Component {
           { id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
         ],
         promotionfoods: [
-          { id: 1, img: promo },
+          { id: 1, img: poster },
           //   { id: 2, img: promo },
         ],
         categories: [
@@ -215,6 +222,7 @@ class ContextProvider extends Component {
             setCartItems: this.setCartItems,
             setCheckedItems: this.setCheckedItems,
             setQuantity: this.setQuantity,
+            logOut:this.logOut,
           }}
         >
           {this.props.children}
