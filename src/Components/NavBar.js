@@ -19,7 +19,7 @@ export default function NavigationBar(props) {
                     <li className=" float-right font-extralight pb-2 pr-9 pt-2"><Link to="./sign-in">Nhân viên</Link></li>
                 </ul>
             </div>
-            <div className="w-full h-28 bg-yellow-100 text-black flex flex-row md:flex-row">
+            <div className="w-full h-28 bg-gray-300 text-black flex flex-row md:flex-row">
                 <img className="object-contain h-28" alt="logo" src={logo} />
                 <div className="flex flex-grow flex-col h-28 pt-4 space-y-4 items-center">
                     <div className="text-sm font-bold text-gray-700 space-x-16">

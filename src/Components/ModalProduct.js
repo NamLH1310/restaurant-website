@@ -77,23 +77,31 @@ function ModalProduct({
       <Modal
         isOpen={productModalOpen}
         onRequestClose={closeModal}
-        className="modal-product bg-gray-200 h-80 ring-2 ring-gray-300 rounded-2xl w-[450px]"
+        className="modal-product bg-gray-50 h-[350px] ring-2 ring-gray-300 rounded-2xl "
         ariaHideApp={false}
         overlayClassName="overlay"
       >
         {selectedData && (
           <div className=" ">
             <div>
-              <h5 className="p-1 bg-[#83c75d] mx-auto w-full text-center rounded-3xl">Chi tiết món ăn</h5>
+              <h5 className="p-1 bg-[#83c75d] mx-auto w-[450px] text-center rounded-3xl">
+                Chi tiết món ăn
+              </h5>
             </div>
-            <div className="scroll-component flex flex-wrap">
-              <div className="w-1/2">
-                <img className="w-4/5 p-5" alt="Food" src={selectedData.img} />
+            <div className="scroll-component flex flex-wrap justify-center">
+              <div className="w-1/2 pt-1 ">
+                <img
+                  className="w-11/12 pt-2 mx-auto"
+                  alt="Food"
+                  src={selectedData.img}
+                />
               </div>
-              <div className="w-1/2 pt-8 ">
-                <h1 className="font-semibold text-xl">{selectedData.name}</h1>
+              <div className="w-1/2 pt-3">
+                <h1 className="font-semibold text-xl mb-2">
+                  {selectedData.name}
+                </h1>
                 <span className="text-bold text-xl">Đơn giá:</span>
-                <span className="text-bold text-2xl text-red-800">
+                <span className="text-bold text-xl text-red-800">
                   {" "}
                   {fixedDecimal(selectedData.price)} VNĐ
                 </span>
@@ -103,20 +111,24 @@ function ModalProduct({
                   setQuantity={setQuantity}
                 />
               </div>
-                <div className="flex mx-auto bottom-1 ">
-                  <button
-                    className="btn w-14 bg-red-500 hover:bg-red-800"
-                    onClick={closeModal}
-                  >
-                    Hủy
-                  </button>
-                  <button
-                    className="btn bg-primarycolor hover:bg-primarybold"
-                    onClick={addItemToCart}
-                  >
-                    Thêm vào giỏ hàng
-                  </button>
-                </div>
+              <div className="py-3 h-auto bg-gray-100 text-center w-11/12 mb-10 mt-2 rounded-md">
+                Acerbic is anything sour, bitter or sharp - cutting, caustic,
+                acid, mordant, barbed, prickly, biting
+              </div>
+              <div className="flex mx-auto absolute bottom-4">
+                <button
+                  className="btn  bg-red-500 hover:bg-red-800"
+                  onClick={closeModal}
+                >
+                  Hủy
+                </button>
+                <button
+                  className="btn bg-primarycolor hover:bg-primarybold"
+                  onClick={addItemToCart}
+                >
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
             </div>
           </div>
         )}
