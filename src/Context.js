@@ -124,7 +124,7 @@ class ContextProvider extends Component {
           { id: 3, name: "jim", pNumber: "030321316", shift: [1, 2] },
           { id: 4, name: "jill", pNumber: "030321316", shift: [1, 2] },
         ],*/
-        oList: [
+       /* oList: [
           {
             id: 5465465,
             time: "24/05/1989",
@@ -153,7 +153,7 @@ class ContextProvider extends Component {
             cost: 10000,
             pNumber: "02315654",
           },
-        ],
+        ],*/
         // Cart: [
         //   { name: "Mi xao hai san", price: 30000, quantity: 2 },
         //   { name: "Com chien duong chau", price: 40000, quantity: 1 },
