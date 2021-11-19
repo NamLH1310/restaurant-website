@@ -3,7 +3,8 @@ import { ContextList } from '../Context';
 const stylebutton = "uppercase w-full h-full py-2 text-left";
 const stylecategory = "z-10 relative hover:bg-yellow-500 hover:opacity-80 transform hover:translate-y-1 transition-all duration-500";
 function DropDown(props) {
-  const categories = useContext(ContextList).categories;
+  const { categories } = useContext(ContextList);
+  console.log(categories)
   const [dropDown, setDropDown] = useState(false);
   let categoriesToRender = [];
   if (categories) {

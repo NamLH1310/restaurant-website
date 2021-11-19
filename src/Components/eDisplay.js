@@ -3,7 +3,7 @@ import {ContextList} from '../Context'
 
 
 function Employee(emp) {
-	const List = useContext(ContextList)
+	// const List = useContext(ContextList)
 
 	return (
 		<div className="container my-5 box-border max-w-full min-w-full px-5 mx-5 "  >
@@ -18,7 +18,7 @@ function Employee(emp) {
 				<div className="col-span-2">Dien Thoai: {emp.value.pNumber}</div>
 				<div className="row-span-3 "><button
 					className='min-h-full min-w-full h-10  text-red-100 transition-colors duration-150 bg-red-500  focus:shadow-outline hover:bg-red-800'
-					onClick={() => { return List.openModal(2, emp.value.id) }}>Edit</button></div>
+					onClick={() => {}}>Edit</button></div>
 			</div>
 			
 		</div>

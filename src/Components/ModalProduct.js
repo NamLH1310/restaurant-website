@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import IncDecInput from './IncDecInput';
 
 const fixedDecimal = (num, fixed = 2) => (Math.round(num * Math.pow(10, fixed))/Math.pow(10, fixed));

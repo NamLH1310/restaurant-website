@@ -4,7 +4,7 @@ import FoodDisplay from "./FoodDisplay";
 import PaginationFood from "./PaginationFood";
 
 function FoodMenu(props) {
-  const add = useContext(ContextList).addCart;
+  // const add = useContext(ContextList).addCart;
   let foodList = useContext(ContextList).foods;
   const [currentPage, setCurrentPage] = useState(1);
   const [foodsPerPage] = useState(8);
@@ -37,8 +37,8 @@ function FoodMenu(props) {
               value={food}
               key={food.id}
               onClick={() => {
-                console.log('debug');
-                return add(food.id);
+                // console.log('debug');
+                // return add(food.id);
               }}
             />
           );
