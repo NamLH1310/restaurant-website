@@ -1,6 +1,10 @@
 import Modal from 'react-modal'
-import { useState } from 'react';
-export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen, selectedEmployee, setSelectedEmployee }) {
+import { useState,useContext } from 'react';
+import axios from 'axios';
+
+
+export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen, selectedEmployee, setSelectedEmployee,setEmployee }) {
+
     function closeModal() {
         setModalEmployeeOpen(false);
     }
@@ -9,11 +13,25 @@ export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen,
     const [editPhoneNumber, setEditPhoneNumber] = useState('');
     function handleInput(){
         const newEmployee ={
-            id: selectedEmployee.id,
+            //id: selectedEmployee.id,
             name: editName,
-            pNumber: editPhoneNumber,
-            shift: editShift.split(' ').map(Number)
+            phone_number: editPhoneNumber,
+            shifts: editShift.split(' ').map(Number)
         }
+        axios.post(
+            'http://127.0.0.1:8000/api/employees/',
+            {
+                //id: selectedEmployee.id,
+                name: editName,
+                phone_number: editPhoneNumber,
+                shifts: editShift.split(' ').map(Number)
+            }
+        ).then(res => {
+            console.log(res.data)
+            setEmployee();
+        }).catch(res => {
+            alert(res)
+        })
     }
     return (
         <>

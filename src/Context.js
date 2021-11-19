@@ -63,6 +63,18 @@ class ContextProvider extends Component {
     })
   }
 
+  setEmployee = () => {
+    axios.get(
+      'http://127.0.0.1:8000/api/employees/'
+    ).then(res => {
+      this.setState(() => {
+        return { eList: [...res.data] }
+      })
+    }).catch(res => {
+      alert(res)
+    })
+  }
+  
   //Lay du lieu trong set
   setProduct = () => {
     console.log('start')
@@ -238,6 +250,7 @@ class ContextProvider extends Component {
         <ContextList.Provider
           value={{
             ...this.state,
+            setEmployee:this.setEmployee,
             openModal: this.openModal,
             SetUser: this.SetUser,
             addCart: this.addCart,
@@ -281,7 +294,8 @@ class ContextProvider extends Component {
           modalEmployeeOpen={this.state.modalEmployeeOpen}
           setModalEmployeeOpen={this.setModalEmployeeOpen}
           selectedEmployee={this.state.selectedEmployee}
-          setSelectedEmployee={this.setSelectedEmployee} />
+          setSelectedEmployee={this.setSelectedEmployee}
+          setEmployee={ this.setEmployee}/>
         <EmployeeModalProfile
         />
       </>
