@@ -22,7 +22,7 @@ function Order(emp) {
 
     // </div>
     <tr>
-      <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
+      <td className="border-collapse border border-gray-900 bg-yellow-200 text-center font-medium">
         {emp.value.id}
       </td>
       <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
@@ -35,13 +35,13 @@ function Order(emp) {
         {emp.value.time}
       </td>
       <td className="border-collapse border border-gray-900 bg-white text-center font-medium h-14">
-        {emp.value.pNumber}
+        {emp.value.phone_number}
       </td>
       <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
         <button
           className=" h-3/4 w-2/3 py-[6px] text-red-100 transition-colors duration-150 bg-red-500  focus:shadow-outline hover:bg-red-800"
           onClick={() => {
-            return List.openModal(2, emp.value.id);
+            //return List.openModal(2, emp.value.id);
           }}
         >
           Edit

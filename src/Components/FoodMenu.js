@@ -6,6 +6,7 @@ import PaginationFood from "./PaginationFood";
 function FoodMenu(props) {
   // const add = useContext(ContextList).addCart;
   let foodList = useContext(ContextList).foods;
+  const cate=useContext(ContextList).categories
   const [foodsPerPage] = useState(8);
   if (foodList === undefined) foodList = [];
   if (props.searchTerm !== "") {
@@ -16,17 +17,17 @@ function FoodMenu(props) {
   }
   if (props.category !== "Tất cả") {
     foodList = foodList.filter((food) => {
-      return food.category === props.category;
+      return cate[food.category[0]].name===props.category
     });
   }
-  console.log("re-render");
+  //console.log("re-render");
   const indexOfLastPost = props.currentPage * foodsPerPage;
   const indexOfFirstPost = indexOfLastPost - foodsPerPage;
   let currentFoods = foodList;
   if (foodsPerPage < foodList.length)
     currentFoods = foodList.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => props.setCurrentPage(pageNumber);
-  console.log(currentFoods, "page");
+  //console.log(currentFoods, "page");
   return (
     <div className="flex-col py-4">
       <div className="flex-1 grid grid-cols-4 gap-2 sm:gap-4 mr-4 ml-4 mb-3 list-food h-96">
