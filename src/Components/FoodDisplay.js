@@ -30,6 +30,7 @@ function FoodDisplay(food) {
       <i
         className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
         style={{ color: "var(--button-cart" }}
+
         onClick={() => { expandModal(food.value, setProductModalOpen, setSelectedData, setQuantity) }}
       ></i>
     </div>

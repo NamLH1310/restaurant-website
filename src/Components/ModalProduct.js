@@ -77,26 +77,26 @@ function ModalProduct({
       <Modal
         isOpen={productModalOpen}
         onRequestClose={closeModal}
-        className="modal-product bg-gray-50 h-[350px] ring-2 ring-gray-300 rounded-2xl "
+        className="modal-product bg-gray-50 h-auto ring-4 ring-gray-400 rounded-2xl "
         ariaHideApp={false}
         overlayClassName="overlay"
       >
         {selectedData && (
-          <div className=" ">
+          <div className="scroll-component">
             <div>
-              <h5 className="p-1 bg-[#83c75d] mx-auto w-[450px] text-center rounded-3xl">
+              <h5 className="p-1 bg-[#83c75d] w-full mx-auto  text-center rounded-3xl">
                 Chi tiết món ăn
               </h5>
             </div>
-            <div className="scroll-component flex flex-wrap justify-center">
-              <div className="w-1/2 pt-1 ">
+            <div className="flex flex-wrap justify-center">
+              <div className="w-1/2 pt-4 ">
                 <img
-                  className="w-11/12 pt-2 mx-auto"
+                  className="w-10/12 pt-4 mx-auto"
                   alt="Food"
                   src={selectedData.img}
                 />
               </div>
-              <div className="w-1/2 pt-3">
+              <div className="w-1/2 pt-6">
                 <h1 className="font-semibold text-xl mb-2">
                   {selectedData.name}
                 </h1>
@@ -115,7 +115,7 @@ function ModalProduct({
                 Acerbic is anything sour, bitter or sharp - cutting, caustic,
                 acid, mordant, barbed, prickly, biting
               </div>
-              <div className="flex mx-auto absolute bottom-4">
+              <div className="flex mx-auto justify-center my-4">
                 <button
                   className="btn  bg-red-500 hover:bg-red-800"
                   onClick={closeModal}
@@ -144,11 +144,16 @@ function ModalProduct({
       <Modal
         isOpen={cartModalOpen}
         onRequestClose={() => setCartModalOpen(false)}
-        className="modal-cart"
+        className="modal-cart  bg-gray-50 ring-4 ring-gray-400 rounded-2xl"
         ariaHideApp={false}
         overlayClassName="overlay"
       >
         <div className="scroll-component">
+          <div>
+            <h5 className="p-1 bg-[#83c75d] mx-auto  text-center rounded-3xl">
+              Giỏ hàng
+            </h5>
+          </div>
           {cartItems &&
             cartItems.map((item, index) => (
               <div

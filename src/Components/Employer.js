@@ -6,7 +6,6 @@ function Employer(props) {
 	props.showSearchBar(true)
 	props.showDropDown(false)
 	let employeeList = useContext(ContextList).eList;
-	console.log(2,employeeList);
 	if (props.searchTerm !== ""){
 		const newEmployeesList = employeeList.filter((order) => {
 		  return Object.values(order).join(" ").toLowerCase().includes(props.searchTerm.toLowerCase());
@@ -23,9 +22,11 @@ function Employer(props) {
           })}
         </div>
       </div> */}
-	  <div>
-		  <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">Thông tin nhân viên</h2>
-	  </div>
+      <div>
+        <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
+          Thông tin nhân viên
+        </h2>
+      </div>
       <table class="border-collapse border-[1px] border-gray-900 table-fixed w-5/6 mx-auto pt-5 mb-20">
         <thead>
           <tr>
