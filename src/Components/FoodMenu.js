@@ -6,7 +6,6 @@ import PaginationFood from "./PaginationFood";
 function FoodMenu(props) {
   // const add = useContext(ContextList).addCart;
   let foodList = useContext(ContextList).foods;
-  const [currentPage, setCurrentPage] = useState(1);
   const [foodsPerPage] = useState(8);
   if (foodList === undefined) foodList = [];
   if (props.searchTerm !== "") {
@@ -20,17 +19,17 @@ function FoodMenu(props) {
       return food.category === props.category;
     });
   }
-  console.log(foodList)
-  const indexOfLastPost = currentPage * foodsPerPage;
+  console.log("re-render");
+  const indexOfLastPost = props.currentPage * foodsPerPage;
   const indexOfFirstPost = indexOfLastPost - foodsPerPage;
-  let currentFoods = foodList
+  let currentFoods = foodList;
   if (foodsPerPage < foodList.length)
     currentFoods = foodList.slice(indexOfFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-  console.log(currentPage, "page");
+  const paginate = (pageNumber) => props.setCurrentPage(pageNumber);
+  console.log(currentFoods, "page");
   return (
-    <div className="flex-col ">
-      <div className="flex-1 grid grid-cols-4 gap-2 sm:gap-4 mr-4 ml-4 list-food h-96">
+    <div className="flex-col py-4">
+      <div className="flex-1 grid grid-cols-4 gap-2 sm:gap-4 mr-4 ml-4 mb-3 list-food h-96">
         {currentFoods.map((food) => {
           return (
             <FoodDisplay
@@ -44,7 +43,7 @@ function FoodMenu(props) {
           );
         })}
       </div>
-      {foodsPerPage < foodList.length ?
+      {foodsPerPage < foodList.length ? (
         <div className="w-full">
           <PaginationFood
             postsPerPage={foodsPerPage}
@@ -52,8 +51,7 @@ function FoodMenu(props) {
             paginate={paginate}
           />
         </div>
-        : null
-      }
+      ) : null}
     </div>
   );
 }

@@ -8,25 +8,24 @@ import "tailwindcss/tailwind.css";
   crossorigin="anonymous"
 ></script>;
 
-
 function HomeScreen(props) {
-  props.showSearchBar(true)
-  props.showDropDown(true)
-  console.log(window.innerWidth)
+  props.showSearchBar(true);
+  props.showDropDown(true);
   return (
-    <div >
-      <div
-        className="mb-2 h-96 bottom-0 w-full pt-4"
-        style={{ background: "var(--background-secondary)" }}
-      >
+    <div className="bg-gray-50">
+      <div className="h-96 bottom-0 w-full ">
         {(props.foodSwitch && <PromotionFood />) || (
           <FoodMenu
             searchTerm={props.searchTerm}
             category={props.currentCategory}
+            currentPage={props.currentPage}
+            setCurrentPage={props.setCurrentPage}
           />
         )}
       </div>
-      <TopFoods />
+      <div className="bg-gray-100 mt-20">
+        <TopFoods />
+      </div>
     </div>
   );
 }

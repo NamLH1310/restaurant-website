@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ComChien from "./Assets/ComChien.jpg";
-import promo from "./Assets/pro2.png";
+import poster from "./Assets/pro2.png";
 import MiY from "./Assets/My_Y.jpg"
 import ModalProduct from "./Components/ModalProduct";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
@@ -26,6 +26,7 @@ class ContextProvider extends Component {
     checkedItems: [],
     quantity: 1,
     employeeData: null,
+    payment: false
   };
 
   SetUser = (Name, Pass) => {
@@ -138,18 +139,18 @@ class ContextProvider extends Component {
           { id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
         ],
         promotionfoods: [
-          { id: 1, img: promo },
+          { id: 1, img: poster },
           //   { id: 2, img: promo },
         ],
         categories: [
-          { id: 1, name: "Cơm", icon: "mx-1 fas fa-concierge-bell" },
-          { id: 2, name: "Bún & Mì", icon: "mx-1 fas fa-bacon" },
-          { id: 3, name: "Ăn vặt", icon: "mx-1 fas fa-cookie" },
-          { id: 4, name: "Món nướng", icon: "mx-1 fas fa-hotdog" },
-          { id: 5, name: "Thức uống", icon: "mx-1 fas fa-cocktail" },
-          { id: 6, name: "Trái cây", icon: "mx-1 fas fa-apple-alt" },
-          { id: 7, name: "Bánh", icon: "mx-1 fas fa-birthday-cake" },
-          { id: 8, name: "Tất cả", icon: "mx-1 fas fa-utensils" },
+          { id: 1, name: "Cơm", icon: "mx-2 fas fa-concierge-bell" },
+          { id: 2, name: "Bún & Mì", icon: "mx-2 fas fa-bacon" },
+          { id: 3, name: "Ăn vặt", icon: "mx-2 fas fa-cookie" },
+          { id: 4, name: "Món nướng", icon: "mx-2 fas fa-hotdog" },
+          { id: 5, name: "Thức uống", icon: "mx-2 fas fa-cocktail" },
+          { id: 6, name: "Trái cây", icon: "mx-2 fas fa-apple-alt" },
+          { id: 7, name: "Bánh", icon: "mx-2 fas fa-birthday-cake" },
+          { id: 8, name: "Tất cả", icon: "mx-2 fas fa-utensils" },
         ],
       };
     });
@@ -163,7 +164,7 @@ class ContextProvider extends Component {
 
   setSelectedData = (data) => this.setState({ selectedData: data })
 
-  setCartModalOpen = (flag) => this.setState({ cartModalOpen: flag })
+  setCartModalOpen = (flag) => {this.setState({ cartModalOpen: flag })}
 
   setTotalPrice = (price) => this.setState({ totalPrice: price })
 
@@ -173,6 +174,7 @@ class ContextProvider extends Component {
 
   setQuantity = (quantity) => this.setState({ quantity: quantity })
 
+  setPayment = (flag) => this.setState({ payment: flag })
   render() {
     return (
       <>
@@ -194,6 +196,7 @@ class ContextProvider extends Component {
               this.setSelectedData(data);
               this.setQuantity(1);
             },
+            setPayment: this.setPayment
           }}
         >
           {this.props.children}
@@ -213,6 +216,7 @@ class ContextProvider extends Component {
           setCheckedItems={this.setCheckedItems}
           quantity={this.state.quantity}
           setQuantity={this.setQuantity}
+          setPayment={this.setPayment}
         />
         <EmployeeModalProfile
         />
@@ -221,4 +225,4 @@ class ContextProvider extends Component {
   }
 }
 
-export { ContextList, ContextProvider };
+export { ContextList, ContextProvider};

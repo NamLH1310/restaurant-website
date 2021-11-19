@@ -37,11 +37,11 @@ function IncDecInput({ isCart, quantity, setQuantity, cartItems, setCartItems, i
   }, [quantity, setQuantity]);
 
   return (
-    <div className="w-32 my-8">
-      <label className="w-full text-gray-700 text-xl text-bold inline-block">Số lượng:</label>
+    <div className="w-32 my-1">
+      <label className="w-full text-gray-700 text-lg text-bold inline-block py-1">Số lượng:</label>
       <div className="flex flex-row w-full rounded-lg bg-transparent">
         <button
-          className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-20 rounded-l cursor-pointer outline-none"
+          className="bg-red-500 text-gray-600 hover:text-gray-700 hover:bg-red-700 w-20 rounded-l cursor-pointer outline-none"
           onClick={() => isCart
             ? decrementQuantityCartHandler(cartItems, setCartItems, index)
             : decrementQuantityHandler(quantity, setQuantity)}
@@ -50,14 +50,14 @@ function IncDecInput({ isCart, quantity, setQuantity, cartItems, setCartItems, i
         </button>
         <input
           type="number"
-          className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
+          className="outline-none focus:outline-none text-center w-full bg-gray-100 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
           name="custom-input-number"
           value={isCart ? cartItems[index].quantity : quantity}
           onChange={(e) => setQuantity(Number.parseInt(e.target.value))}
         >
         </input>
         <button
-          className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-20 rounded-r cursor-pointer"
+          className="bg-red-500 text-gray-600 hover:text-gray-700 hover:bg-red-700 w-20 rounded-r cursor-pointer"
           onClick={() => isCart
             ? incrementQuantityCartHander(cartItems, setCartItems, index)
             : incrementQuantityHandler(quantity, setQuantity)}
