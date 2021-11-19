@@ -3,6 +3,7 @@ import ComChien from "./Assets/ComChien.jpg";
 import poster from "./Assets/pro2.png";
 import MiY from "./Assets/My_Y.jpg"
 import ModalProduct from "./Components/ModalProduct";
+import ModalEmployee from "./Components/ModalEmployee";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
 
@@ -27,8 +28,10 @@ class ContextProvider extends Component {
     cartItems: [],
     checkedItems: [],
     quantity: 1,
+    payment: false,
+    modalEmployeeOpen: false,
+    selectedEmployee: null,
     employeeData: null,
-    payment: false
   };
 
   SetUser = (Name, Pass) => {
@@ -214,7 +217,7 @@ class ContextProvider extends Component {
 
   setSelectedData = (data) => this.setState({ selectedData: data })
 
-  setCartModalOpen = (flag) => {this.setState({ cartModalOpen: flag })}
+  setCartModalOpen = (flag) => { this.setState({ cartModalOpen: flag }) }
 
   setTotalPrice = (price) => this.setState({ totalPrice: price })
 
@@ -225,6 +228,10 @@ class ContextProvider extends Component {
   setQuantity = (quantity) => this.setState({ quantity: quantity })
 
   setPayment = (flag) => this.setState({ payment: flag })
+
+  setModalEmployeeOpen = (flag) => this.setState({ modalEmployeeOpen: flag })
+
+  setSelectedEmployee = (employee) => this.setState({ selectedEmployee: employee })
   render() {
     return (
       <>
@@ -241,12 +248,14 @@ class ContextProvider extends Component {
             setCheckedItems: this.setCheckedItems,
             setQuantity: this.setQuantity,
             logOut: this.logOut,
+            setPayment: this.setPayment,
+            setModalEmployeeOpen: this.setModalEmployeeOpen,
+            setSelectedEmployee: this.setSelectedEmployee,
             expandProductModal: (data) => {
               this.setProductModalOpen(true);
               this.setSelectedData(data);
               this.setQuantity(1);
             },
-            setPayment: this.setPayment
           }}
         >
           {this.props.children}
@@ -268,6 +277,11 @@ class ContextProvider extends Component {
           setQuantity={this.setQuantity}
           setPayment={this.setPayment}
         />
+        <ModalEmployee
+          modalEmployeeOpen={this.state.modalEmployeeOpen}
+          setModalEmployeeOpen={this.setModalEmployeeOpen}
+          selectedEmployee={this.state.selectedEmployee}
+          setSelectedEmployee={this.setSelectedEmployee} />
         <EmployeeModalProfile
         />
       </>
@@ -275,4 +289,4 @@ class ContextProvider extends Component {
   }
 }
 
-export { ContextList, ContextProvider};
+export { ContextList, ContextProvider };

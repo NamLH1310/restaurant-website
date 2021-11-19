@@ -2,6 +2,12 @@ import { useContext } from "react";
 import { ContextList } from "../Context";
 
 function Employee(emp) {
+<<<<<<< HEAD
+=======
+  const {setModalEmployeeOpen, setSelectedEmployee} = useContext(ContextList);
+
+	// const List = useContext(ContextList)
+>>>>>>> c48caf2699e8966b40f52e6e91375e61129c380c
 
   const List = useContext(ContextList);
 
@@ -42,16 +48,16 @@ function Employee(emp) {
           <button
             className=" h-3/4 w-2/3 py-[6px] text-red-100 transition-colors duration-150 bg-red-500  focus:shadow-outline hover:bg-red-800"
             onClick={() => {
-              //return List.openModal(2, emp.value.id);
+              setSelectedEmployee(emp.value);
+              setModalEmployeeOpen(true)
             }}
           >
             Edit
           </button>
         </td>
       </tr>
-
+      
     </>
   );
-
 }
 export default Employee;
