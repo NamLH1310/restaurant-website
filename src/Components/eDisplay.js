@@ -2,12 +2,9 @@ import { useContext } from "react";
 import { ContextList } from "../Context";
 
 function Employee(emp) {
-<<<<<<< HEAD
-=======
   const {setModalEmployeeOpen, setSelectedEmployee} = useContext(ContextList);
 
 	// const List = useContext(ContextList)
->>>>>>> c48caf2699e8966b40f52e6e91375e61129c380c
 
   const List = useContext(ContextList);
 
