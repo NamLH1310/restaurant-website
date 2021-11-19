@@ -1,17 +1,20 @@
 import { ContextList } from "../Context"
 import React, { useContext } from "react"
 import Order from './oDisplay'
+import {Redirect} from 'react-router-dom'
 
 function CheckOrder(props) {
 	props.showSearchBar(true)
 	props.showDropDown(false)
-	let List = useContext(ContextList).oList;
+  let List = useContext(ContextList).oList;
+  const user = useContext(ContextList).User;
 	if (props.searchTerm !== ""){
 		const newOrdersList = List.filter((order) => {
 		  return Object.values(order).join(" ").toLowerCase().includes(props.searchTerm.toLowerCase());
 		})
 		List = newOrdersList;
-	   }
+  }
+  if (user !== 'Employee') return (<Redirect to='/Default'></Redirect>)
 	return (
     <React.Fragment>
       {/* <div className="container mx-auto py-5" >
@@ -25,6 +28,7 @@ function CheckOrder(props) {
 				</div>
 
 			</div> */}
+      <div className="bg-white w-full">
       <div>
         <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
           Thông tin đơn hàng
@@ -58,7 +62,8 @@ function CheckOrder(props) {
             return <Order value={e} key={e.id} />;
           })}
         </tbody>
-      </table>
+        </table>
+      </div>
     </React.Fragment>
   );
 
