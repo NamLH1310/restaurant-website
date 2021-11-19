@@ -30,7 +30,7 @@ function CheckOrder(props) {
 			</div> */}
       <div className="bg-white w-full">
       <div>
-        <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
+        <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10 pr-20">
           Thông tin đơn hàng
         </h2>
       </div>
