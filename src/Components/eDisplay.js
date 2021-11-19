@@ -2,6 +2,10 @@ import { useContext } from "react";
 import { ContextList } from "../Context";
 
 function Employee(emp) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5348ce30ac52d15b368401b6a8c0fbfd87172cb8
   const {setModalEmployeeOpen, setSelectedEmployee} = useContext(ContextList);
 
 	 const List = useContext(ContextList)
@@ -26,19 +30,19 @@ function Employee(emp) {
     // </div>
     <>
       <tr>
-        <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
+        <td className="border-collapse border border-gray-900 bg-yellow-200 text-center font-medium">
           {emp.value.id}
         </td>
         <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
           {emp.value.name}
         </td>
         <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
-          {emp.value.shift.map((e) => {
+          {emp.value.shifts.map((e) => {
             return <span className="px-2">{e}</span>;
           })}
         </td>
         <td className="border-collapse border border-gray-900 bg-white text-center font-medium h-14">
-          {emp.value.pNumber}
+          {emp.value.phone_number}
         </td>
         <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
           <button

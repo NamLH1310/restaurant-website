@@ -7,7 +7,13 @@ import DropDown from './Dropdown'
 import { NotificationManager } from 'react-notifications';
 
 export default function NavigationBar(props) {
-  const { cartItems, User, totalPrice, setCartModalOpen } = useContext(ContextList);
+<<<<<<< HEAD
+  const { cartItems, User, totalPrice, setCartModalOpen,logOut } =useContext(ContextList);
+=======
+
+  const { cartItems, User, totalPrice, setCartModalOpen,logOut } =useContext(ContextList);
+
+>>>>>>> 5348ce30ac52d15b368401b6a8c0fbfd87172cb8
   const inputEl = useRef("");
   function getSearchTerm() {
     props.searchKeyWord(inputEl.current.value);
@@ -31,9 +37,10 @@ export default function NavigationBar(props) {
               onClick={() => {
                 props.setFoodSwitch(1);
                 props.onChangeCategory("");
+                logOut();
               }}
             >
-              TRANG CHỦ
+              {(User==='')? 'TRANG CHỦ':'ĐĂNG XUẤT'}
             </Link>
             {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link> */}
             {/* // const total = useContext(ContextList).totalPrice

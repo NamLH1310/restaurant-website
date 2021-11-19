@@ -1,18 +1,20 @@
 import { ContextList } from "../Context"
 import React, { useContext } from "react"
 import Employee from './eDisplay'
+import {Redirect} from 'react-router-dom'
 
 function Employer(props) {
 	props.showSearchBar(true)
 	props.showDropDown(false)
-	let employeeList = useContext(ContextList).eList;
+  let employeeList = useContext(ContextList).eList;
+  const user = useContext(ContextList).User;
 	if (props.searchTerm !== ""){
 		const newEmployeesList = employeeList.filter((order) => {
 		  return Object.values(order).join(" ").toLowerCase().includes(props.searchTerm.toLowerCase());
 		})
 		employeeList = newEmployeesList;
 	   }
-
+  if(user!=='Employer')return (<Redirect to='/Default'></Redirect>)
 	return (
     <React.Fragment>
       {/* <div className="container mx-auto py-5">
@@ -22,7 +24,8 @@ function Employer(props) {
           })}
         </div>
       </div> */}
-      <div>
+      <div className="bg-white w-full">
+      <div >
         <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
           Thông tin nhân viên
         </h2>
@@ -52,7 +55,8 @@ function Employer(props) {
             return <Employee value={e} key={e.id} />;
           })}
         </tbody>
-      </table>
+        </table>
+      </div>
     </React.Fragment>
   );
 	
