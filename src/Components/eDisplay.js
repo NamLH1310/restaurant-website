@@ -4,9 +4,8 @@ import { ContextList } from "../Context";
 function Employee(emp) {
   const {setModalEmployeeOpen, setSelectedEmployee} = useContext(ContextList);
 
-	// const List = useContext(ContextList)
+	 const List = useContext(ContextList)
 
-  const List = useContext(ContextList);
 
   return (
     // <div className="container my-5 box-border max-w-full min-w-full px-5 mx-5 "  >
