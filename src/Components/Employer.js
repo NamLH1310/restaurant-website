@@ -22,7 +22,8 @@ function Employer(props) {
           })}
         </div>
       </div> */}
-      <div>
+      <div className="bg-white w-full">
+      <div >
         <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
           Thông tin nhân viên
         </h2>
@@ -52,7 +53,8 @@ function Employer(props) {
             return <Employee value={e} key={e.id} />;
           })}
         </tbody>
-      </table>
+        </table>
+      </div>
     </React.Fragment>
   );
 	

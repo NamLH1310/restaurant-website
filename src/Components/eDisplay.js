@@ -23,7 +23,7 @@ function Employee(emp) {
     // </div>
     <>
       <tr>
-        <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
+        <td className="border-collapse border border-gray-900 bg-yellow-200 text-center font-medium">
           {emp.value.id}
         </td>
         <td className="border-collapse border border-gray-900 bg-white text-center font-medium">
