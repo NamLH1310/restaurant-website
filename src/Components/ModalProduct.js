@@ -1,6 +1,8 @@
 import Modal from "react-modal";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import IncDecInput from "./IncDecInput";
+import { NotificationManager } from "react-notifications";
+import "react-notifications/lib/notifications.css";
 
 const fixedDecimal = (num, fixed = 2) =>
   Math.round(num * Math.pow(10, fixed)) / Math.pow(10, fixed);
@@ -22,6 +24,9 @@ function ModalProduct({
   setCheckedItems,
   quantity,
   setQuantity,
+  setPayment,
+  checkAll,
+  setCheckAll
 }) {
   useEffect(
     function () {
@@ -46,7 +51,6 @@ function ModalProduct({
     setSelectedData(null);
     setProductModalOpen(false);
   }
-
   function addItemToCart() {
     const index = cartItems.findIndex((e) => e.id === selectedData.id);
     if (index >= 0) {
@@ -65,16 +69,25 @@ function ModalProduct({
         Object.assign({}, selectedData, { quantity: quantity ? quantity : 1 }),
       ]);
     }
+    NotificationManager.success(
+      "Đã thêm " + selectedData.name,
+      "Giỏ hàng",
+      1500
+    );
     closeModal();
   }
 
   function toggleChecked(index) {
     setCheckedItems(
       checkedItems.map((item, i) => (i === index ? !item : item))
-
     );
   }
-  console.log(cartItems,"item")
+  function checkAll() {
+    // setCheckedItems(
+    //   checkedItems.map((item) => (checked ? false : true))
+    // );
+  }
+  console.log(cartItems, "item");
   console.log(checkedItems);
   return (
     <>
@@ -107,7 +120,10 @@ function ModalProduct({
                 <span className="font-semibold text-xl">Đơn giá:</span>
                 <span className="font-medium text-xl text-red-800">
                   {" "}
-                  {fixedDecimal(selectedData.price)} VNĐ
+                  {fixedDecimal(selectedData.price).toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
                 </span>
                 <IncDecInput
                   isCart={false}
@@ -175,7 +191,12 @@ function ModalProduct({
                   <h1 className="mb-1 font-semibold text-xl">{item.name}</h1>
                   <h2 className="font-semibold text-lg">
                     Đơn giá:{" "}
-                    <span className="text-red-500">{item.price} VNĐ</span>
+                    <span className="text-red-500">
+                      {item.price.toLocaleString("it-IT", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </span>
                   </h2>
                   <div>
                     <IncDecInput
@@ -201,16 +222,23 @@ function ModalProduct({
           <h2 className="text-center">
             Tổng cộng:{" "}
             <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
+            <span>
+              {" "}
+              <input
+                type="checkbox"
+                className="w-full h-5"
+                onChange={()=>checkAll()}
+                checked={checkAll}
+              />
+            </span>
           </h2>
           <div className="flex justify-center my-4">
             <button
               className="btn bg-primarycolor hover:bg-primarybold"
-              // onClick={()=>{
-              //   cartItems.map((i)=> {
-              //     if(checkedItems[i])
-              //      cartItems.splice(i,1)
-              //   })
-              // }}
+              onClick={() => {
+                setCartModalOpen(false);
+                setPayment(true);
+              }}
             >
               Thanh toán
             </button>

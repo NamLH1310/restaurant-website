@@ -23,10 +23,23 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
+/* .player-wrapper {
+  position: relative;
+  margin-top: 0px;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
 @layer components {
+
   .TopSale {
     @apply bg-primarycolor text-center text-white;
   }
@@ -61,4 +74,13 @@ code {
   .cart-btn {
     @apply relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded;
   }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -1,18 +1,21 @@
-import { ContextList } from "../Context"
-import React, { useContext } from "react"
-import Order from './oDisplay'
+import { ContextList } from "../Context";
+import React, { useContext } from "react";
+import Order from "./oDisplay";
 
 function CheckOrder(props) {
-	props.showSearchBar(true)
-	props.showDropDown(false)
-	let List = useContext(ContextList).oList;
-	if (props.searchTerm !== ""){
-		const newOrdersList = List.filter((order) => {
-		  return Object.values(order).join(" ").toLowerCase().includes(props.searchTerm.toLowerCase());
-		})
-		List = newOrdersList;
-	   }
-	return (
+  props.showSearchBar(true);
+  props.showDropDown(false);
+  let List = useContext(ContextList).oList;
+  if (props.searchTerm !== "") {
+    const newOrdersList = List.filter((order) => {
+      return Object.values(order)
+        .join(" ")
+        .toLowerCase()
+        .includes(props.searchTerm.toLowerCase());
+    });
+    List = newOrdersList;
+  }
+  return (
     <React.Fragment>
       {/* <div className="container mx-auto py-5" >
 				<div className="grid grid-cols-1 my-2 mx-auto" >
@@ -25,43 +28,44 @@ function CheckOrder(props) {
 				</div>
 
 			</div> */}
-      <div>
-        <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
-          Thông tin đơn hàng
-        </h2>
+      <div className="pb-20 bg-gray-50">
+        <div>
+          <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
+            Thông tin đơn hàng
+          </h2>
+        </div>
+        <table class="border-collapse border-[1px] border-gray-900 table-fixed w-5/6 mx-auto pt-5">
+          <thead>
+            <tr>
+              <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+                ID
+              </th>
+              <th class="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+                Họ và tên
+              </th>
+              <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+                Thành tiền
+              </th>
+              <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+                Thời gian
+              </th>
+              <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+                Số điện thoại
+              </th>
+              <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+                Chỉnh sửa
+              </th>
+            </tr>
+          </thead>
+          <tbody className="">
+            {List.map((e) => {
+              return <Order value={e} key={e.id} />;
+            })}
+          </tbody>
+        </table>
       </div>
-      <table class="border-collapse border-[1px] border-gray-900 table-fixed w-5/6 mx-auto pt-5 mb-20">
-        <thead>
-          <tr>
-            <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              ID
-            </th>
-            <th class="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Họ và tên
-            </th>
-            <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Thành tiền
-            </th>
-            <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Thời gian
-            </th>
-            <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Số điện thoại
-            </th>
-            <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Chỉnh sửa
-            </th>
-          </tr>
-        </thead>
-        <tbody className="">
-          {List.map((e) => {
-            return <Order value={e} key={e.id} />;
-          })}
-        </tbody>
-      </table>
     </React.Fragment>
   );
-
 }
 
-export default CheckOrder
+export default CheckOrder;

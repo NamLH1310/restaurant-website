@@ -21,7 +21,9 @@ class ContextProvider extends Component {
     totalPrice: 0,
     cartItems: [],
     checkedItems: [],
+    checkAll: false,
     quantity: 1,
+    payment: false
   };
 
   SetUser = (Name, Pass) => {
@@ -46,13 +48,13 @@ class ContextProvider extends Component {
         return false;
     }
   };
-  
+
   logOut = () => {
     this.setState(() => {
-      return {User:''}
+      return { User: '' }
     })
   }
-  
+
   //Lay du lieu trong set
   setProduct = () => {
     this.setState(() => {
@@ -198,18 +200,21 @@ class ContextProvider extends Component {
 
   setSelectedData = (data) => this.setState({ selectedData: data })
 
-  setCartModalOpen = (flag) => this.setState({ cartModalOpen: flag })
+  setCartModalOpen = (flag) => {this.setState({ cartModalOpen: flag })}
 
   setOrderModalOpen = (flag) => this.setState({ orderModalOpen: flag })
 
+  setCheckAll = (flag) => this.setState({ checkAll: flag })
+
   setTotalPrice = (price) => this.setState({ totalPrice: price})
 
-  setCartItems = (items) => this.setState({ cartItems: items})
+  setCartItems = (items) => this.setState({ cartItems: items })
 
-  setCheckedItems = (items) => this.setState({ checkedItems: items})
+  setCheckedItems = (items) => this.setState({ checkedItems: items })
 
   setQuantity = (quantity) => this.setState({ quantity: quantity })
 
+  setPayment = (flag) => this.setState({ payment: flag })
   render() {
     return (
       <>
@@ -223,10 +228,12 @@ class ContextProvider extends Component {
             setSelectedData: this.setSelectedData,
             setCartModalOpen: this.setCartModalOpen,
             setOrderModalOpen: this.setOrderModalOpen,
+            setCheckAll: this.setCheckAll,
             setCartItems: this.setCartItems,
             setCheckedItems: this.setCheckedItems,
             setQuantity: this.setQuantity,
-            logOut:this.logOut,
+            logOut: this.logOut,
+            setPayment: this.setPayment
           }}
         >
           {this.props.children}
@@ -240,6 +247,8 @@ class ContextProvider extends Component {
           setCartModalOpen={this.setCartModalOpen}
           orderModalOpen={this.state.orderModalOpen}
           setOrderModalOpen={this.setOrderModalOpen}
+          checkAll={this.checkAll}
+          setCheckAll={this.setCheckAll}
           totalPrice={this.state.totalPrice}
           setTotalPrice={this.setTotalPrice}
           cartItems={this.state.cartItems}
@@ -248,10 +257,11 @@ class ContextProvider extends Component {
           setCheckedItems={this.setCheckedItems}
           quantity={this.state.quantity}
           setQuantity={this.setQuantity}
+          setPayment={this.setPayment}
         />
       </>
     );
   }
 }
 
-export { ContextList, ContextProvider };
+export { ContextList, ContextProvider};

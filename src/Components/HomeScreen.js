@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FoodMenu from "./FoodMenu";
 import TopFoods from "./TopFood";
 import PromotionFood from "./PromotionFood";
@@ -13,7 +13,7 @@ function HomeScreen(props) {
   props.showDropDown(true);
   return (
     <div className="bg-gray-50">
-      <div className="h-96 bottom-0 w-full ">
+      <div className="h-[600px] w-full ">
         {(props.foodSwitch && <PromotionFood />) || (
           <FoodMenu
             searchTerm={props.searchTerm}
@@ -23,9 +23,7 @@ function HomeScreen(props) {
           />
         )}
       </div>
-      <div className="bg-gray-100 mt-36">
         <TopFoods />
-      </div>
     </div>
   );
 }

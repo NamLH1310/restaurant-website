@@ -44,7 +44,7 @@ function FoodMenu(props) {
         })}
       </div>
       {foodsPerPage < foodList.length ? (
-        <div className="w-full">
+        <div className="w-auto mt-10">
           <PaginationFood
             postsPerPage={foodsPerPage}
             totalPosts={foodList.length}
