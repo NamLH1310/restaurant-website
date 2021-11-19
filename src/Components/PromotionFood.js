@@ -14,7 +14,7 @@ function PromotionFood() {
               <img
                 src={food.img}
                 alt="com chien"
-                className="h-[450px] w-full"
+                className="h-[500px] w-full"
               />
             </div>
           </React.Fragment>

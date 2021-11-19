@@ -39,7 +39,7 @@ code {
     @apply w-full h-full flex items-center justify-center;
   }
   .modal-product {
-    @apply absolute top-[25%] left-[30%] right-[30%] bottom-[40%] bg-white;
+    @apply absolute top-[20%] left-[30%] right-[30%] bottom-[30%] bg-white;
   }
 
   .modal-cart {

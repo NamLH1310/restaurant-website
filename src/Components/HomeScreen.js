@@ -23,7 +23,7 @@ function HomeScreen(props) {
           />
         )}
       </div>
-      <div className="bg-gray-100 mt-20">
+      <div className="bg-gray-100 mt-36">
         <TopFoods />
       </div>
     </div>

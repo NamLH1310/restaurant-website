@@ -12,6 +12,8 @@ function ModalProduct({
   setSelectedData,
   cartModalOpen,
   setCartModalOpen,
+  orderModalOpen,
+  setOrderModalOpen,
   totalPrice,
   setTotalPrice,
   cartItems,
@@ -69,9 +71,11 @@ function ModalProduct({
   function toggleChecked(index) {
     setCheckedItems(
       checkedItems.map((item, i) => (i === index ? !item : item))
+
     );
   }
-
+  console.log(cartItems,"item")
+  console.log(checkedItems);
   return (
     <>
       <Modal
@@ -100,8 +104,8 @@ function ModalProduct({
                 <h1 className="font-semibold text-xl mb-2">
                   {selectedData.name}
                 </h1>
-                <span className="text-bold text-xl">Đơn giá:</span>
-                <span className="text-bold text-xl text-red-800">
+                <span className="font-semibold text-xl">Đơn giá:</span>
+                <span className="font-medium text-xl text-red-800">
                   {" "}
                   {fixedDecimal(selectedData.price)} VNĐ
                 </span>
@@ -158,18 +162,18 @@ function ModalProduct({
             cartItems.map((item, index) => (
               <div
                 key={item.id}
-                className="flex m-4 p-8 bg-gray-300 rounded-xl"
+                className="relative flex m-4 p-6 bg-gray-300 rounded-xl"
               >
                 <div className="w-1/2">
                   <img
-                    className="w-4/5 item-thumbnail"
+                    className="w-4/5  item-thumbnail"
                     alt="Food"
                     src={item.img}
                   />
                 </div>
-                <div className="w-2/5">
-                  <h1 className="mb-4">{item.name}</h1>
-                  <h2>
+                <div className="w-1/2 ">
+                  <h1 className="mb-1 font-semibold text-xl">{item.name}</h1>
+                  <h2 className="font-semibold text-lg">
                     Đơn giá:{" "}
                     <span className="text-red-500">{item.price} VNĐ</span>
                   </h2>
@@ -184,9 +188,10 @@ function ModalProduct({
                     />
                   </div>
                 </div>
-                <div className="flex items-center w-1/10">
+                <div className="absolute bottom-4 right-4 flex items-center w-5 bg-gray-800">
                   <input
                     type="checkbox"
+                    className="w-full h-5"
                     onChange={() => toggleChecked(index)}
                     checked={checkedItems[index]}
                   />
@@ -198,7 +203,15 @@ function ModalProduct({
             <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
           </h2>
           <div className="flex justify-center my-4">
-            <button className="btn bg-primarycolor hover:bg-primarybold">
+            <button
+              className="btn bg-primarycolor hover:bg-primarybold"
+              // onClick={()=>{
+              //   cartItems.map((i)=> {
+              //     if(checkedItems[i])
+              //      cartItems.splice(i,1)
+              //   })
+              // }}
+            >
               Thanh toán
             </button>
             <button
@@ -206,6 +219,59 @@ function ModalProduct({
               onClick={() => setCartModalOpen(false)}
             >
               Tiếp tục mua sắm
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={orderModalOpen}
+        onRequestClose={() => setOrderModalOpen(false)}
+        className="modal-cart  bg-gray-50 ring-4 ring-gray-400 rounded-2xl"
+        ariaHideApp={false}
+        overlayClassName="overlay"
+      >
+        <div className="scroll-component">
+          <div>
+            <h5 className="p-1 bg-[#83c75d] mx-auto  text-center rounded-3xl">
+              Đơn hàng của khách hàng
+            </h5>
+          </div>
+          {cartItems &&
+            cartItems.map((item, index) => (
+              <div
+                key={item.id}
+                className="relative flex m-4 p-3 bg-gray-300 rounded-xl"
+              >
+                <div className="w-1/2">
+                  <img
+                    className="w-4/5 mx-4 item-thumbnail"
+                    alt="Food"
+                    src={item.img}
+                  />
+                </div>
+                <div className="w-1/2">
+                  <h1 className="font-semibold text-xl">{item.name}</h1>
+                  <h2 className="font-medium text-lg">
+                    Đơn giá:{" "}
+                    <span className="text-red-500">{item.price} VNĐ</span>
+                  </h2>
+                  <div className="font-medium text-lg">
+                    Số lượng: <span className="">{item.quantity}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          <h2 className="text-center">
+            Tổng cộng:{" "}
+            <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
+          </h2>
+          <div className="flex justify-center my-4">
+            <button
+              className="btn bg-[#83c75d] hover:bg-[#00FF00]"
+              onClick={() => setOrderModalOpen(false)}
+            >
+              Xác nhận
             </button>
           </div>
         </div>

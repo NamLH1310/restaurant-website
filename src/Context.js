@@ -17,6 +17,7 @@ class ContextProvider extends Component {
     productModalOpen: false,
     selectedData: null,
     cartModalOpen: false,
+    orderModalOpen: false,
     totalPrice: 0,
     cartItems: [],
     checkedItems: [],
@@ -199,6 +200,8 @@ class ContextProvider extends Component {
 
   setCartModalOpen = (flag) => this.setState({ cartModalOpen: flag })
 
+  setOrderModalOpen = (flag) => this.setState({ orderModalOpen: flag })
+
   setTotalPrice = (price) => this.setState({ totalPrice: price})
 
   setCartItems = (items) => this.setState({ cartItems: items})
@@ -219,6 +222,7 @@ class ContextProvider extends Component {
             setProductModalOpen: this.setProductModalOpen,
             setSelectedData: this.setSelectedData,
             setCartModalOpen: this.setCartModalOpen,
+            setOrderModalOpen: this.setOrderModalOpen,
             setCartItems: this.setCartItems,
             setCheckedItems: this.setCheckedItems,
             setQuantity: this.setQuantity,
@@ -234,6 +238,8 @@ class ContextProvider extends Component {
           setSelectedData={this.setSelectedData}
           cartModalOpen={this.state.cartModalOpen}
           setCartModalOpen={this.setCartModalOpen}
+          orderModalOpen={this.state.orderModalOpen}
+          setOrderModalOpen={this.setOrderModalOpen}
           totalPrice={this.state.totalPrice}
           setTotalPrice={this.setTotalPrice}
           cartItems={this.state.cartItems}

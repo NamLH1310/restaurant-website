@@ -38,7 +38,7 @@ function IncDecInput({ isCart, quantity, setQuantity, cartItems, setCartItems, i
 
   return (
     <div className="w-32 my-1">
-      <label className="w-full text-gray-700 text-lg text-bold inline-block py-1">Số lượng:</label>
+      <label className="w-full font-medium text-lg text-bold inline-block py-1">Số lượng:</label>
       <div className="flex flex-row w-full rounded-lg bg-transparent">
         <button
           className="bg-red-500 text-gray-600 hover:text-gray-700 hover:bg-red-700 w-20 rounded-l cursor-pointer outline-none"
