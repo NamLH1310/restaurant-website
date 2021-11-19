@@ -7,13 +7,15 @@ import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
 
 const ContextList = React.createContext();
-
+const api = 'http://127.0.0.1:8000/api/';
 class ContextProvider extends Component {
   // What the fuck is this component, too much responsibilities, TRASH
+  
   state = {
     oList: [],
     eList: [],
     // Cart: [],
+    categories:[],
     foods: [],
     topfoods: [],
     promotionfoods: [],
@@ -60,6 +62,54 @@ class ContextProvider extends Component {
 
   //Lay du lieu trong set
   setProduct = () => {
+    console.log('start')
+    axios.get(
+     'http://127.0.0.1:8000/api/products/',
+    ).then((res)=>{
+      console.log(res.data);
+      this.setState(() => {
+        return {foods:[...res.data]}
+      })
+      let top = res.data.filter(food => { return food.is_top })
+      this.setState(() => {
+        return {topfoods:[...top]}
+      })
+      console.log(top)
+    }).catch(res => {
+      alert(res)
+    })
+    axios.get(
+      'http://127.0.0.1:8000/api/categories/'
+    ).then(res => {
+      console.log(res.data)
+      this.setState(() => {
+        return {categories:[...res.data]}
+      })
+      
+    }).catch(res => {
+      alert(res)
+    })
+    axios.get(
+      'http://127.0.0.1:8000/api/employees/'
+    ).then(res => {
+      this.setState(() => {
+        return {eList:[...res.data]}
+      })
+    }).catch(res => {
+      alert(res)
+    })
+    axios.get(
+      'http://127.0.0.1:8000/api/orders/'
+    ).then(res => {
+      this.setState(() => {
+        return {oList:[...res.data]}
+      })
+
+      
+    }).catch(res => {
+      alert(res)
+    })
+    console.log('end')
     this.setState(() => {
       // axios
       //   .get('http://127.0.0.1:8000/api/categories/')
@@ -68,12 +118,12 @@ class ContextProvider extends Component {
       //   })
 
       return {
-        eList: [
+        /*eList: [
           { id: 1, name: "jack", pNumber: "030321316", shift: [1, 2] },
           { id: 2, name: "john", pNumber: "030321316", shift: [1, 2] },
           { id: 3, name: "jim", pNumber: "030321316", shift: [1, 2] },
           { id: 4, name: "jill", pNumber: "030321316", shift: [1, 2] },
-        ],
+        ],*/
         oList: [
           {
             id: 5465465,
@@ -109,7 +159,7 @@ class ContextProvider extends Component {
         //   { name: "Com chien duong chau", price: 40000, quantity: 1 },
         //   { name: "Mi y sot bo", price: 50000, quantity: 2 },
         // ],
-        foods: [
+        /*foods: [
           { id: 1, name: 'Cơm chiên dương châu', price: 40000, category: 'Cơm', img: ComChien, quantity: 0 },
           { id: 2, name: 'Cơm sườn', price: 30000, category: 'Cơm', img: ComChien, quantity: 0 },
           { id: 3, name: 'Mì ý sốt bò', price: 50000, category: 'Bún & Mì', img: MiY, quantity: 0 },
@@ -120,8 +170,8 @@ class ContextProvider extends Component {
           { id: 8, name: 'Cam vắt', price: 30000, category: 'Thức uống', img: ComChien, quantity: 0 },
           { id: 9, name: 'Dâu tây', price: 35000, category: 'Trái cây', img: ComChien, quantity: 0 },
           { id: 10, name: 'Bánh tráng nướng', price: 10000, category: 'Ăn vặt', img: ComChien, quantity: 0 }
-        ],
-        topfoods: [
+        ],*/
+       /* topfoods: [
           {
             id: 1,
             name: "Cơm chiên dương châu",
@@ -137,12 +187,12 @@ class ContextProvider extends Component {
           { id: 8, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0 },
           { id: 9, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
           { id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
-        ],
+        ],*/
         promotionfoods: [
           { id: 1, img: poster },
           //   { id: 2, img: promo },
         ],
-        categories: [
+        /*categories: [
           { id: 1, name: "Cơm", icon: "mx-2 fas fa-concierge-bell" },
           { id: 2, name: "Bún & Mì", icon: "mx-2 fas fa-bacon" },
           { id: 3, name: "Ăn vặt", icon: "mx-2 fas fa-cookie" },
@@ -151,7 +201,7 @@ class ContextProvider extends Component {
           { id: 6, name: "Trái cây", icon: "mx-2 fas fa-apple-alt" },
           { id: 7, name: "Bánh", icon: "mx-2 fas fa-birthday-cake" },
           { id: 8, name: "Tất cả", icon: "mx-2 fas fa-utensils" },
-        ],
+        ],*/
       };
     });
   };
