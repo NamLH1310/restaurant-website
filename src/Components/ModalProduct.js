@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import IncDecInput from './IncDecInput';
 import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
