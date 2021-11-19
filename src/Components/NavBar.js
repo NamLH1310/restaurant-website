@@ -22,10 +22,10 @@ export default function NavigationBar(props) {
             <div className="w-full h-28 bg-gray-300 text-black flex flex-row md:flex-row">
                 <img className="object-contain h-28" alt="logo" src={logo} />
                 <div className="flex flex-grow flex-col h-28 pt-4 space-y-4 items-center">
-                    <div className="text-sm font-bold text-gray-700 space-x-16">
+                    <div className="text-sm font-bold text-gray-700 space-x-8">
                         <Link to="/" className="border-b-2 hover:border-black duration-1000" onClick={() => { props.setFoodSwitch(1); props.onChangeCategory("") }}>TRANG CHỦ</Link>
-                        {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link>
-  // const total = useContext(ContextList).totalPrice
+                        {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link> */}
+  {/* // const total = useContext(ContextList).totalPrice
   const { cartItems, User, totalPrice, setCartModalOpen,logOut } = useContext(ContextList);
   const inputEl = useRef("");
   const getSearchTerm = () => {
@@ -48,7 +48,7 @@ export default function NavigationBar(props) {
               <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">GIỚI THIỆU</Link> */}
                     </div>
                     {props.showSearchBar ?
-                        <div className="container flex justify-center px-4 sm:px-6 lg:px-8 md:ml-28 ml-4 sm:ml-8">
+                        <div className="container flex justify-center px-4 sm:px-6 lg:px-8 md:ml-40 ml-4 sm:ml-8">
                             <div className="relative"> <input type="text" className="h-10 sm:w-80 w-40 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder="Tìm kiếm..." value={props.term} onChange={getSearchTerm} ref={inputEl} />
                                 <div className="absolute top-2 right-3">
                                     <i className="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
@@ -75,14 +75,6 @@ export default function NavigationBar(props) {
                             {
                                 Cart.reduce((total, food) => { return total + food.price * food.quantity }, 0)} VNĐ</div>
                     </button>
-                    {/* {props.showDropDown ?
-                        <DropDown className="z-10 relative"
-                            foodSwitch={props.foodSwitch}
-                            setFoodSwitch={props.setFoodSwitch}
-                            currentCategory={props.currentCategory}
-                            onChangeCategory={(cat) => { props.onChangeCategory(cat) }}>
-                        </DropDown>
-                        : null} */}
                 </div>
             </div>
             <div className="w-full h-1 bg-gray-600"></div>
