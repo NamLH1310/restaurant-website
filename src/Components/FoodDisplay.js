@@ -12,7 +12,7 @@ function FoodDisplay(food) {
   const { setProductModalOpen, setSelectedData, setQuantity } = useContext(ContextList);
   return (
     <div
-      className="relative bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food  transform hover:scale-105 transition-all duration-500 "
+      className="relative h-44 bg-gray-100 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food  transform hover:scale-105 transition-all duration-500"
       key={food.value.id}
     >
       <div className="ml-4 mt-1 font-semibold food-text">
@@ -23,13 +23,14 @@ function FoodDisplay(food) {
         <img
           src={food.value.img}
           alt="com chien"
-          className="h-24 w-2/4 mt-2 mx-auto food-img"
+          className="h-28 w-3/4 mt-2 mx-auto food-img"
           onClick={() => expandModal(food.value, setProductModalOpen, setSelectedData, setQuantity)}
         />
       </div>
       <i
         className="absolute bottom-0 right-0 mr-1 mb-1 fas fa-cart-plus"
         style={{ color: "var(--button-cart" }}
+
         onClick={() => { expandModal(food.value, setProductModalOpen, setSelectedData, setQuantity) }}
       ></i>
     </div>

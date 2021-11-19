@@ -1,22 +1,30 @@
-import './App.css';
+import "./App.css";
 import React from "react";
 import HomeScreen from './Components/HomeScreen';
 import LoginForm from './Components/LoginForm';
 import NavigationBar from './Components/NavBar';
 import Employer from './Components/Employer'
-import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { useState, useContext } from 'react';
+import { useHistory, Route, Switch } from 'react-router-dom'
 import CheckOrder from './Components/CheckOrder';
 import Payment from './Components/Payment';
 import NotificationContainer from 'react-notifications/lib/NotificationContainer';
+import { ContextList } from "./Context";
 function App() {
   const [currentCategory, setCurrentCategory] = useState("");
   const [foodSwitch, setFoodSwitch] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchBar, setSearchBar] = useState(false);
   const [dropDown, setDropDown] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const searchHandler = (searchTerm) => {
     setSearchTerm(searchTerm);
+  };
+  let history = useHistory();
+  const {payment,setPayment} = useContext(ContextList);
+  if (payment) {
+    history.push('/payment')
+    setPayment(false)
   }
   return (
     <div className="h-full w-full bg-gray-200">
@@ -24,11 +32,16 @@ function App() {
         term={searchTerm}
         searchKeyWord={searchHandler}
         currentCategory={currentCategory}
-        onChangeCategory={(cat) => { setCurrentCategory(cat) }}
+        onChangeCategory={(cat) => {
+          setCurrentCategory(cat);
+        }}
         foodSwitch={foodSwitch}
         setFoodSwitch={setFoodSwitch}
         showSearchBar={searchBar}
-        showDropDown ={dropDown} />
+        showDropDown={dropDown}
+        currentPage={currentPage}
+        setCurrentPage={(page) => setCurrentPage(page)}
+      />
       <Switch>
         <Route exact path="/"
           render={(props) => <HomeScreen{...props}
@@ -37,6 +50,8 @@ function App() {
             foodSwitch={foodSwitch}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
             showDropDown={(isShow) => { setDropDown(isShow) }}
+            currentPage={currentPage}
+            setCurrentPage={(page) => setCurrentPage(page)}
           />} />
         <Route exact path="/employer"
           render={(props) => <Employer{...props}
@@ -52,12 +67,12 @@ function App() {
           render={(props) => <LoginForm{...props}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
             showDropDown={(isShow) => { setDropDown(isShow) }} />} />
-          <Route exact path="/payment"
+        <Route exact path="/payment"
           render={(props) => <Payment{...props}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
             showDropDown={(isShow) => { setDropDown(isShow) }} />} />
       </Switch>
-      <NotificationContainer/>
+      <NotificationContainer />
     </div>
   );
 }

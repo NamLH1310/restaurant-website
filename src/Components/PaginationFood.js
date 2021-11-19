@@ -10,7 +10,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   return (
     <>
       <nav>
-        <ul className="flex justify-center pagination space-x-2">
+        <ul className="flex w-auto justify-center pagination space-x-2">
           {pageNumbers.map((number) => (
             <li key={number} className="page-item">
               <button

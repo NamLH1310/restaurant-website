@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { ContextList } from '../Context';
-const stylebutton = "uppercase w-full h-full py-2 text-left";
+const stylebutton = "w-full h-full py-2 text-left";
 const stylecategory = "z-10 relative hover:bg-yellow-500 hover:opacity-80 transform hover:translate-y-1 transition-all duration-500";
 function DropDown(props) {
   const categories = useContext(ContextList).categories;
@@ -22,20 +22,22 @@ function DropDown(props) {
     )
   }
   const handleClick = (category) => {
-    if (props.foodSwitch === 0 && category === props.currentCategory) {
-      props.setFoodSwitch(1);
-      props.onChangeCategory("");
-    }
-    else {
+    // if (props.foodSwitch === 0 && category === props.currentCategory) {
+    //   props.setFoodSwitch(1);
+    //   props.onChangeCategory("");
+    // }
+    // else {
+    //   props.setFoodSwitch(0);
+    //   props.onChangeCategory(category);
+    // }
+    if (props.currentCategory === "")
       props.setFoodSwitch(0);
-      props.onChangeCategory(category);
-    }
+    props.onChangeCategory(category);
   };
 
   return (
-
     <div>
-      {dropDown ? <div className="flex-inital w-full divide-y divide-teal-400 font-semibold category relative z-10">
+      {dropDown ? <div className="flex-inital md:w-36 divide-y divide-teal-400 font-semibold category relative z-10 pl-7">
         <h4
           style={{
             background: "var(--primary1)",
@@ -47,7 +49,8 @@ function DropDown(props) {
           <button
             onMouseEnter={() => setDropDown(true)}
             onMouseLeave={() => setDropDown(false)}>
-            <i className="fas fa-align-justify"></i> Danh mục
+            <span className="md:inline-block hidden pt-1">Danh mục</span>
+            <i className="fas fa-angle-down ml-1"></i> 
           </button>
         </h4>
         <ul
@@ -63,17 +66,19 @@ function DropDown(props) {
           {categoriesToRender}
         </ul>
       </div> :
-        <button
+        <button className="md:w-36"
           onMouseEnter={() => setDropDown(true)}
           onMouseLeave={() => setDropDown(false)}>
-          <i className="fas fa-align-justify text-lg border-2 "
+            <span className="md:inline-block hidden pt-1">Danh mục</span>
+          <i className="fas fa-angle-down text-lg ml-1"
             style={{
-              color: "var(--primary1)"
+              color: "#333",
+              background: ""
             }}>
           </i>
         </button>
       }
     </div>
-  )
+  );
 }
 export default DropDown

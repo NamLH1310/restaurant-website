@@ -11,12 +11,13 @@ module.exports = {
     extend: {
       height: {
         topsale: "120px",
-        promotion: "360px"
+        promotion: "430px",
       },
       colors: {
         primarycolor: "#83C75D",
         primarybold: "#6ca34d",
-      }
+        foodmenu: "#FFFBEB",
+      },
     },
   },
   fontFamily: {

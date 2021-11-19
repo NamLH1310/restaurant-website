@@ -1,5 +1,6 @@
 import './../App.css';
 import React, { useState, useRef, useEffect } from 'react';
+import { NotificationManager } from 'react-notifications';
 
 function Paypal({ invoice }) {
   const [paidFor, setPaidFor] = useState(false);
@@ -38,16 +39,15 @@ function Paypal({ invoice }) {
   if (paidFor) {
     return (
       <div>
-        <h1>Thanh toán thành công!</h1>
+        {NotificationManager.success('Đơn hàng đã được thanh toán','Giỏ hàng',2000)}
       </div>
     );
   }
 
   return (
     <div>
-      {error && <div>Có lỗi xảy ra, thanh toán không thành công</div>}
-      <h2>
-      </h2>
+      {error && NotificationManager.error('Có lỗi xảy ra, không thể thực hiện thanh toán','Thanh toán',1000)}
+      {error? console.log(error) : null}
       <div ref={paypalRef} />
     </div>
   );
