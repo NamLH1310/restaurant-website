@@ -7,7 +7,8 @@ import Employer from './Components/Employer'
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import CheckOrder from './Components/CheckOrder';
-
+import Payment from './Components/Payment';
+import NotificationContainer from 'react-notifications/lib/NotificationContainer';
 function App() {
   const [currentCategory, setCurrentCategory] = useState("");
   const [foodSwitch, setFoodSwitch] = useState(1);
@@ -51,7 +52,12 @@ function App() {
           render={(props) => <LoginForm{...props}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
             showDropDown={(isShow) => { setDropDown(isShow) }} />} />
+          <Route exact path="/payment"
+          render={(props) => <Payment{...props}
+            showSearchBar={(isShow) => { setSearchBar(isShow) }}
+            showDropDown={(isShow) => { setDropDown(isShow) }} />} />
       </Switch>
+      <NotificationContainer/>
     </div>
   );
 }

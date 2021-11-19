@@ -1,6 +1,8 @@
 import Modal from 'react-modal';
 import React, { useEffect, useState } from 'react';
 import IncDecInput from './IncDecInput';
+import {NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const fixedDecimal = (num, fixed = 2) => (Math.round(num * Math.pow(10, fixed))/Math.pow(10, fixed));
 
@@ -41,21 +43,22 @@ function ModalProduct({
     } else {
       setCartItems([...cartItems, Object.assign({}, selectedData, { quantity: quantity ? quantity : 1 })]);
     }
+    NotificationManager.success('Đã thêm' + ' ' + selectedData.name,'Giỏ hàng',1500)
     closeModal();
   }
 
   function toggleChecked(index) {
     setCheckedItems(checkedItems.map((item, i) => i === index ? !item : item));
   }
-
   return (
     <>
       <Modal
         isOpen={productModalOpen}
         onRequestClose={closeModal}
-        className="modal-product"
+        className="modal-product rounded-2xl"
         ariaHideApp={false}
         overlayClassName="overlay"
+        
       >
         {
           selectedData &&
@@ -66,7 +69,7 @@ function ModalProduct({
             <div className="w-1/2 pt-8">
               <h1 className="font-semibold text-2xl">{selectedData.name}</h1>
               <span className="text-bold text-2xl">Đơn giá:</span>
-              <span className="text-bold text-2xl text-red-800"> {fixedDecimal(selectedData.price)} VNĐ</span>
+              <span className="text-bold text-2xl text-red-800"> {fixedDecimal(selectedData.price).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
               <IncDecInput
                 isCart={false}
                 quantity={quantity}
@@ -118,7 +121,7 @@ function ModalProduct({
                     {item.name}
                   </h1>
                   <h2>
-                    Đơn giá: <span className="text-red-500">{item.price} VNĐ</span>
+                    Đơn giá: <span className="text-red-500">{item.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
                   </h2>
                   <div>
                     <IncDecInput
@@ -142,10 +145,11 @@ function ModalProduct({
             ))
           }
           <h2 className="text-center">
-            Tổng cộng: <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
+            Tổng cộng: <span className="font-semibold text-red-700">{totalPrice.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
           </h2>
           <div className="flex justify-center my-4">
             <button className="btn bg-primarycolor hover:bg-primarybold">Thanh toán</button>
+            
             <button
               className="btn bg-blue-500 hover:bg-blue-800"
               onClick={() => setCartModalOpen(false)}
