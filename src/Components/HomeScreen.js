@@ -13,7 +13,7 @@ function HomeScreen(props) {
   props.showDropDown(true);
   return (
     <div className="bg-gray-50">
-      <div className="h-[600px] w-full ">
+      <div className="h-auto w-full ">
         {(props.foodSwitch && <PromotionFood />) || (
           <FoodMenu
             searchTerm={props.searchTerm}

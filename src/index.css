@@ -53,13 +53,16 @@ code {
   }
   .modal-product {
     @apply absolute top-[20%] left-[30%] right-[30%] bottom-[30%] bg-white;
+    animation: showModalAnimation 0.4s;
   }
 
   .modal-cart {
     @apply absolute top-[20%] left-[30%] right-[30%] bottom-[20%] bg-white;
+    animation: showModalAnimation 0.4s;
   }
   .modal-employee{
     @apply absolute top-[20%] left-[38%] right-[40%] bottom-[32%] bg-white;
+    animation: showModalAnimation 0.4s;
   }
   .overlay {
     @apply fixed inset-0;
@@ -76,6 +79,7 @@ code {
   .cart-btn {
     @apply relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded;
   }
+
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -86,3 +90,15 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@keyframes showModalAnimation {
+  from {
+      transform: scale(0);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+

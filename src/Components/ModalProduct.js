@@ -93,7 +93,7 @@ function ModalProduct({
       <Modal
         isOpen={productModalOpen}
         onRequestClose={closeModal}
-        className="modal-product bg-gray-50 h-auto ring-4 ring-gray-400 rounded-2xl "
+        className="modal-product bg-gray-50 h-auto ring-4 ring-gray-400 rounded-2xl"
         ariaHideApp={false}
         overlayClassName="overlay"
       >
@@ -296,7 +296,7 @@ function ModalProduct({
           </h2>
           <div className="flex justify-center my-4">
             <button
-              className="btn bg-[#83c75d] hover:bg-[#00FF00]"
+              className="btn bg-[#83c75d] hover:bg-primarybold"
               onClick={() => setOrderModalOpen(false)}
             >
               Xác nhận
