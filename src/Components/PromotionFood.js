@@ -8,18 +8,16 @@ function PromotionFood() {
   if (foodList === undefined)
     foodList = []
   return (
-    <div className="list-promotion">
-      {foodList.map((food) => {
-        return (
-          <React.Fragment key={food.id}>
+          <React.Fragment>
             <div className="player-wrapper bg-black py-3">
               {/* <img
                 src={food.img}
                 alt="com chien"
                 className="h-[500px] w-full "
               /> */}
+              lkhlkhlkjl
               <ReactPlayer
-                className="mx-auto"
+                className="mx-auto react-player"
                 playing={true}
                 muted={true}
                 loop={true}
@@ -30,8 +28,5 @@ function PromotionFood() {
             </div>
           </React.Fragment>
         );
-      })}
-    </div>
-  );
 }
 export default PromotionFood;

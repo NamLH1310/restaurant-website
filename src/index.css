@@ -27,7 +27,7 @@ code {
     monospace;
 }
 
-/* .player-wrapper {
+.player-wrapper {
   position: relative;
   margin-top: 0px;
 }
@@ -36,7 +36,7 @@ code {
   position: absolute;
   top: 0;
   left: 0;
-} */
+}
 
 @layer components {
 
@@ -58,7 +58,9 @@ code {
   .modal-cart {
     @apply absolute top-[20%] left-[30%] right-[30%] bottom-[20%] bg-white;
   }
-
+  .modal-employee{
+    @apply absolute top-[20%] left-[38%] right-[40%] bottom-[32%] bg-white;
+  }
   .overlay {
     @apply fixed inset-0;
     background-color: rgba(0, 0, 0, 0.5);

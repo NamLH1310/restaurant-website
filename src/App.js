@@ -11,6 +11,9 @@ import Payment from './Components/Payment';
 import NotificationContainer from 'react-notifications/lib/NotificationContainer';
 import { ContextList } from "./Context";
 import Footer from "./Components/Footer";
+import Default from "./Components/Default";
+
+
 function App() {
   const [currentCategory, setCurrentCategory] = useState("");
   const [foodSwitch, setFoodSwitch] = useState(1);
@@ -72,6 +75,7 @@ function App() {
           render={(props) => <Payment{...props}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
             showDropDown={(isShow) => { setDropDown(isShow) }} />} />
+        <Route path='/default' component={Default}></Route>
       </Switch>
       <NotificationContainer />
       <Footer />

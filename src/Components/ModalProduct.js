@@ -221,7 +221,7 @@ function ModalProduct({
             ))}
           <h2 className="text-center">
             Tổng cộng:{" "}
-            <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
+            {/* <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
             <span>
               {" "}
               <input
@@ -230,7 +230,8 @@ function ModalProduct({
                 onChange={()=>checkAll()}
                 checked={checkAll}
               />
-            </span>
+            </span> */}
+            <span className="font-semibold text-red-700">{totalPrice.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
           </h2>
           <div className="flex justify-center my-4">
             <button
@@ -244,7 +245,7 @@ function ModalProduct({
             </button>
             <button
               className="btn bg-blue-500 hover:bg-blue-800"
-              onClick={() => setCartModalOpen(false)}
+              onClick={()=>setCartModalOpen(false)}
             >
               Tiếp tục mua sắm
             </button>

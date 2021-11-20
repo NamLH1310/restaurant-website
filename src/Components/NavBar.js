@@ -8,7 +8,9 @@ import { NotificationManager } from 'react-notifications';
 
 export default function NavigationBar(props) {
 
+
   const { cartItems, User, totalPrice, setCartModalOpen,logOut } =useContext(ContextList);
+
 
   const inputEl = useRef("");
   function getSearchTerm() {

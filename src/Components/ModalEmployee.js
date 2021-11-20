@@ -1,6 +1,10 @@
 import Modal from 'react-modal'
-import { useState } from 'react';
-export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen, selectedEmployee, setSelectedEmployee }) {
+import { useState,useContext } from 'react';
+import axios from 'axios';
+
+
+export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen, selectedEmployee, setSelectedEmployee,setEmployee }) {
+
     function closeModal() {
         setModalEmployeeOpen(false);
     }
@@ -9,12 +13,28 @@ export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen,
     const [editPhoneNumber, setEditPhoneNumber] = useState('');
     function handleInput(){
         const newEmployee ={
-            id: selectedEmployee.id,
+            // id: selectedEmployee.id,
             name: editName,
-            pNumber: editPhoneNumber,
-            shift: editShift.split(' ').map(Number)
+            phone_number: editPhoneNumber,
+            shifts: [1,2]
+            // shifts: editShift.split(' ').map(Number)
         }
+        axios
+          .delete("http://127.0.0.1:8000/api/employees/", {
+            // name: editName ,
+            // phone_number: editPhoneNumber ,
+            // shifts: editShift
+            id: 13
+          })
+          .then((res) => {
+            console.log(res.data, "emp");
+            setEmployee();
+          })
+          .catch((res) => {
+            alert(res);
+          });
     }
+    console.log(typeof editName);
     return (
         <>
             {selectedEmployee ?
