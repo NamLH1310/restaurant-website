@@ -1,7 +1,13 @@
 import { useContext } from 'react'
 import { ContextList } from '../Context'
 
-
+function timeDisplay(time) {
+  var res;
+  time = time.split('.')[0]
+  res = time.replace('T', ' ').replace('Z', '').split(' ')
+  res = res[1] + " " + res[0].split('-').reverse().join('/')
+  return res;
+}
 function Order(emp) {
 	const List = useContext(ContextList)
 	return (
@@ -32,7 +38,7 @@ function Order(emp) {
         {emp.value.cost}
       </td>
       <td className="border-collapse border border-gray-900 bg-white text-center font-medium h-14">
-        {emp.value.time}
+        {timeDisplay(emp.value.time)}
       </td>
       <td className="border-collapse border border-gray-900 bg-white text-center font-medium h-14">
         {emp.value.phone_number}

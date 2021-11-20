@@ -5,12 +5,12 @@ import Paypal from './PayPal';
 import React, { useContext, useState } from 'react';
 import { ContextList } from '../Context';
 import { NotificationManager } from 'react-notifications';
-
+import { Redirect } from 'react-router-dom';
 
 export default function Payment(props) {
     props.showSearchBar(false)
     props.showDropDown(false)
-    const { totalPrice } = useContext(ContextList);
+    const { totalPrice,setCartItems } = useContext(ContextList);
     const invoice = {
         description: 'Thanh toan thuc an',
         price: (totalPrice / 23000).toFixed(2)
@@ -20,6 +20,12 @@ export default function Payment(props) {
     const [address, setAddress] = useState('')
     const [validInput, setValidInput] = useState(false)
     const [isSubmit, setisSubmit] = useState(false)
+    const [successPayment, setSuccessPayment] = useState(false)
+    if (successPayment)
+        {
+            setCartItems([])
+            return (<Redirect to='/'></Redirect>)
+        }
     function handleInput() {
         if (name !== '' && address !== '' && phoneNumber !== '') {
             if (!isSubmit) {
@@ -73,7 +79,7 @@ export default function Payment(props) {
                 </div>
                 <div className="pt-7">
                     {validInput ?
-                        <Paypal invoice={invoice} setOrders={props.setOrders} name={name} cost={totalPrice} phoneNumber={phoneNumber}></Paypal>
+                        <Paypal invoice={invoice} setOrders={()=>{props.setOrders()}} name={name} cost={totalPrice} phoneNumber={phoneNumber} setSuccessPayment={setSuccessPayment}></Paypal>
                         : null}
                 </div>
             </form>

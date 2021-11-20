@@ -75,6 +75,17 @@ class ContextProvider extends Component {
       alert(res)
     })
   }
+  setOrders = () => {
+    axios.get(
+      `${api}/orders/`
+    ).then(res => {
+      this.setState(() => {
+        return { oList: [...res.data] }
+      })
+    }).catch(res => {
+      alert(res)
+    })
+  }
   //Lay du lieu trong set
   setProduct = () => {
     console.log('start')
@@ -277,6 +288,7 @@ class ContextProvider extends Component {
             setQuantity: this.setQuantity,
             logOut: this.logOut,
             setPayment: this.setPayment,
+            setOrders: this.setOrders,
             setModalEmployeeOpen: this.setModalEmployeeOpen,
             expandProductModal: (data) => {
               this.setProductModalOpen(true);
