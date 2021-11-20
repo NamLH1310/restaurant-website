@@ -9,8 +9,8 @@ function timeDisplay(time) {
   return res;
 }
 function Order(emp) {
-	const List = useContext(ContextList)
-	return (
+  const { setOrderModalOpen } = useContext(ContextList);
+  return (
     // <div className="container my-5 box-border max-w-full min-w-full px-5 mx-5 "  >
     // 	<div className="grid grid-rows-3 grid-flow-col mx-auto border-4 border-solid bg-gray-100">
     // 		<div className="row-span-3 px-3">
@@ -47,13 +47,14 @@ function Order(emp) {
         <button
           className=" h-3/4 w-2/3 py-[6px] text-red-100 transition-colors duration-150 bg-red-500  focus:shadow-outline hover:bg-red-800"
           onClick={() => {
+           setOrderModalOpen(true)
             //return List.openModal(2, emp.value.id);
           }}
         >
-          Edit
+          Xem đơn
         </button>
       </td>
     </tr>
   );
 }
-export default Order
+export default Order;

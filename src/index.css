@@ -23,10 +23,23 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
+/* .player-wrapper {
+  position: relative;
+  padding-top: 0px;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
 @layer components {
+
   .TopSale {
     @apply bg-primarycolor text-center text-white;
   }
@@ -39,7 +52,7 @@ code {
     @apply w-full h-full flex items-center justify-center;
   }
   .modal-product {
-    @apply absolute top-[25%] left-[30%] right-[30%] bottom-[40%] bg-white;
+    @apply absolute top-[20%] left-[30%] right-[30%] bottom-[30%] bg-white;
   }
 
   .modal-cart {
@@ -70,6 +83,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

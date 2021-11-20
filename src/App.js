@@ -10,6 +10,7 @@ import CheckOrder from './Components/CheckOrder';
 import Payment from './Components/Payment';
 import NotificationContainer from 'react-notifications/lib/NotificationContainer';
 import { ContextList } from "./Context";
+import Footer from "./Components/Footer";
 import Default from "./Components/Default";
 
 
@@ -78,7 +79,10 @@ function App() {
         <Route path='/default' component={Default}></Route>
       </Switch>
       <NotificationContainer />
+      <Footer />
     </div>
+    
   );
+
 }
 export default App;

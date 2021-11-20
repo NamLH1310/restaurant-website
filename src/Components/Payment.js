@@ -1,5 +1,5 @@
 import './../App.css';
-import avatar from './../Assets/avatar.png'
+import avatar from './..//Assets/avatar.png'
 import chef from './../Assets/chef.png'
 import Paypal from './PayPal';
 import React, { useContext, useState } from 'react';

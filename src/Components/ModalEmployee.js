@@ -46,6 +46,7 @@ export default function ModalEmployee({
             })
         closeModal();
     }
+    console.log(typeof editName);
     return (
         <>
             {

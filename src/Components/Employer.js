@@ -24,7 +24,7 @@ function Employer(props) {
           })}
         </div>
       </div> */}
-      <div className="bg-white w-full">
+      <div className="bg-white w-full pb-20">
       <div >
         <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10">
           Thông tin nhân viên
@@ -59,7 +59,6 @@ function Employer(props) {
       </div>
     </React.Fragment>
   );
-	
 }
 
-export default Employer
+export default Employer;

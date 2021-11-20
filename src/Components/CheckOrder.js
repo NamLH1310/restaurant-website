@@ -28,7 +28,7 @@ function CheckOrder(props) {
 				</div>
 
 			</div> */}
-      <div className="bg-white w-full">
+      <div className="bg-white w-full pb-20">
       <div>
         <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10 pr-20">
           Thông tin đơn hàng
@@ -66,7 +66,6 @@ function CheckOrder(props) {
       </div>
     </React.Fragment>
   );
-
 }
 
-export default CheckOrder
+export default CheckOrder;
