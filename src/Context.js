@@ -4,6 +4,7 @@ import ModalProduct from "./Components/ModalProduct";
 import ModalEmployee from "./Components/ModalEmployee";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
+import { ThemeConsumer } from "styled-components";
 
 const ContextList = React.createContext();
 const api = 'http://127.0.0.1:8000/api';
@@ -74,7 +75,6 @@ class ContextProvider extends Component {
       alert(res)
     })
   }
-
   //Lay du lieu trong set
   setProduct = () => {
     console.log('start')
@@ -304,6 +304,7 @@ class ContextProvider extends Component {
           quantity={this.state.quantity}
           setQuantity={this.setQuantity}
           setPayment={this.setPayment}
+          
         />
         <ModalEmployee
           modalEmployeeOpen={this.state.modalEmployeeOpen}

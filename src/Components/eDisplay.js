@@ -4,7 +4,7 @@ import { ContextList } from "../Context";
 function Employee(emp) {
   const { expandEmployeeModal } = useContext(ContextList);
 
-	// const List = useContext(ContextList)
+	 const List = useContext(ContextList)
 
   // const List = useContext(ContextList);
 
