@@ -57,27 +57,29 @@ export default function ModalEmployee({
                     ariaHideApp={false}
                     overlayClassName="overlay"
                 >
-                    <h5 className="p-1 bg-[#83c75d] w-full mx-auto  text-center rounded-2xl border-2 border-primarycolor font-semibold text-lg">
+                    <h5 className="p-1 bg-[#83c75d] w-full mx-auto  text-center rounded-2xl border-2 border-primarycolor font-semibold text-base">
                         Thông tin nhân viên
                     </h5>
-                    <div className="pl-10 text-lg font-semibold space-y-3 pt-3">
-                        <div className="relative "><i className="fa fa-id-card" /> Mã nhân viên: {employeeID}</div>
+                    <div className="">
+                    <div className=" pl-6 text-lg font-semibold space-y-3 pt-3 lg:mb-12 md:mb-20 mb-14 lg:h-56">
+                        <div className="relative "><i className="fa fa-id-card" /><span className="hidden lg:inline"> Mã nhân viên:</span> {employeeID}</div>
                         <div className="inline-block">
-                            <i className="fa fa-signature" />Tên nhân viên:
-                            <input type="text" className="font-semibold text-lg" onChange={(e) => {setEmployeeName(e.target.value)}} defaultValue={employeeName} />
+                            <i className="fa fa-signature" /><span className="hidden lg:inline">Tên nhân viên:</span>
+                            <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setEmployeeName(e.target.value)}} defaultValue={employeeName} />
                         </div>
                         <div>
-                            <i className="fa fa-clock" /> Ca làm việc:
-                            <input type="text" className="font-semibold text-lg" onChange={(e) => {setEmployeeShifts(e.target.value)}} defaultValue={employeeShifts} />
+                            <i className="fa fa-clock" /> <span className="hidden lg:inline">Ca làm việc:</span>
+                            <input type="text" className="font-semibold text-lg w-10 md:ml-2 lg:ml-6 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setEmployeeShifts(e.target.value)}} defaultValue={employeeShifts} />
                         </div>
                         <div>
-                            <i className="fa fa-phone" /> Số điện thoại:
-                            <input type="text" className="font-semibold text-lg" onChange={(e) => {setEmployeePhoneNumber(e.target.value)}} defaultValue={employeePhoneNumber} />
+                            <i className="fa fa-phone" /> <span className="hidden lg:inline">Số điện thoại:</span>
+                            <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setEmployeePhoneNumber(e.target.value)}} defaultValue={employeePhoneNumber} />
                         </div>
                     </div>
-                    <div className="text-center pt-6">
-                        <button onClick={() => { handleInput() }} className="btn bg-primarycolor hover:bg-primarybold font-bold">Xác nhận</button>
-                        <button onClick={() => { closeModal() }} className="btn  bg-red-500 hover:bg-red-800 font-bold" >Hủy</button>
+                    <div className="text-center flex flex-row justify-center relative">
+                        <button onClick={() => { handleInput() }} className="btn bg-primarycolor hover:bg-primarybold md:font-bold ml-4">Xác nhận</button>
+                        <button onClick={() => { closeModal() }} className="btn  bg-red-500 hover:bg-red-800 hidden md:inline" >Hủy</button>
+                    </div>
                     </div>
                 </Modal>)
                 }
