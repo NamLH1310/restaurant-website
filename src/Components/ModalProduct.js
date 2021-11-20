@@ -83,8 +83,7 @@ function ModalProduct({
     );
   }
   function checkAll() {
-    // setCheckedItems(
-    //   checkedItems.map((item) => (checked ? false : true))
+
   }
   console.log(cartItems, "item");
   console.log(checkedItems);
