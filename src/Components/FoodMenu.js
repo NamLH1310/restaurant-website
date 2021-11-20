@@ -17,7 +17,9 @@ function FoodMenu(props) {
   }
   if (props.category !== "Tất cả") {
     foodList = foodList.filter((food) => {
-      return cate[food.category[0]].name===props.category
+      const categoryId = cate.find(e => e.name === props.category).id;
+      return food.category.includes(categoryId);
+      // return cate[food.category[0]].name===props.category
     });
   }
   //console.log("re-render");

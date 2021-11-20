@@ -30,22 +30,22 @@ function Employer(props) {
           Thông tin nhân viên
         </h2>
       </div>
-      <table class="border-collapse border-[1px] border-gray-900 table-fixed w-5/6 mx-auto pt-5 mb-20">
+      <table className="border-collapse border-[1px] border-gray-900 table-fixed w-5/6 mx-auto pt-5 mb-20">
         <thead>
           <tr>
-            <th class="w-1/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-1/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               EID
             </th>
-            <th class="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Họ và tên
             </th>
-            <th class="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Ca làm việc
             </th>
-            <th class="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Số điện thoại
             </th>
-            <th class="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Chỉnh sửa
             </th>
           </tr>

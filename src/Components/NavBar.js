@@ -7,13 +7,9 @@ import DropDown from './Dropdown'
 import { NotificationManager } from 'react-notifications';
 
 export default function NavigationBar(props) {
-<<<<<<< HEAD
-  const { cartItems, User, totalPrice, setCartModalOpen,logOut } =useContext(ContextList);
-=======
 
   const { cartItems, User, totalPrice, setCartModalOpen,logOut } =useContext(ContextList);
 
->>>>>>> 5348ce30ac52d15b368401b6a8c0fbfd87172cb8
   const inputEl = useRef("");
   function getSearchTerm() {
     props.searchKeyWord(inputEl.current.value);

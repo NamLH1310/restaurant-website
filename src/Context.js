@@ -1,22 +1,20 @@
 import React, { Component } from "react";
-import ComChien from "./Assets/ComChien.jpg";
 import poster from "./Assets/pro2.png";
-import MiY from "./Assets/My_Y.jpg"
 import ModalProduct from "./Components/ModalProduct";
 import ModalEmployee from "./Components/ModalEmployee";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
 
 const ContextList = React.createContext();
-const api = 'http://127.0.0.1:8000/api/';
+const api = 'http://127.0.0.1:8000/api';
 class ContextProvider extends Component {
   // What the fuck is this component, too much responsibilities, TRASH
-  
+
   state = {
     oList: [],
     eList: [],
     // Cart: [],
-    categories:[],
+    categories: [],
     foods: [],
     topfoods: [],
     promotionfoods: [],
@@ -30,8 +28,10 @@ class ContextProvider extends Component {
     quantity: 1,
     payment: false,
     modalEmployeeOpen: false,
-    selectedEmployee: null,
-    employeeData: null,
+    employeeID: 0,
+    employeeName: '',
+    employeeShifts: '',
+    employeePhoneNumber: '',
   };
 
   SetUser = (Name, Pass) => {
@@ -65,7 +65,7 @@ class ContextProvider extends Component {
 
   setEmployee = () => {
     axios.get(
-      'http://127.0.0.1:8000/api/employees/'
+      `${api}/employees/`
     ).then(res => {
       this.setState(() => {
         return { eList: [...res.data] }
@@ -74,53 +74,53 @@ class ContextProvider extends Component {
       alert(res)
     })
   }
-  
+
   //Lay du lieu trong set
   setProduct = () => {
     console.log('start')
     axios.get(
-     'http://127.0.0.1:8000/api/products/',
-    ).then((res)=>{
+      `${api}/products/`,
+    ).then((res) => {
       console.log(res.data);
       this.setState(() => {
-        return {foods:[...res.data]}
+        return { foods: [...res.data] }
       })
       let top = res.data.filter(food => { return food.is_top })
       this.setState(() => {
-        return {topfoods:[...top]}
+        return { topfoods: [...top] }
       })
       console.log(top)
     }).catch(res => {
       alert(res)
     })
     axios.get(
-      'http://127.0.0.1:8000/api/categories/'
+      `${api}/categories/`
     ).then(res => {
       console.log(res.data)
       this.setState(() => {
-        return {categories:[...res.data]}
-      })
-      
-    }).catch(res => {
-      alert(res)
-    })
-    axios.get(
-      'http://127.0.0.1:8000/api/employees/'
-    ).then(res => {
-      this.setState(() => {
-        return {eList:[...res.data]}
-      })
-    }).catch(res => {
-      alert(res)
-    })
-    axios.get(
-      'http://127.0.0.1:8000/api/orders/'
-    ).then(res => {
-      this.setState(() => {
-        return {oList:[...res.data]}
+        return { categories: [...res.data] }
       })
 
-      
+    }).catch(res => {
+      alert(res)
+    })
+    axios.get(
+      `${api}/employees`
+    ).then(res => {
+      this.setState(() => {
+        return { eList: [...res.data] }
+      })
+    }).catch(res => {
+      alert(res)
+    })
+    axios.get(
+      `${api}/orders/`
+    ).then(res => {
+      this.setState(() => {
+        return { oList: [...res.data] }
+      })
+
+
     }).catch(res => {
       alert(res)
     })
@@ -129,7 +129,7 @@ class ContextProvider extends Component {
       // axios
       //   .get('http://127.0.0.1:8000/api/categories/')
       //   .then((response) => {
-          
+
       //   })
 
       return {
@@ -139,36 +139,36 @@ class ContextProvider extends Component {
           { id: 3, name: "jim", pNumber: "030321316", shift: [1, 2] },
           { id: 4, name: "jill", pNumber: "030321316", shift: [1, 2] },
         ],*/
-       /* oList: [
-          {
-            id: 5465465,
-            time: "24/05/1989",
-            name: "jack",
-            cost: 10000,
-            pNumber: "02315654",
-          },
-          {
-            id: 5465485,
-            time: "24/05/1989",
-            name: "jack",
-            cost: 10000,
-            pNumber: "02315654",
-          },
-          {
-            id: 5468465,
-            time: "24/05/1989",
-            name: "jack",
-            cost: 10000,
-            pNumber: "02315654",
-          },
-          {
-            id: 4465465,
-            time: "24/05/1989",
-            name: "jack",
-            cost: 10000,
-            pNumber: "02315654",
-          },
-        ],*/
+        /* oList: [
+           {
+             id: 5465465,
+             time: "24/05/1989",
+             name: "jack",
+             cost: 10000,
+             pNumber: "02315654",
+           },
+           {
+             id: 5465485,
+             time: "24/05/1989",
+             name: "jack",
+             cost: 10000,
+             pNumber: "02315654",
+           },
+           {
+             id: 5468465,
+             time: "24/05/1989",
+             name: "jack",
+             cost: 10000,
+             pNumber: "02315654",
+           },
+           {
+             id: 4465465,
+             time: "24/05/1989",
+             name: "jack",
+             cost: 10000,
+             pNumber: "02315654",
+           },
+         ],*/
         // Cart: [
         //   { name: "Mi xao hai san", price: 30000, quantity: 2 },
         //   { name: "Com chien duong chau", price: 40000, quantity: 1 },
@@ -186,23 +186,23 @@ class ContextProvider extends Component {
           { id: 9, name: 'Dâu tây', price: 35000, category: 'Trái cây', img: ComChien, quantity: 0 },
           { id: 10, name: 'Bánh tráng nướng', price: 10000, category: 'Ăn vặt', img: ComChien, quantity: 0 }
         ],*/
-       /* topfoods: [
-          {
-            id: 1,
-            name: "Cơm chiên dương châu",
-            price: 40000,
-            img: ComChien,
-          },
-          { id: 2, name: "Cơm sườn", price: 30000, img: ComChien, quantity: 0 },
-          { id: 3, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0 },
-          { id: 4, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
-          { id: 5, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
-          { id: 6, name: "Cơm chiên dương châu", price: 40000, img: ComChien, quantity: 0 },
-          { id: 7, name: "Cơm sườn", price: 30000, img: ComChien, quantity: 0 },
-          { id: 8, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0 },
-          { id: 9, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
-          { id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
-        ],*/
+        /* topfoods: [
+           {
+             id: 1,
+             name: "Cơm chiên dương châu",
+             price: 40000,
+             img: ComChien,
+           },
+           { id: 2, name: "Cơm sườn", price: 30000, img: ComChien, quantity: 0 },
+           { id: 3, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0 },
+           { id: 4, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
+           { id: 5, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
+           { id: 6, name: "Cơm chiên dương châu", price: 40000, img: ComChien, quantity: 0 },
+           { id: 7, name: "Cơm sườn", price: 30000, img: ComChien, quantity: 0 },
+           { id: 8, name: "Mì ý sốt bò", price: 50000, img: ComChien, quantity: 0 },
+           { id: 9, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
+           { id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
+         ],*/
         promotionfoods: [
           { id: 1, img: poster },
           //   { id: 2, img: promo },
@@ -243,14 +243,29 @@ class ContextProvider extends Component {
 
   setModalEmployeeOpen = (flag) => this.setState({ modalEmployeeOpen: flag })
 
-  setSelectedEmployee = (employee) => this.setState({ selectedEmployee: employee })
+  setEmployeeID = (id) => this.setState({ employeeID: id })
+
+  setEmployeeName = (name) => this.setState({ employeeName: name })
+
+  setEmployeePhoneNumber = (phoneNumber) => this.setState({ employeePhoneNumber: phoneNumber })
+
+  setEmployeeShifts = (shifts) => this.setState({ employeeShifts: shifts })
+
+  expandEmployeeModal = (employee) => {
+    this.setEmployeeID(employee.id);
+    this.setEmployeeName(employee.name);
+    this.setEmployeePhoneNumber(employee.phone_number);
+    this.setEmployeeShifts(employee.shifts.join(' '));
+    this.setModalEmployeeOpen(true);
+  }
+
   render() {
     return (
       <>
         <ContextList.Provider
           value={{
             ...this.state,
-            setEmployee:this.setEmployee,
+            setEmployee: this.setEmployee,
             openModal: this.openModal,
             SetUser: this.SetUser,
             addCart: this.addCart,
@@ -263,12 +278,12 @@ class ContextProvider extends Component {
             logOut: this.logOut,
             setPayment: this.setPayment,
             setModalEmployeeOpen: this.setModalEmployeeOpen,
-            setSelectedEmployee: this.setSelectedEmployee,
             expandProductModal: (data) => {
               this.setProductModalOpen(true);
               this.setSelectedData(data);
               this.setQuantity(1);
             },
+            expandEmployeeModal: this.expandEmployeeModal,
           }}
         >
           {this.props.children}
@@ -293,9 +308,14 @@ class ContextProvider extends Component {
         <ModalEmployee
           modalEmployeeOpen={this.state.modalEmployeeOpen}
           setModalEmployeeOpen={this.setModalEmployeeOpen}
-          selectedEmployee={this.state.selectedEmployee}
-          setSelectedEmployee={this.setSelectedEmployee}
-          setEmployee={ this.setEmployee}/>
+          employeeID={this.state.employeeID}
+          employeeName={this.state.employeeName}
+          setEmployeeName={this.setEmployeeName}
+          employeePhoneNumber={this.state.employeePhoneNumber}
+          setEmployeePhoneNumber={this.setEmployeePhoneNumber}
+          employeeShifts={this.state.employeeShifts}
+          setEmployeeShifts={this.setEmployeeShifts}
+          setEmployee={this.setEmployee} />
         <EmployeeModalProfile
         />
       </>
