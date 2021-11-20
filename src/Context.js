@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import ComChien from "./Assets/ComChien.jpg";
 import poster from "./Assets/pro2.png";
-import MiY from "./Assets/My_Y.jpg"
 import ModalProduct from "./Components/ModalProduct";
 import ModalEmployee from "./Components/ModalEmployee";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
+import { ThemeConsumer } from "styled-components";
 
 const ContextList = React.createContext();
 const api = 'http://127.0.0.1:8000/api/';
@@ -74,7 +73,17 @@ class ContextProvider extends Component {
       alert(res)
     })
   }
-  
+  setOrders = () =>{
+    axios.get(
+      'http://127.0.0.1:8000/api/orders/'
+    ).then(res=>{
+      this.setState(()=>{
+        return {oList: [...res.data]}
+      })
+    }).catch(res=>{
+      alert(res)
+    })
+  }
   //Lay du lieu trong set
   setProduct = () => {
     console.log('start')
@@ -264,6 +273,7 @@ class ContextProvider extends Component {
             setPayment: this.setPayment,
             setModalEmployeeOpen: this.setModalEmployeeOpen,
             setSelectedEmployee: this.setSelectedEmployee,
+            setOrders:this.setOrders,
             expandProductModal: (data) => {
               this.setProductModalOpen(true);
               this.setSelectedData(data);
@@ -289,13 +299,15 @@ class ContextProvider extends Component {
           quantity={this.state.quantity}
           setQuantity={this.setQuantity}
           setPayment={this.setPayment}
+          
         />
         <ModalEmployee
           modalEmployeeOpen={this.state.modalEmployeeOpen}
           setModalEmployeeOpen={this.setModalEmployeeOpen}
           selectedEmployee={this.state.selectedEmployee}
           setSelectedEmployee={this.setSelectedEmployee}
-          setEmployee={ this.setEmployee}/>
+          setEmployee={ this.setEmployee}
+        />
         <EmployeeModalProfile
         />
       </>

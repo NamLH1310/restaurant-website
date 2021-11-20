@@ -17,7 +17,7 @@ function FoodMenu(props) {
   }
   if (props.category !== "Tất cả") {
     foodList = foodList.filter((food) => {
-      return cate[food.category[0]].name===props.category
+      return cate[food.category[0]-1].name===props.category
     });
   }
   //console.log("re-render");

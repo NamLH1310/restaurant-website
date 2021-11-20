@@ -15,7 +15,7 @@ function FoodDisplay(props) {
       <div>
         <img
           src={props.value.img}
-          alt="com chien"
+          alt="food"
           className="h-24 w-2/4 mt-2 mx-auto food-img"
           onClick={() => expandProductModal(props.value)}
         />

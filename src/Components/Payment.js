@@ -25,9 +25,6 @@ export default function Payment(props) {
             if (!isSubmit) {
                 setisSubmit(true)
                 setValidInput(true)
-                console.log(name)
-                console.log(address)
-                console.log(phoneNumber)
             }
             else {
                 setValidInput(false)
@@ -40,6 +37,7 @@ export default function Payment(props) {
                 NotificationManager.warning('Vui lòng điền đầy đủ thông tin', 'Thanh toán', 1500)
         }
     }
+    
     return (
 
         <div className="container w-8/12 md:mx-auto mx-20 flex flex-col justify-center items-center lg:grid lg:grid-cols-2 mt-10 py-9 rounded-3xl border-2 border-opacity-75 border-gray-400 bg-white">
@@ -75,7 +73,7 @@ export default function Payment(props) {
                 </div>
                 <div className="pt-7">
                     {validInput ?
-                        <Paypal invoice={invoice}></Paypal>
+                        <Paypal invoice={invoice} setOrders={props.setOrders} name={name} cost={totalPrice} phoneNumber={phoneNumber}></Paypal>
                         : null}
                 </div>
             </form>
