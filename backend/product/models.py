@@ -14,6 +14,7 @@ class Product(models.Model):
     quantity = models.IntegerField(default=0)
     img = models.CharField(max_length=100)
     category = models.ManyToManyField(Category, blank=True)
+    description = models.CharField(max_length=255, default='')
     is_top = models.BooleanField(default=False)
     
     def __str__(self) -> str:
@@ -27,8 +28,8 @@ class Shift(models.Model):
 
 class Employee(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=10)
+    name = models.CharField(max_length=100, blank=True)
+    phone_number = models.CharField(max_length=10, blank=True)
     shifts = models.ManyToManyField(Shift, blank=True)
     
     def __str__(self):
@@ -39,7 +40,7 @@ class Order(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     cost = models.IntegerField(default=0)
-    time = models.DateTimeField()
+    time = models.DateTimeField(auto_now=True)
     phone_number = models.CharField(max_length=10)
     
     def __str__(self):

@@ -25,7 +25,7 @@ function App() {
     setSearchTerm(searchTerm);
   };
   let history = useHistory();
-  const {payment,setPayment} = useContext(ContextList);
+  const {payment,setPayment,setOrders} = useContext(ContextList);
   if (payment) {
     history.push('/payment')
     setPayment(false)
@@ -74,7 +74,8 @@ function App() {
         <Route exact path="/payment"
           render={(props) => <Payment{...props}
             showSearchBar={(isShow) => { setSearchBar(isShow) }}
-            showDropDown={(isShow) => { setDropDown(isShow) }} />} />
+            showDropDown={(isShow) => { setDropDown(isShow) }}
+            setOrders={()=>{setOrders()}} />} />
         <Route path='/default' component={Default}></Route>
       </Switch>
       <NotificationContainer />

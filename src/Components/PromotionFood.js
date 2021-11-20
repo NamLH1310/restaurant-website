@@ -9,15 +9,14 @@ function PromotionFood() {
     foodList = []
   return (
           <React.Fragment>
-            <div className="player-wrapper bg-black py-3">
+            <div className="player-wrapper bg-black ">
               {/* <img
                 src={food.img}
                 alt="com chien"
                 className="h-[500px] w-full "
               /> */}
-              lkhlkhlkjl
               <ReactPlayer
-                className="mx-auto react-player"
+                className="mx-auto react-player py-3"
                 playing={true}
                 muted={true}
                 loop={true}

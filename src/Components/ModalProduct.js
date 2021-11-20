@@ -1,8 +1,8 @@
-import Modal from "react-modal";
-import React, { useEffect } from "react";
-import IncDecInput from "./IncDecInput";
-import { NotificationManager } from "react-notifications";
-import "react-notifications/lib/notifications.css";
+import Modal from 'react-modal';
+import React, { useEffect } from 'react';
+import IncDecInput from './IncDecInput';
+import { NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const fixedDecimal = (num, fixed = 2) =>
   Math.round(num * Math.pow(10, fixed)) / Math.pow(10, fixed);
@@ -58,8 +58,8 @@ function ModalProduct({
         cartItems.map((item) =>
           item.id === selectedData.id
             ? Object.assign({}, item, {
-                quantity: item.quantity + (quantity ? quantity : 1),
-              })
+              quantity: item.quantity + (quantity ? quantity : 1),
+            })
             : item
         )
       );
@@ -132,8 +132,7 @@ function ModalProduct({
                 />
               </div>
               <div className="py-3 h-auto bg-gray-100 text-center w-11/12 mb-10 mt-2 rounded-md">
-                Acerbic is anything sour, bitter or sharp - cutting, caustic,
-                acid, mordant, barbed, prickly, biting
+                {selectedData.description}
               </div>
               <div className="flex mx-auto justify-center my-4">
                 <button
@@ -216,6 +215,7 @@ function ModalProduct({
                     onChange={() => toggleChecked(index)}
                     checked={checkedItems[index]}
                   />
+                  
                 </div>
               </div>
             ))}
@@ -245,7 +245,7 @@ function ModalProduct({
             </button>
             <button
               className="btn bg-blue-500 hover:bg-blue-800"
-              onClick={()=>setCartModalOpen(false)}
+              onClick={() => setCartModalOpen(false)}
             >
               Tiếp tục mua sắm
             </button>

@@ -1,43 +1,55 @@
 import Modal from 'react-modal'
-import { useState,useContext } from 'react';
+// import { useState, useContext } from 'react';
 import axios from 'axios';
 
 
-export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen, selectedEmployee, setSelectedEmployee,setEmployee }) {
-
+export default function ModalEmployee({
+    modalEmployeeOpen,
+    setModalEmployeeOpen,
+    setEmployee,
+    employeeID,
+    employeeName,
+    setEmployeeName,
+    employeePhoneNumber,
+    setEmployeePhoneNumber,
+    employeeShifts,
+    setEmployeeShifts,
+}) {
     function closeModal() {
         setModalEmployeeOpen(false);
     }
-    const [editName, setEditName] = useState('');
-    const [editShift, setEditShift] = useState('');
-    const [editPhoneNumber, setEditPhoneNumber] = useState('');
-    function handleInput(){
-        const newEmployee ={
-            // id: selectedEmployee.id,
-            name: editName,
-            phone_number: editPhoneNumber,
-            shifts: [1,2]
-            // shifts: editShift.split(' ').map(Number)
-        }
+    // const [editName, setEditName] = useState(selectedEmployee.name);
+    // const [editShift, setEditShift] = useState(selectedEmployee.shifts.join(' '));
+    // const [editPhoneNumber, setEditPhoneNumber] = useState(selectedEmployee.phone_number);
+    function handleInput() {
+        // const editedEmployeeData = {
+        //     id: selectedEmployee.id,
+        //     name: editName,
+        //     phone_number: editPhoneNumber,
+        //     shifts: editShift.split(' ').map(Number)
+        // }
+        // console.log(editedEmployeeData);
         axios
-          .delete("http://127.0.0.1:8000/api/employees/", {
-            // name: editName ,
-            // phone_number: editPhoneNumber ,
-            // shifts: editShift
-            id: 13
-          })
-          .then((res) => {
-            console.log(res.data, "emp");
-            setEmployee();
-          })
-          .catch((res) => {
-            alert(res);
-          });
+            .put(
+                `http://127.0.0.1:8000/api/employees/${employeeID}/`, {
+                    id: employeeID,
+                    name: employeeName,
+                    phone_number: employeePhoneNumber,
+                    shifts: employeeShifts.split(' ').map(Number)
+                }
+                )
+            .then(res => {
+                console.log(res.data)
+                setEmployee('');
+            }).catch(err => {
+                alert(err.respone)
+            })
+        closeModal();
     }
     console.log(typeof editName);
     return (
         <>
-            {selectedEmployee ?
+            {
                 (<Modal
                     isOpen={modalEmployeeOpen}
                     onRequestClose={closeModal}
@@ -49,26 +61,26 @@ export default function ModalEmployee({ modalEmployeeOpen, setModalEmployeeOpen,
                         Thông tin nhân viên
                     </h5>
                     <div className="pl-10 text-lg font-semibold space-y-3 pt-3">
-                        <div className="relative "><i className="fa fa-id-card" /> Mã nhân viên: {selectedEmployee.id}</div>
-                        <div clasName="inline-block">
+                        <div className="relative "><i className="fa fa-id-card" /> Mã nhân viên: {employeeID}</div>
+                        <div className="inline-block">
                             <i className="fa fa-signature" />Tên nhân viên:
-                            <input type="text" className="font-semibold text-lg" onChange={(e) => { setEditName(e.target.value) }} defaultValue={selectedEmployee.name} />
+                            <input type="text" className="font-semibold text-lg" onChange={(e) => {setEmployeeName(e.target.value)}} defaultValue={employeeName} />
                         </div>
                         <div>
                             <i className="fa fa-clock" /> Ca làm việc:
-                            <input type="text" className="font-semibold text-lg" onChange={(e) => { setEditShift(e.target.value) }} defaultValue={selectedEmployee.shift} />
+                            <input type="text" className="font-semibold text-lg" onChange={(e) => {setEmployeeShifts(e.target.value)}} defaultValue={employeeShifts} />
                         </div>
                         <div>
                             <i className="fa fa-phone" /> Số điện thoại:
-                            <input type="number" className="font-semibold text-lg" onChange={(e) => { setEditPhoneNumber(e.target.value) }} defaultValue={selectedEmployee.pNumber} />
+                            <input type="text" className="font-semibold text-lg" onChange={(e) => {setEmployeePhoneNumber(e.target.value)}} defaultValue={employeePhoneNumber} />
                         </div>
                     </div>
                     <div className="text-center pt-6">
-                        <button onClick={()=>{handleInput()}}className="btn bg-primarycolor hover:bg-primarybold font-bold">Xác nhận</button>
-                        <button onClick={() => { closeModal(); setSelectedEmployee(null); setEditName(''); setEditPhoneNumber(''); setEditShift('') }} className="btn  bg-red-500 hover:bg-red-800 font-bold" >Hủy</button>
+                        <button onClick={() => { handleInput() }} className="btn bg-primarycolor hover:bg-primarybold font-bold">Xác nhận</button>
+                        <button onClick={() => { closeModal() }} className="btn  bg-red-500 hover:bg-red-800 font-bold" >Hủy</button>
                     </div>
                 </Modal>)
-                : null}
+                }
         </>
     )
 }
