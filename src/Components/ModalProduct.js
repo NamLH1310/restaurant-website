@@ -82,10 +82,7 @@ function ModalProduct({
       checkedItems.map((item, i) => (i === index ? !item : item))
     );
   }
-  function checkAll() {
-    // setCheckedItems(
-    //   checkedItems.map((item) => (checked ? false : true))
-  }
+
   console.log(cartItems, "item");
   console.log(checkedItems);
   return (
@@ -98,7 +95,7 @@ function ModalProduct({
         overlayClassName="overlay"
       >
         {selectedData && (
-          <div className="scroll-component">
+          <div className="">
             <div>
               <h5 className="p-1 bg-[#83c75d] w-full mx-auto  text-center rounded-3xl">
                 Chi tiết món ăn
@@ -133,7 +130,7 @@ function ModalProduct({
               <div className="py-3 h-auto bg-gray-100 text-center w-11/12 mb-10 mt-2 rounded-md">
                 {selectedData.description}
               </div>
-              <div className="flex mx-auto justify-center my-4">
+              <div className="flex mx-auto justify-center my-4 bottom-0 absolute">
                 <button
                   className="btn  bg-red-500 hover:bg-red-800"
                   onClick={closeModal}
@@ -296,7 +293,7 @@ function ModalProduct({
           </h2>
           <div className="flex justify-center my-4">
             <button
-              className="btn bg-[#83c75d] hover:bg-primarybold"
+              className="btn bg-[#83c75d] hover:bg-primarybold bottom-0 absolute"
               onClick={() => setOrderModalOpen(false)}
             >
               Xác nhận

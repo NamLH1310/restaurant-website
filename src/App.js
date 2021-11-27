@@ -13,7 +13,6 @@ import { ContextList } from "./Context";
 import Footer from "./Components/Footer";
 import Default from "./Components/Default";
 
-
 function App() {
   const [currentCategory, setCurrentCategory] = useState("");
   const [foodSwitch, setFoodSwitch] = useState(1);

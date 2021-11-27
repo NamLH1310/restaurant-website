@@ -64,6 +64,10 @@ code {
     @apply absolute top-[20%] left-[38%] right-[40%] bottom-[32%] bg-white;
     animation: showModalAnimation 0.4s;
   }
+  .modal-addfood{
+    @apply absolute top-[25%] left-[36%] right-[36%] bottom-[25%] bg-white;
+    animation: showModalAnimation 0.4s;
+  }
   .overlay {
     @apply fixed inset-0;
     background-color: rgba(0, 0, 0, 0.5);

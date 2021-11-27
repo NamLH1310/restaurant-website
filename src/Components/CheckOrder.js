@@ -53,7 +53,7 @@ function CheckOrder(props) {
               Số điện thoại
             </th>
             <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Chỉnh sửa
+              Xem đơn
             </th>
           </tr>
         </thead>
