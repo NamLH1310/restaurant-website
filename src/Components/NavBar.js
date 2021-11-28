@@ -8,7 +8,7 @@ import { NotificationManager } from 'react-notifications';
 
 export default function NavigationBar(props) {
 
-  const { cartItems, User, totalPrice, setCartModalOpen,logOut } =useContext(ContextList);
+  const { cartItems, User, totalPrice, setCartModalOpen, logOut, setModalAddFoodOpen } = useContext(ContextList);
 
   const inputEl = useRef("");
   function getSearchTerm() {
@@ -36,7 +36,7 @@ export default function NavigationBar(props) {
                 logOut();
               }}
             >
-              {User === "" ? "TRANG CHỦ" : "ĐĂNG XUẤT"}
+              {(User === '') ? 'TRANG CHỦ' : 'ĐĂNG XUẤT'}
             </Link>
             {/* <Link to="/" className="hidden md:inline border-b-2 hover:border-black duration-1000">KHUYẾN MÃI</Link> */}
             {/* // const total = useContext(ContextList).totalPrice
@@ -115,30 +115,20 @@ export default function NavigationBar(props) {
             )
           ) : null}
         </div>
-        <div className="flex-shrink h-24 pr-8 pt-10">
-          <button
-            className={`${User === "" ? "block" : "none"} cart-btn`}
-            onClick={() => {
-              cartItems.length > 0
-                ? setCartModalOpen(true)
-                : NotificationManager.info(
-                    "Vui lòng thêm một vài món ăn",
-                    "Giỏ hàng",
-                    "2000"
-                  );
-            }}
-          >
-            <i className="fas fa-shopping-cart text-xs px-2" />
-            <div className="hidden sm:inline">
-              {cartItems.length} món:
-              <span className="px-2">
-                {totalPrice.toLocaleString("it-IT", {
-                  style: "currency",
-                  currency: "VND",
-                })}
-              </span>
-            </div>
-          </button>
+        <div className="flex-shrink h-28 pr-8 pt-10">
+          {User === 'Employer' ?
+            (<div className="hidden sm:inline cart-btn">
+              <button onClick={()=>{setModalAddFoodOpen(true)}}  className="text-base">Thêm món</button>
+            </div>) :
+            (<button
+              className={`${User === '' ? 'block' : 'none'} cart-btn`}
+              onClick={() => { cartItems.length > 0 ? setCartModalOpen(true) : NotificationManager.info('Vui lòng thêm một vài món ăn', 'Giỏ hàng', '2000') }}
+            >
+              <i className="fas fa-shopping-cart text-xs px-2" />
+              <div className="hidden sm:inline">
+                {cartItems.length} món:<span className="px-2">{totalPrice.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
+              </div>
+            </button>)}
         </div>
       </div>
       <div className="w-full h-1 bg-gray-600"></div>

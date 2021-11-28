@@ -14,7 +14,6 @@ import Footer from "./Components/Footer";
 import Default from "./Components/Default";
 import Introduce from "./Components/Introduce";
 
-
 function App() {
   const [currentCategory, setCurrentCategory] = useState("");
   const [foodSwitch, setFoodSwitch] = useState(1);

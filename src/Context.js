@@ -3,7 +3,7 @@ import ModalProduct from "./Components/ModalProduct";
 import ModalEmployee from "./Components/ModalEmployee";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
-import { ThemeConsumer } from "styled-components";
+import AddFood from "./Components/AddFood";
 
 const ContextList = React.createContext();
 const api = 'http://127.0.0.1:8000/api';
@@ -34,6 +34,7 @@ class ContextProvider extends Component {
     employeeName: '',
     employeeShifts: '',
     employeePhoneNumber: '',
+    modalAddFoodOpen: false,
   };
 
   SetUser = (Name, Pass) => {
@@ -66,14 +67,14 @@ class ContextProvider extends Component {
   };
 
   setProducts = () => {
-    axios.get("http://127.0.0.1:8000/api/products/").then((response) => {
-      this.foods = response.data;
-      console.log(response.data, "api");
-      console.log(this.foods, "food");
-    });
-    // this.foods.map(()=>this,this.foods.img="../public/Assets/ComChien.jpg")
-    this.setState(()=>{
-      return this.foods
+    axios.get(
+      `${api}/products/`
+    ).then(res => {
+      this.setState(() => {
+        return { foods: [...res.data] }
+      })
+    }).catch(res => {
+      alert(res)
     })
   };
 
@@ -281,6 +282,8 @@ class ContextProvider extends Component {
 
   setEmployeeShifts = (shifts) => this.setState({ employeeShifts: shifts })
 
+
+  setModalAddFoodOpen = (flag) => this.setState({ modalAddFoodOpen: flag })
   expandEmployeeModal = (employee) => {
     this.setEmployeeID(employee.id);
     this.setEmployeeName(employee.name);
@@ -317,6 +320,7 @@ class ContextProvider extends Component {
               this.setQuantity(1);
             },
             expandEmployeeModal: this.expandEmployeeModal,
+            setModalAddFoodOpen: this.setModalAddFoodOpen
           }}
         >
           {this.props.children}
@@ -341,7 +345,7 @@ class ContextProvider extends Component {
           quantity={this.state.quantity}
           setQuantity={this.setQuantity}
           setPayment={this.setPayment}
-          
+
         />
         <ModalEmployee
           modalEmployeeOpen={this.state.modalEmployeeOpen}
@@ -354,6 +358,12 @@ class ContextProvider extends Component {
           employeeShifts={this.state.employeeShifts}
           setEmployeeShifts={this.setEmployeeShifts}
           setEmployee={this.setEmployee} />
+        <AddFood
+          modalAddFoodOpen={this.state.modalAddFoodOpen}
+          setModalAddFoodOpen={this.setModalAddFoodOpen}
+          categories = {this.state.categories}
+          setProducts = {this.setProducts}
+        />
         <EmployeeModalProfile
         />
       </>
