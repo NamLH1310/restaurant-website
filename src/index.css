@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --primary1: #ff6633;
   --primary2: #83c75d;
@@ -11,7 +12,8 @@
   --background-primary: #ffffff;
   --background-secondary: #ececec;
 }
-
+@import "../node_modules/slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
 body {
   margin: 0;
