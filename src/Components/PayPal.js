@@ -33,7 +33,7 @@ function Paypal(props) {
             {
               name: props.name,
               cost: props.cost,
-              time: toDateTimeField(new Date()),
+              // time: toDateTimeField(new Date()),
               phone_number: props.phoneNumber
             }
           ).then(res => {

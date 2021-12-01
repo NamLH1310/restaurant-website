@@ -5,6 +5,7 @@ import Paypal from './PayPal';
 import React, { useContext, useState } from 'react';
 import { ContextList } from '../Context';
 import { NotificationManager } from 'react-notifications';
+import axios from 'axios';
 
 
 export default function Payment(props) {
@@ -27,6 +28,11 @@ export default function Payment(props) {
                 setValidInput(true)
             }
             else {
+                axios.post('http://127.0.0.1:8000/api/orders/', {
+                    name: name,
+                    phone_number: phoneNumber,
+                    cost: totalPrice,
+                })
                 setValidInput(false)
                 setisSubmit(false)
             }
