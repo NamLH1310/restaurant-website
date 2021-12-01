@@ -35,14 +35,14 @@ export default function Payment(props) {
                 setValidInput(true)
             }
             else {
-                axios.post('http://127.0.0.1:8000/api/orders/', {
-                    name: name,
-                    phone_number: phoneNumber,
-                    cost: totalPrice,
-                })
                 setValidInput(false)
                 setisSubmit(false)
             }
+            axios.post('http://127.0.0.1:8000/api/orders/', {
+                name: name,
+                phone_number: phoneNumber,
+                cost: totalPrice,
+            })
         }
         else {
             setValidInput(false)
