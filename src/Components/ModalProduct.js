@@ -3,7 +3,9 @@ import React, { useEffect } from 'react';
 import IncDecInput from './IncDecInput';
 import { NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-
+import { useState,useContext } from 'react';
+import axios from 'axios';
+import { ContextList } from '../Context';
 const fixedDecimal = (num, fixed = 2) =>
   Math.round(num * Math.pow(10, fixed)) / Math.pow(10, fixed);
 
@@ -46,8 +48,25 @@ function ModalProduct({
     },
     [cartItems, checkedItems]
   );
-
   function closeModal() {
+    axios
+            .put(
+                `http://127.0.0.1:8000/api/products/${selectedData.id}/`, {
+                    id: selectedData.id,
+                    name: newName,
+                    price:selectedData.price,
+                    quantity:0,
+                    img: newImage,
+                    description: newDescription,
+                    is_top: selectedData.is_top,
+                    category: selectedData.category
+                }
+                )
+            .then(res => {
+                console.log(res.data)
+            }).catch(err => {
+                alert(err.respone)
+            })
     setSelectedData(null);
     setProductModalOpen(false);
   }
@@ -84,6 +103,9 @@ function ModalProduct({
   }
   console.log(cartItems, "item");
   console.log(checkedItems);
+  const [newImage, setNewImage] = useState('')
+  const [newDescription,setNewDescription] = useState('')
+  const [newName,setNewName] = useState('')
   return (
     <>
       <Modal
@@ -142,6 +164,11 @@ function ModalProduct({
                 >
                   Thêm vào giỏ hàng
                 </button>
+              </div>
+              <div className="z-10" >
+              <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setNewImage(e.target.value)}} defaultValue={selectedData.img} />
+              <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setNewDescription(e.target.value)}} defaultValue={selectedData.description} />
+              <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setNewName(e.target.value)}} defaultValue={selectedData.name} />
               </div>
             </div>
           </div>
