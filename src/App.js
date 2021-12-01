@@ -10,8 +10,9 @@ import CheckOrder from './Components/CheckOrder';
 import Payment from './Components/Payment';
 import NotificationContainer from 'react-notifications/lib/NotificationContainer';
 import { ContextList } from "./Context";
+import Footer from "./Components/Footer";
 import Default from "./Components/Default";
-
+import Introduce from "./Components/Introduce";
 
 function App() {
   const [currentCategory, setCurrentCategory] = useState("");
@@ -46,39 +47,116 @@ function App() {
         setCurrentPage={(page) => setCurrentPage(page)}
       />
       <Switch>
-        <Route exact path="/"
-          render={(props) => <HomeScreen{...props}
-            searchTerm={searchTerm.length < 1 ? "" : searchTerm}
-            currentCategory={currentCategory}
-            foodSwitch={foodSwitch}
-            showSearchBar={(isShow) => { setSearchBar(isShow) }}
-            showDropDown={(isShow) => { setDropDown(isShow) }}
-            currentPage={currentPage}
-            setCurrentPage={(page) => setCurrentPage(page)}
-          />} />
-        <Route exact path="/employer"
-          render={(props) => <Employer{...props}
-            searchTerm={searchTerm.length < 1 ? "" : searchTerm}
-            showSearchBar={(isShow) => { setSearchBar(isShow) }}
-            showDropDown={(isShow) => { setDropDown(isShow) }} />} />
-        <Route exact path="/check"
-          render={(props) => <CheckOrder{...props}
-            searchTerm={searchTerm.length < 1 ? "" : searchTerm}
-            showSearchBar={(isShow) => { setSearchBar(isShow) }}
-            showDropDown={(isShow) => { setDropDown(isShow) }} />} />
-        <Route exact path="/sign-in"
-          render={(props) => <LoginForm{...props}
-            showSearchBar={(isShow) => { setSearchBar(isShow) }}
-            showDropDown={(isShow) => { setDropDown(isShow) }} />} />
-        <Route exact path="/payment"
-          render={(props) => <Payment{...props}
-            showSearchBar={(isShow) => { setSearchBar(isShow) }}
-            showDropDown={(isShow) => { setDropDown(isShow) }}
-            setOrders={()=>{setOrders()}} />} />
-        <Route path='/default' component={Default}></Route>
+        <Route
+          exact
+          path="/"
+          render={(props) => (
+            <HomeScreen
+              {...props}
+              searchTerm={searchTerm.length < 1 ? "" : searchTerm}
+              currentCategory={currentCategory}
+              foodSwitch={foodSwitch}
+              showSearchBar={(isShow) => {
+                setSearchBar(isShow);
+              }}
+              showDropDown={(isShow) => {
+                setDropDown(isShow);
+              }}
+              currentPage={currentPage}
+              setCurrentPage={(page) => setCurrentPage(page)}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/employer"
+          render={(props) => (
+            <Employer
+              {...props}
+              searchTerm={searchTerm.length < 1 ? "" : searchTerm}
+              showSearchBar={(isShow) => {
+                setSearchBar(isShow);
+              }}
+              showDropDown={(isShow) => {
+                setDropDown(isShow);
+              }}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/check"
+          render={(props) => (
+            <CheckOrder
+              {...props}
+              searchTerm={searchTerm.length < 1 ? "" : searchTerm}
+              showSearchBar={(isShow) => {
+                setSearchBar(isShow);
+              }}
+              showDropDown={(isShow) => {
+                setDropDown(isShow);
+              }}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/sign-in"
+          render={(props) => (
+            <LoginForm
+              {...props}
+              showSearchBar={(isShow) => {
+                setSearchBar(isShow);
+              }}
+              showDropDown={(isShow) => {
+                setDropDown(isShow);
+              }}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/payment"
+          render={(props) => (
+            <Payment
+              {...props}
+              showSearchBar={(isShow) => {
+                setSearchBar(isShow);
+              }}
+              showDropDown={(isShow) => {
+                setDropDown(isShow);
+              }}
+              setOrders={() => {
+                setOrders();
+              }}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/payment"
+          render={(props) => (
+            <Payment
+              {...props}
+              showSearchBar={(isShow) => {
+                setSearchBar(isShow);
+              }}
+              showDropDown={(isShow) => {
+                setDropDown(isShow);
+              }}
+              setOrders={() => {
+                setOrders();
+              }}
+            />
+          )}
+        />
+        <Route path="/Introduce" component={Introduce}></Route>
+        <Route path="/default" component={Default}></Route>
       </Switch>
       <NotificationContainer />
+      <Footer />
     </div>
   );
+
 }
 export default App;

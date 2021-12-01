@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import poster from "./Assets/pro2.png";
 import ModalProduct from "./Components/ModalProduct";
 import ModalEmployee from "./Components/ModalEmployee";
 import EmployeeModalProfile from "./Components/EmployeeModalProfile";
 import axios from "axios";
-import { ThemeConsumer } from "styled-components";
+import AddFood from "./Components/AddFood";
 
 const ContextList = React.createContext();
 const api = 'http://127.0.0.1:8000/api';
@@ -23,9 +22,11 @@ class ContextProvider extends Component {
     productModalOpen: false,
     selectedData: null,
     cartModalOpen: false,
+    orderModalOpen: false,
     totalPrice: 0,
     cartItems: [],
     checkedItems: [],
+    checkAll: false,
     quantity: 1,
     payment: false,
     modalEmployeeOpen: false,
@@ -33,6 +34,7 @@ class ContextProvider extends Component {
     employeeName: '',
     employeeShifts: '',
     employeePhoneNumber: '',
+    modalAddFoodOpen: false,
   };
 
   SetUser = (Name, Pass) => {
@@ -60,9 +62,21 @@ class ContextProvider extends Component {
 
   logOut = () => {
     this.setState(() => {
-      return { User: '' }
+      return { User: "" };
+    });
+  };
+
+  setProducts = () => {
+    axios.get(
+      `${api}/products/`
+    ).then(res => {
+      this.setState(() => {
+        return { foods: [...res.data] }
+      })
+    }).catch(res => {
+      alert(res)
     })
-  }
+  };
 
   setEmployee = () => {
     axios.get(
@@ -70,6 +84,17 @@ class ContextProvider extends Component {
     ).then(res => {
       this.setState(() => {
         return { eList: [...res.data] }
+      })
+    }).catch(res => {
+      alert(res)
+    })
+  }
+  setOrders = () => {
+    axios.get(
+      `${api}/orders/`
+    ).then(res => {
+      this.setState(() => {
+        return { oList: [...res.data] }
       })
     }).catch(res => {
       alert(res)
@@ -203,10 +228,10 @@ class ContextProvider extends Component {
            { id: 9, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
            { id: 10, name: "com chien hai san", price: 50000, img: ComChien, quantity: 0 },
          ],*/
-        promotionfoods: [
-          { id: 1, img: poster },
-          //   { id: 2, img: promo },
-        ],
+        // promotionfoods: [
+        //   { id: 1, img: poster },
+        //   //   { id: 2, img: promo },
+        // ],
         /*categories: [
           { id: 1, name: "Cơm", icon: "mx-2 fas fa-concierge-bell" },
           { id: 2, name: "Bún & Mì", icon: "mx-2 fas fa-bacon" },
@@ -225,21 +250,27 @@ class ContextProvider extends Component {
     this.setProduct();
   };
 
-  setProductModalOpen = (flag) => this.setState({ productModalOpen: flag })
+  setProductModalOpen = (flag) => this.setState({ productModalOpen: flag });
 
-  setSelectedData = (data) => this.setState({ selectedData: data })
+  setSelectedData = (data) => this.setState({ selectedData: data });
 
-  setCartModalOpen = (flag) => { this.setState({ cartModalOpen: flag }) }
+  setCartModalOpen = (flag) => {
+    this.setState({ cartModalOpen: flag });
+  };
 
-  setTotalPrice = (price) => this.setState({ totalPrice: price })
+  setOrderModalOpen = (flag) => this.setState({ orderModalOpen: flag });
 
-  setCartItems = (items) => this.setState({ cartItems: items })
+  setCheckAll = (flag) => this.setState({ checkAll: flag });
 
-  setCheckedItems = (items) => this.setState({ checkedItems: items })
+  setTotalPrice = (price) => this.setState({ totalPrice: price });
 
-  setQuantity = (quantity) => this.setState({ quantity: quantity })
+  setCartItems = (items) => this.setState({ cartItems: items });
 
-  setPayment = (flag) => this.setState({ payment: flag })
+  setCheckedItems = (items) => this.setState({ checkedItems: items });
+
+  setQuantity = (quantity) => this.setState({ quantity: quantity });
+
+  setPayment = (flag) => this.setState({ payment: flag });
 
   setModalEmployeeOpen = (flag) => this.setState({ modalEmployeeOpen: flag })
 
@@ -251,6 +282,8 @@ class ContextProvider extends Component {
 
   setEmployeeShifts = (shifts) => this.setState({ employeeShifts: shifts })
 
+
+  setModalAddFoodOpen = (flag) => this.setState({ modalAddFoodOpen: flag })
   expandEmployeeModal = (employee) => {
     this.setEmployeeID(employee.id);
     this.setEmployeeName(employee.name);
@@ -272,11 +305,14 @@ class ContextProvider extends Component {
             setProductModalOpen: this.setProductModalOpen,
             setSelectedData: this.setSelectedData,
             setCartModalOpen: this.setCartModalOpen,
+            setOrderModalOpen: this.setOrderModalOpen,
+            setCheckAll: this.setCheckAll,
             setCartItems: this.setCartItems,
             setCheckedItems: this.setCheckedItems,
             setQuantity: this.setQuantity,
             logOut: this.logOut,
             setPayment: this.setPayment,
+            setOrders: this.setOrders,
             setModalEmployeeOpen: this.setModalEmployeeOpen,
             expandProductModal: (data) => {
               this.setProductModalOpen(true);
@@ -284,6 +320,7 @@ class ContextProvider extends Component {
               this.setQuantity(1);
             },
             expandEmployeeModal: this.expandEmployeeModal,
+            setModalAddFoodOpen: this.setModalAddFoodOpen
           }}
         >
           {this.props.children}
@@ -295,6 +332,10 @@ class ContextProvider extends Component {
           setSelectedData={this.setSelectedData}
           cartModalOpen={this.state.cartModalOpen}
           setCartModalOpen={this.setCartModalOpen}
+          orderModalOpen={this.state.orderModalOpen}
+          setOrderModalOpen={this.setOrderModalOpen}
+          checkAll={this.checkAll}
+          setCheckAll={this.setCheckAll}
           totalPrice={this.state.totalPrice}
           setTotalPrice={this.setTotalPrice}
           cartItems={this.state.cartItems}
@@ -304,7 +345,7 @@ class ContextProvider extends Component {
           quantity={this.state.quantity}
           setQuantity={this.setQuantity}
           setPayment={this.setPayment}
-          
+
         />
         <ModalEmployee
           modalEmployeeOpen={this.state.modalEmployeeOpen}
@@ -317,6 +358,12 @@ class ContextProvider extends Component {
           employeeShifts={this.state.employeeShifts}
           setEmployeeShifts={this.setEmployeeShifts}
           setEmployee={this.setEmployee} />
+        <AddFood
+          modalAddFoodOpen={this.state.modalAddFoodOpen}
+          setModalAddFoodOpen={this.setModalAddFoodOpen}
+          categories = {this.state.categories}
+          setProducts = {this.setProducts}
+        />
         <EmployeeModalProfile
         />
       </>

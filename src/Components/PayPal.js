@@ -3,9 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { NotificationManager } from 'react-notifications';
 import axios from 'axios';
 
-function toDateTimeField(time) {
-  return time.toLocaleDateString().split('/').reverse().join('-') + " " + time.toLocaleTimeString()
-}
+
 function Paypal(props) {
 
   const paypalRef = useRef();
@@ -33,7 +31,6 @@ function Paypal(props) {
             {
               name: props.name,
               cost: props.cost,
-              // time: toDateTimeField(new Date()),
               phone_number: props.phoneNumber
             }
           ).then(res => {
@@ -42,7 +39,8 @@ function Paypal(props) {
           }).catch(res => {
             alert(res)
           })
-          NotificationManager.success('Đơn hàng đã được thanh toán', 'Giỏ hàng', 2000)
+          NotificationManager.success('Đơn hàng đã được thanh toán', 'Giỏ hàng', 4000)
+          props.setSuccessPayment(true)
         },
         onError: err => {
           console.error(err);

@@ -1,7 +1,7 @@
 import React from "react";
 import FoodMenu from "./FoodMenu";
 import TopFoods from "./TopFood";
-import PromotionFood from "./PromotionFood";
+import PosterFood from "./PosterFood";
 import "tailwindcss/tailwind.css";
 <script
   src="https://kit.fontawesome.com/a076d05399.js"
@@ -13,8 +13,8 @@ function HomeScreen(props) {
   props.showDropDown(true);
   return (
     <div className="bg-gray-50">
-      <div className="h-96 bottom-0 w-full ">
-        {(props.foodSwitch && <PromotionFood />) || (
+      <div className="h-auto w-full ">
+        {(props.foodSwitch && <PosterFood />) || (
           <FoodMenu
             searchTerm={props.searchTerm}
             category={props.currentCategory}
@@ -23,9 +23,7 @@ function HomeScreen(props) {
           />
         )}
       </div>
-      <div className="bg-gray-100 mt-20">
         <TopFoods />
-      </div>
     </div>
   );
 }

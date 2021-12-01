@@ -28,7 +28,7 @@ function CheckOrder(props) {
 				</div>
 
 			</div> */}
-      <div className="bg-white w-full">
+      <div className="bg-white w-full pb-20">
       <div>
         <h2 className="text-center font-bold text-3xl text-gray-700 font-sans py-10 pr-20">
           Thông tin đơn hàng
@@ -37,23 +37,23 @@ function CheckOrder(props) {
       <table className="border-collapse border-[1px] border-gray-900 table-fixed w-5/6 mx-auto pt-5 mb-20">
         <thead>
           <tr>
-            <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-1/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               ID
             </th>
-            <th className="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Họ và tên
             </th>
             <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Thành tiền
             </th>
-            <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
+            <th className="w-3/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Thời gian
             </th>
             <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
               Số điện thoại
             </th>
             <th className="w-2/12 border-collapse border-[1px] border-gray-900 bg-yellow-50 h-10">
-              Chỉnh sửa
+              Xem đơn
             </th>
           </tr>
         </thead>
@@ -66,7 +66,6 @@ function CheckOrder(props) {
       </div>
     </React.Fragment>
   );
-
 }
 
-export default CheckOrder
+export default CheckOrder;

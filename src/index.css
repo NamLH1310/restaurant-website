@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --primary1: #ff6633;
   --primary2: #83c75d;
@@ -11,7 +12,8 @@
   --background-primary: #ffffff;
   --background-secondary: #ececec;
 }
-
+@import "../node_modules/slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap");
 body {
   margin: 0;
@@ -23,10 +25,23 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
+/* .player-wrapper {
+  position: relative;
+  padding-top: 0px;
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
+
 @layer components {
+
   .TopSale {
     @apply bg-primarycolor text-center text-white;
   }
@@ -39,14 +54,21 @@ code {
     @apply w-full h-full flex items-center justify-center;
   }
   .modal-product {
-    @apply absolute top-[25%] left-[30%] right-[30%] bottom-[40%] bg-white;
+    @apply absolute top-[20%] left-[30%] right-[30%] bottom-[30%] bg-white;
+    animation: showModalAnimation 0.4s;
   }
 
   .modal-cart {
     @apply absolute top-[20%] left-[30%] right-[30%] bottom-[20%] bg-white;
+    animation: showModalAnimation 0.4s;
   }
   .modal-employee{
     @apply absolute top-[20%] left-[38%] right-[40%] bottom-[32%] bg-white;
+    animation: showModalAnimation 0.4s;
+  }
+  .modal-addfood{
+    @apply absolute top-[25%] left-[36%] right-[36%] bottom-[25%] bg-white;
+    animation: showModalAnimation 0.4s;
   }
   .overlay {
     @apply fixed inset-0;
@@ -63,6 +85,7 @@ code {
   .cart-btn {
     @apply relative bg-primarycolor hover:bg-primarybold text-white text-xs font-bold py-2 px-4 rounded;
   }
+
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -70,6 +93,18 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@keyframes showModalAnimation {
+  from {
+      transform: scale(0);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+

@@ -38,13 +38,17 @@ function IncDecInput({ isCart, quantity, setQuantity, cartItems, setCartItems, i
 
   return (
     <div className="w-32 my-1">
-      <label className="w-full text-gray-700 text-lg text-bold inline-block py-1">Số lượng:</label>
+      <label className="w-full font-medium text-lg text-bold inline-block py-1">
+        Số lượng:
+      </label>
       <div className="flex flex-row w-full rounded-lg bg-transparent">
         <button
-          className="bg-red-500 text-gray-600 hover:text-gray-700 hover:bg-red-700 w-20 rounded-l cursor-pointer outline-none"
-          onClick={() => isCart
-            ? decrementQuantityCartHandler(cartItems, setCartItems, index)
-            : decrementQuantityHandler(quantity, setQuantity)}
+          className="bg-[#EE0000] text-gray-600 hover:text-gray-700 hover:bg-red-800 w-20 rounded-l cursor-pointer outline-none"
+          onClick={() =>
+            isCart
+              ? decrementQuantityCartHandler(cartItems, setCartItems, index)
+              : decrementQuantityHandler(quantity, setQuantity)
+          }
         >
           <span className="m-auto text-2xl font-thin">−</span>
         </button>
@@ -54,15 +58,22 @@ function IncDecInput({ isCart, quantity, setQuantity, cartItems, setCartItems, i
           name="custom-input-number"
           value={isCart ? cartItems[index].quantity : quantity}
           onChange={(e) => setQuantity(Number.parseInt(e.target.value))}
-        >
-        </input>
+        ></input>
         <button
-          className="bg-red-500 text-gray-600 hover:text-gray-700 hover:bg-red-700 w-20 rounded-r cursor-pointer"
-          onClick={() => isCart
-            ? incrementQuantityCartHander(cartItems, setCartItems, index)
-            : incrementQuantityHandler(quantity, setQuantity)}
+          className="bg-[#EE0000] text-gray-600 hover:text-gray-700 hover:bg-red-700 w-20 rounded-r cursor-pointer"
+          onClick={() =>
+            isCart
+              ? incrementQuantityCartHander(cartItems, setCartItems, index)
+              : incrementQuantityHandler(quantity, setQuantity)
+          }
         >
-          <span className={`m-auto text-3xl font-thin ${isCart ? 'text-red-700' : ''}`}>+</span>
+          <span
+            className={`m-auto text-3xl font-thin ${
+              isCart ? "text-red-700" : ""
+            }`}
+          >
+            +
+          </span>
         </button>
       </div>
     </div>

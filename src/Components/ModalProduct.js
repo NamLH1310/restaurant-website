@@ -14,6 +14,8 @@ function ModalProduct({
   setSelectedData,
   cartModalOpen,
   setCartModalOpen,
+  orderModalOpen,
+  setOrderModalOpen,
   totalPrice,
   setTotalPrice,
   cartItems,
@@ -22,7 +24,9 @@ function ModalProduct({
   setCheckedItems,
   quantity,
   setQuantity,
-  setPayment
+  setPayment,
+  checkAll,
+  setCheckAll
 }) {
   useEffect(
     function () {
@@ -65,7 +69,11 @@ function ModalProduct({
         Object.assign({}, selectedData, { quantity: quantity ? quantity : 1 }),
       ]);
     }
-    NotificationManager.success('Đã thêm ' + selectedData.name, 'Giỏ hàng', 1500)
+    NotificationManager.success(
+      "Đã thêm " + selectedData.name,
+      "Giỏ hàng",
+      1500
+    );
     closeModal();
   }
 
@@ -74,18 +82,19 @@ function ModalProduct({
       checkedItems.map((item, i) => (i === index ? !item : item))
     );
   }
+  console.log(cartItems, "item");
+  console.log(checkedItems);
   return (
     <>
       <Modal
         isOpen={productModalOpen}
         onRequestClose={closeModal}
-        className="modal-product bg-gray-50 h-auto ring-4 ring-gray-400 rounded-2xl "
+        className="modal-product bg-gray-50 h-auto ring-4 ring-gray-400 rounded-2xl"
         ariaHideApp={false}
         overlayClassName="overlay"
-
       >
         {selectedData && (
-          <div className="scroll-component">
+          <div className="">
             <div>
               <h5 className="p-1 bg-[#83c75d] w-full mx-auto  text-center rounded-3xl">
                 Chi tiết món ăn
@@ -103,10 +112,13 @@ function ModalProduct({
                 <h1 className="font-semibold text-xl mb-2">
                   {selectedData.name}
                 </h1>
-                <span className="text-bold text-xl">Đơn giá:</span>
-                <span className="text-bold text-xl text-red-800">
+                <span className="font-semibold text-xl">Đơn giá:</span>
+                <span className="font-medium text-xl text-red-800">
                   {" "}
-                  {fixedDecimal(selectedData.price).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}
+                  {fixedDecimal(selectedData.price).toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
                 </span>
                 <IncDecInput
                   isCart={false}
@@ -117,7 +129,7 @@ function ModalProduct({
               <div className="py-3 h-auto bg-gray-100 text-center w-11/12 mb-10 mt-2 rounded-md">
                 {selectedData.description}
               </div>
-              <div className="flex mx-auto justify-center my-4">
+              <div className="flex mx-auto justify-center my-4 bottom-0 absolute">
                 <button
                   className="btn  bg-red-500 hover:bg-red-800"
                   onClick={closeModal}
@@ -160,20 +172,25 @@ function ModalProduct({
             cartItems.map((item, index) => (
               <div
                 key={item.id}
-                className="flex m-4 p-8 bg-gray-300 rounded-xl"
+                className="relative flex m-4 p-6 bg-gray-300 rounded-xl"
               >
                 <div className="w-1/2">
                   <img
-                    className="w-4/5 item-thumbnail"
+                    className="w-4/5  item-thumbnail"
                     alt="Food"
                     src={item.img}
                   />
                 </div>
-                <div className="w-2/5">
-                  <h1 className="mb-4">{item.name}</h1>
-                  <h2>
+                <div className="w-1/2 ">
+                  <h1 className="mb-1 font-semibold text-xl">{item.name}</h1>
+                  <h2 className="font-semibold text-lg">
                     Đơn giá:{" "}
-                    <span className="text-red-500">{item.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
+                    <span className="text-red-500">
+                      {item.price.toLocaleString("it-IT", {
+                        style: "currency",
+                        currency: "VND",
+                      })}
+                    </span>
                   </h2>
                   <div>
                     <IncDecInput
@@ -186,21 +203,39 @@ function ModalProduct({
                     />
                   </div>
                 </div>
-                <div className="flex items-center w-1/10">
+                <div className="absolute bottom-4 right-4 flex items-center w-5 bg-gray-800">
                   <input
                     type="checkbox"
+                    className="w-full h-5"
                     onChange={() => toggleChecked(index)}
                     checked={checkedItems[index]}
                   />
+
                 </div>
               </div>
             ))}
           <h2 className="text-center">
             Tổng cộng:{" "}
+            {/* <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
+            <span>
+              {" "}
+              <input
+                type="checkbox"
+                className="w-full h-5"
+                onChange={()=>checkAll()}
+                checked={checkAll}
+              />
+            </span> */}
             <span className="font-semibold text-red-700">{totalPrice.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
           </h2>
           <div className="flex justify-center my-4">
-            <button className="btn bg-primarycolor hover:bg-primarybold" onClick={() => { setCartModalOpen(false); setPayment(true) }}>
+            <button
+              className="btn bg-primarycolor hover:bg-primarybold"
+              onClick={() => {
+                setCartModalOpen(false);
+                setPayment(true);
+              }}
+            >
               Thanh toán
             </button>
             <button
@@ -208,6 +243,59 @@ function ModalProduct({
               onClick={() => setCartModalOpen(false)}
             >
               Tiếp tục mua sắm
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={orderModalOpen}
+        onRequestClose={() => setOrderModalOpen(false)}
+        className="modal-cart  bg-gray-50 ring-4 ring-gray-400 rounded-2xl"
+        ariaHideApp={false}
+        overlayClassName="overlay"
+      >
+        <div className="scroll-component">
+          <div>
+            <h5 className="p-1 bg-[#83c75d] mx-auto  text-center rounded-3xl">
+              Đơn hàng của khách hàng
+            </h5>
+          </div>
+          {cartItems &&
+            cartItems.map((item, index) => (
+              <div
+                key={item.id}
+                className="relative flex m-4 p-3 bg-gray-300 rounded-xl"
+              >
+                <div className="w-1/2">
+                  <img
+                    className="w-4/5 mx-4 item-thumbnail"
+                    alt="Food"
+                    src={item.img}
+                  />
+                </div>
+                <div className="w-1/2">
+                  <h1 className="font-semibold text-xl">{item.name}</h1>
+                  <h2 className="font-medium text-lg">
+                    Đơn giá:{" "}
+                    <span className="text-red-500">{item.price} VNĐ</span>
+                  </h2>
+                  <div className="font-medium text-lg">
+                    Số lượng: <span className="">{item.quantity}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          <h2 className="text-center">
+            Tổng cộng:{" "}
+            <span className="font-semibold text-red-700">{totalPrice} VNĐ</span>
+          </h2>
+          <div className="flex justify-center my-4">
+            <button
+              className="btn bg-[#83c75d] hover:bg-primarybold bottom-0 absolute"
+              onClick={() => setOrderModalOpen(false)}
+            >
+              Xác nhận
             </button>
           </div>
         </div>

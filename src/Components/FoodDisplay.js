@@ -5,7 +5,7 @@ function FoodDisplay(props) {
   const { expandProductModal } = useContext(ContextList);
   return (
     <div
-      className="relative bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food  transform hover:scale-105 transition-all duration-500 "
+      className="relative food-container bg-gray-50 h-44 ring-1 ring-yellow-400 hover:opacity-90 cursor-pointer food  transform hover:scale-105 transition-all duration-500 "
       key={props.value.id}
     >
       <div className="ml-4 mt-1 font-semibold food-text">
