@@ -37,7 +37,7 @@ export default function AddFood({
                 name: newFoodName,
                 price: newFoodPrice,
                 quantity: 0,
-                img: "./Assets/ComChien.jpg",
+                img: newFoodImage,
                 description: newFoodDescription,
                 is_top: false,
                 category: [selectedNewFoodCategory + 1, 8]

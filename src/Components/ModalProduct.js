@@ -89,12 +89,12 @@ function ModalProduct({
       <Modal
         isOpen={productModalOpen}
         onRequestClose={closeModal}
-        className="modal-product bg-gray-50 h-auto ring-4 ring-gray-400 rounded-2xl"
+        className="modal-product bg-gray-50 ring-4 ring-gray-400 rounded-2xl"
         ariaHideApp={false}
         overlayClassName="overlay"
       >
         {selectedData && (
-          <div className="">
+          <div className="scroll-component">
             <div>
               <h5 className="p-1 bg-[#83c75d] w-full mx-auto  text-center rounded-3xl">
                 Chi tiết món ăn
@@ -129,7 +129,7 @@ function ModalProduct({
               <div className="py-3 h-auto bg-gray-100 text-center w-11/12 mb-10 mt-2 rounded-md">
                 {selectedData.description}
               </div>
-              <div className="flex mx-auto justify-center my-4 bottom-0 absolute">
+              <div className="flex mx-auto justify-center my-4">
                 <button
                   className="btn  bg-red-500 hover:bg-red-800"
                   onClick={closeModal}

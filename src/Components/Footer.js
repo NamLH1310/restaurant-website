@@ -149,9 +149,6 @@ function Footer() {
             </svg>
           </a>
         </div>
-        <div class="text-center text-gray-500 dark:text-gray-200 pt-10 sm:pt-6 font-light flex items-center justify-center">
-          Created by Charlie
-        </div>
       </div>
     </footer>
   );
