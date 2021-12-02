@@ -36,7 +36,7 @@ function Footer() {
     //   </div>
     // </footer>
 
-    <footer class="bg-gray-100 dark:bg-gray-800 w-full py-4 bottom-0">
+    <footer class="bg-gray-100 dark:bg-gray-800 w-full py-4">
       <div class="max-w-screen-xl mx-auto px-4">
         <ul class="max-w-screen-md mx-auto text-lg font-light flex flex-wrap justify-between">
           <li class="my-2">

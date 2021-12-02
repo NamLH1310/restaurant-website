@@ -31,7 +31,8 @@ function App() {
     setPayment(false)
   }
   return (
-    <div className="h-full w-full bg-gray-200">
+
+    <div className=" h-full w-full bg-gray-200 ">
       <NavigationBar
         term={searchTerm}
         searchKeyWord={searchHandler}

@@ -7,8 +7,6 @@ import AddFood from "./Components/AddFood";
 
 const ContextList = React.createContext();
 const api = 'http://127.0.0.1:8000/api';
-
-
 class ContextProvider extends Component {
   // What the fuck is this component, too much responsibilities, TRASH
 
@@ -108,6 +106,7 @@ class ContextProvider extends Component {
     axios.get(
       `${api}/products/`,
     ).then((res) => {
+      console.log(res.data);
       this.setState(() => {
         return { foods: [...res.data] }
       })

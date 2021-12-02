@@ -26,11 +26,6 @@ export default function AddFood({
         setModalAddFoodOpen(false)
     }
     function handleInput() {
-        console.log(newFoodName)
-        console.log(newFoodPrice)
-        console.log(newFoodImage)
-        console.log(newFoodDescription)
-        console.log(selectedNewFoodCategory)
         axios.post(
             'http://127.0.0.1:8000/api/products/',
             {
@@ -38,7 +33,7 @@ export default function AddFood({
                 price: newFoodPrice,
                 quantity: 0,
                 img: newFoodImage,
-                description: newFoodDescription,
+                description: "Món ăn đem lại cho bạn một cảm giác đặc biệt",
                 is_top: false,
                 category: [selectedNewFoodCategory + 1, 8]
             }
