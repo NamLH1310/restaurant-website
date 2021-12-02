@@ -165,11 +165,6 @@ function ModalProduct({
                   Thêm vào giỏ hàng
                 </button>
               </div>
-              <div className="z-10" >
-              <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setNewImage(e.target.value)}} defaultValue={selectedData.img} />
-              <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setNewDescription(e.target.value)}} defaultValue={selectedData.description} />
-              <input type="text" className="font-semibold text-lg w-10 lg:w-32 sm:ml-2 bg-gray-50 border-b-2 border-primarybold" onChange={(e) => {setNewName(e.target.value)}} defaultValue={selectedData.name} />
-              </div>
             </div>
           </div>
         )}

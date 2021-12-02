@@ -1,14 +1,23 @@
 import { ContextList } from "../Context"
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import Order from './oDisplay'
 import {Redirect} from 'react-router-dom'
+import axios from 'axios';
 
 function CheckOrder(props) {
 	props.showSearchBar(true)
 	props.showDropDown(false)
-  let List = useContext(ContextList).oList;
+  const [orderList, setOrderList] = useState([]);
+  useEffect(() => {
+  axios.get('http://localhost:8000/api/orders/')
+        .then(response => setOrderList(response.data))
+        .catch(err => alert(err));
+
+  }, [])
+
   const user = useContext(ContextList).User;
-	if (props.searchTerm !== ""){
+  let List = orderList;
+	if (props.searchTerm !== "") {
 		const newOrdersList = List.filter((order) => {
 		  return Object.values(order).join(" ").toLowerCase().includes(props.searchTerm.toLowerCase());
 		})

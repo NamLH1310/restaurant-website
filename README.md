@@ -11,7 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `python manage.py migrate`
 ### `python manage.py runserver`
 # Kết nối đến database:
-Sử dụng fetch haặc axios để gọi ajax
+Sử dụng fetch hoặc axios để gọi ajax
 link api: [http://127.0.0.1:8000/api/](http://127.0.0.1:8000/api/)
 lấy foods: [http://127.0.0.1:8000/api/products/](http://127.0.0.1:8000/api/products/)
 lấy categories: [http://127.0.0.1:8000/api/categories/](http://127.0.0.1:8000/api/categories/)
