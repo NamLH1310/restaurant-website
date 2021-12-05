@@ -1,4 +1,4 @@
-# Hướng dẫn cài thư viện:
+# Hướng dẫn cài cài đặt:
 ### `npm install`
 
 
