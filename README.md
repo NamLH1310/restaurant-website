@@ -17,6 +17,10 @@ lấy foods: [http://127.0.0.1:8000/api/products/](http://127.0.0.1:8000/api/pro
 lấy categories: [http://127.0.0.1:8000/api/categories/](http://127.0.0.1:8000/api/categories/)
 lấy nhân viên: [http://127.0.0.1:8000/api/employees/](http://127.0.0.1:8000/api/employees/)
 
+# Hướng dẫn cài thư viện:
+### `npm install`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
