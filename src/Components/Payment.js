@@ -6,7 +6,6 @@ import React, { useContext, useState } from 'react';
 import { ContextList } from '../Context';
 import { NotificationManager } from 'react-notifications';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
 
 
 export default function Payment(props) {
@@ -38,11 +37,6 @@ export default function Payment(props) {
                 setValidInput(false)
                 setisSubmit(false)
             }
-            axios.post('http://127.0.0.1:8000/api/orders/', {
-                name: name,
-                phone_number: phoneNumber,
-                cost: totalPrice,
-            })
         }
         else {
             setValidInput(false)
