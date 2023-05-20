@@ -18,17 +18,9 @@ export default function ModalEmployee({
     function closeModal() {
         setModalEmployeeOpen(false);
     }
-    // const [editName, setEditName] = useState(selectedEmployee.name);
-    // const [editShift, setEditShift] = useState(selectedEmployee.shifts.join(' '));
-    // const [editPhoneNumber, setEditPhoneNumber] = useState(selectedEmployee.phone_number);
+
     function handleInput() {
-        // const editedEmployeeData = {
-        //     id: selectedEmployee.id,
-        //     name: editName,
-        //     phone_number: editPhoneNumber,
-        //     shifts: editShift.split(' ').map(Number)
-        // }
-        // console.log(editedEmployeeData);
+
         axios
             .put(
                 `http://127.0.0.1:8000/api/employees/${employeeID}/`, {

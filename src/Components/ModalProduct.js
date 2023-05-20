@@ -85,9 +85,6 @@ function ModalProduct({
   }
   console.log(cartItems, "item");
   console.log(checkedItems);
-  const [newImage, setNewImage] = useState('')
-  const [newDescription,setNewDescription] = useState('')
-  const [newName,setNewName] = useState('')
   return (
     <>
       <Modal
@@ -282,7 +279,10 @@ function ModalProduct({
                   <h1 className="font-semibold text-xl">{item.name}</h1>
                   <h2 className="font-medium text-lg">
                     Đơn giá:{" "}
-                    <span className="text-red-500">{item.price} VNĐ</span>
+                    <span className="text-red-500">{item.price.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}</span>
                   </h2>
                   <div className="font-medium text-lg">
                     Số lượng: <span className="">{item.quantity}</span>
@@ -296,7 +296,7 @@ function ModalProduct({
           </h2>
           <div className="flex justify-center my-4">
             <button
-              className="btn bg-[#83c75d] hover:bg-primarybold bottom-0 absolute"
+              className="btn bg-[#83c75d] hover:bg-primarybold bottom-0"
               onClick={() => setOrderModalOpen(false)}
             >
               Xác nhận
