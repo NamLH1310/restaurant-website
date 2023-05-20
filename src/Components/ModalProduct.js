@@ -49,24 +49,6 @@ function ModalProduct({
     [cartItems, checkedItems]
   );
   function closeModal() {
-    axios
-            .put(
-                `http://127.0.0.1:8000/api/products/${selectedData.id}/`, {
-                    id: selectedData.id,
-                    name: newName,
-                    price:selectedData.price,
-                    quantity:0,
-                    img: newImage,
-                    description: newDescription,
-                    is_top: selectedData.is_top,
-                    category: selectedData.category
-                }
-                )
-            .then(res => {
-                console.log(res.data)
-            }).catch(err => {
-                alert(err.respone)
-            })
     setSelectedData(null);
     setProductModalOpen(false);
   }

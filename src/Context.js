@@ -112,9 +112,8 @@ class ContextProvider extends Component {
       })
       let top = res.data.filter(food => { return food.is_top })
       this.setState(() => {
-        return { topfoods: [...top] }
+        return { topfoods: [...res.data] }
       })
-      console.log(top)
     }).catch(res => {
       alert(res)
     })
